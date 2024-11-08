@@ -1,0 +1,10 @@
+<h2>Запрос на услугу</h2>
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="confirm" value="yes">Подтвердить и отправить</button>
+    <button type="submit" name="confirm" value="no">Отмена</button>
+</form>
