@@ -12,4 +12,4 @@ class ServiceRequest(models.Model):
         return self.full_name
 
     def can_send_request(self):
-        return (timezone.now() - self.created_at).total_seconds() > 300  
+        return (timezone.now() - self.created_at).total_seconds() > 10
