@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'forms',
     'aboutcompany',
+    'main_page',
 ]
 
 MIDDLEWARE = [
@@ -146,7 +147,11 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'api/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'api/static')
+
+MEDIA_URL = 'api/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'api/media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

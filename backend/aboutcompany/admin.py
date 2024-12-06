@@ -23,6 +23,10 @@ class AboutCompanyAdmin(TranslationAdmin):
 
 
 class TeamMemberAdmin(TranslationAdmin):
+    def save_model(self, request, obj, form, change):
+        if not obj.pk and AboutCompany.objects.count() >= 5:
+            raise ValidationError(_("Вы не можете создать более 5 сотрудников."))
+        super(AboutCompanyAdmin, self).save_model(request, obj, form, change)
     def has_add_permission(self, request):
         if TeamMember.objects.count() >= 5:
             return False
@@ -36,8 +40,12 @@ class TeamMemberAdmin(TranslationAdmin):
 
 
 class ClientPartnerAdmin(TranslationAdmin):
+    def save_model(self, request, obj, form, change):
+        if not obj.pk and AboutCompany.objects.count() >= 4:
+            raise ValidationError(_("Вы не можете создать более 4 партнеров и компаний."))
+        super(AboutCompanyAdmin, self).save_model(request, obj, form, change)
     def has_add_permission(self, request):
-        if ClientPartner.objects.count() >= 10:
+        if ClientPartner.objects.count() >= 4:
             return False
         return super(ClientPartnerAdmin, self).has_add_permission(request)
 

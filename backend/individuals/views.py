@@ -1,43 +1,74 @@
 from rest_framework import viewsets
-from .models import LegalEntity, OurService, Advantage, Assistance, WorkStage, Document
+from .models import LegalEntity, OurService, IndividualAdvantage, IndividualAssistance, IndividualWorkStage, Document
+from rest_framework import permissions
 from .serializers import (
     LegalEntitySerializer,
     OurServiceSerializer,
-    AdvantageSerializer,
-    AssistanceSerializer,
-    WorkStageSerializer,
+    IndividualAdvantageSerializer,
+    IndividualAssistanceSerializer,
+    IndividualWorkStageSerializer,
     DocumentSerializer,
 )
 
 
-class LegalEntityViewSet(viewsets.ModelViewSet):
+class LegalEntityViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = LegalEntity.objects.all()
     serializer_class = LegalEntitySerializer
 
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
 
-class OurServiceViewSet(viewsets.ModelViewSet):
+
+class OurServiceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = OurService.objects.all()
     serializer_class = OurServiceSerializer
 
-
-class AdvantageViewSet(viewsets.ModelViewSet):
-    queryset = Advantage.objects.all()
-    serializer_class = AdvantageSerializer
-
-
-class AssistanceViewSet(viewsets.ModelViewSet):
-    queryset = Assistance.objects.all()
-    serializer_class = AssistanceSerializer
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
 
 
-class WorkStageViewSet(viewsets.ModelViewSet):
-    queryset = WorkStage.objects.all()
-    serializer_class = WorkStageSerializer
+class IndividualAdvantageViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = IndividualAdvantage.objects.all()
+    serializer_class = IndividualAdvantageSerializer
+
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
 
 
-class DocumentViewSet(viewsets.ModelViewSet):
+class IndividualAssistanceViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = IndividualAssistance.objects.all()
+    serializer_class = IndividualAssistanceSerializer
+
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
+
+
+class IndividualWorkStageViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = IndividualWorkStage.objects.all()
+    serializer_class = IndividualWorkStageSerializer
+
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
+
+
+class DocumentViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer
+
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
 
 
 

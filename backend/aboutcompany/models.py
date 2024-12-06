@@ -30,6 +30,11 @@ class TeamMember(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and AboutCompany.objects.count() >= 5:
+            raise ValidationError("Вы не можете создать более 5 сотрудников.")
+        super(AboutCompany, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Член команды"
@@ -44,6 +49,11 @@ class ClientPartner(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and AboutCompany.objects.count() >= 4:
+            raise ValidationError("Вы не можете создать более 4 партнеров и компаний.")
+        super(AboutCompany, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Клиент или партнёр"

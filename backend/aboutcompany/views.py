@@ -14,13 +14,25 @@ class AboutCompanyViewSet(viewsets.ReadOnlyModelViewSet):
         return [permissions.AllowAny()]
 
 
-class TeamMemberViewSet(viewsets.ModelViewSet):
+class TeamMemberViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
     permission_classes = [permissions.IsAdminUser]
 
 
-class ClientPartnerViewSet(viewsets.ModelViewSet):
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
+
+
+class ClientPartnerViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ClientPartner.objects.all()
     serializer_class = ClientPartnerSerializer
     permission_classes = [permissions.IsAdminUser]
+
+
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'PUT', 'DELETE', 'POST']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]

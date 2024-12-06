@@ -1,17 +1,25 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
 
 class IndividualEntity(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Заголовок"))
     description = models.TextField(verbose_name=_("Описание"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and IndividualEntity.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц о юр. лицах.")
+        super(IndividualEntity, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _("Физ. лица")
-        verbose_name_plural = _("Физ. лица")
+        verbose_name = _("Юр. лица")
+        verbose_name_plural = _("Юр. лица")
 
 
 class Service(models.Model):
@@ -24,13 +32,20 @@ class Service(models.Model):
     field3_text = models.TextField(verbose_name=_("Текстовое поле 3"))
     field4_image = models.ImageField(upload_to="media/services", verbose_name=_("Картинка 4"))
     field4_text = models.TextField(verbose_name=_("Текстовое поле 4"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and Service.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц об обслуживание помещений.")
+        super(Service, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _("Наши услуги")
-        verbose_name_plural = _("Наши услуги")
+        verbose_name = _("Обслуживание помещений")
+        verbose_name_plural = _("Обслуживание помещений")
 
 
 class Advantage(models.Model):
@@ -39,9 +54,16 @@ class Advantage(models.Model):
     field2 = models.TextField(verbose_name=_("Текстовое поле 2"))
     field3 = models.TextField(verbose_name=_("Текстовое поле 3"))
     field4 = models.TextField(verbose_name=_("Текстовое поле 4"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and Advantage.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц о преимуществах.")
+        super(Advantage, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Преимущество")
@@ -54,9 +76,16 @@ class Assistance(models.Model):
     field2 = models.TextField(verbose_name=_("Текстовое поле 2"))
     field3 = models.TextField(verbose_name=_("Текстовое поле 3"))
     field4 = models.TextField(verbose_name=_("Текстовое поле 4"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and Assistance.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц о помощи.")
+        super(Assistance, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Помощь")
@@ -70,9 +99,16 @@ class WorkStage(models.Model):
     field3 = models.TextField(verbose_name=_("Текстовое поле 3"))
     field4 = models.TextField(verbose_name=_("Текстовое поле 4"))
     field5 = models.TextField(verbose_name=_("Текстовое поле 5"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and WorkStage.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц об этапах работы.")
+        super(WorkStage, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Этап работы")
@@ -81,16 +117,23 @@ class WorkStage(models.Model):
 
 class LegalDocument(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Заголовок"))
-    doc1 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 1"))
-    doc2 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 2"))
-    doc3 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 3"))
-    doc4 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 4"))
-    doc5 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 5"))
-    doc6 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 6"))
-    doc7 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документ 7"))
+    doc1 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Копия свидетельства о регистрации юридического лица"))
+    doc2 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Копия устава юридического лица"))
+    doc3 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Реквизиты"))
+    doc4 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Копия доверенности лица, уполномоченного на заключение договора"))
+    doc5 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Документы подтверждающие полномочия руководителя юридического лица"))
+    doc6 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Копия свидетельства о постановке на налоговый учет (ИНН)"))
+    doc7 = models.FileField(upload_to="media/documents/legal", verbose_name=_("Копия разрешительной документации"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and LegalDocument.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц о документах для юр. лиц.")
+        super(LegalDocument, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Документ для юр. лиц")
@@ -99,14 +142,21 @@ class LegalDocument(models.Model):
 
 class IndividualDocument(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Заголовок"))
-    doc1 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Документ 1"))
-    doc2 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Документ 2"))
-    doc3 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Документ 3"))
-    doc4 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Документ 4"))
-    doc5 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Документ 5"))
+    doc1 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Копия свидетельства о регистрации ИП"))
+    doc2 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Копия паспорта ИП"))
+    doc3 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Копия свидетельства о постановке на налоговый учет"))
+    doc4 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Копия нотаривальной доверенности лица, уполномоченного на заключение договора"))
+    doc5 = models.FileField(upload_to="media/documents/individualbuissnes", verbose_name=_("Копия разрешительной документации"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and IndividualDocument.objects.count() >= 1:
+            raise ValidationError("Вы не можете создать более 1 страниц о документах для ИП.")
+        super(IndividualDocument, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Документ для ИП")

@@ -3,23 +3,24 @@ from django.urls import path, include
 from .views import (
     LegalEntityViewSet,
     OurServiceViewSet,
-    AdvantageViewSet,
-    AssistanceViewSet,
-    WorkStageViewSet,
+    IndividualAdvantageViewSet,
+    IndividualAssistanceViewSet,
+    IndividualWorkStageViewSet,
     DocumentViewSet,
 )
 
 router = DefaultRouter()
-router.register(r"legal-entities", LegalEntityViewSet, basename="legal-entities")
-router.register(r"our-services", OurServiceViewSet, basename="our-services")
-router.register(r"advantages", AdvantageViewSet, basename="advantages")
-router.register(r"assistance", AssistanceViewSet, basename="assistance")
-router.register(r"work-stages", WorkStageViewSet, basename="work-stages")
-router.register(r"documents", DocumentViewSet, basename="documents")
+router.register(r"legal-entities", LegalEntityViewSet)
+router.register(r"our-services", OurServiceViewSet)
+router.register(r"advantages", IndividualAdvantageViewSet)
+router.register(r"assistance", IndividualAssistanceViewSet)
+router.register(r"work-stages", IndividualWorkStageViewSet)
+router.register(r"documents", DocumentViewSet)
 
-urlpatterns = [
-    path("", include(router.urls)),
-]
+urlpatterns = router.urls
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import LegalEntity, OurService, Advantage, Assistance, WorkStage, Document
+from .models import LegalEntity, OurService, IndividualAdvantage, IndividualAssistance, IndividualWorkStage, Document
 
 
 class LegalEntitySerializer(serializers.ModelSerializer):
@@ -14,21 +14,21 @@ class OurServiceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class AdvantageSerializer(serializers.ModelSerializer):
+class IndividualAdvantageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Advantage
+        model = IndividualAdvantage
         fields = '__all__'
 
 
-class AssistanceSerializer(serializers.ModelSerializer):
+class IndividualAssistanceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Assistance
+        model = IndividualAssistance
         fields = '__all__'
 
 
-class WorkStageSerializer(serializers.ModelSerializer):
+class IndividualWorkStageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = WorkStage
+        model = IndividualWorkStage
         fields = '__all__'
 
 

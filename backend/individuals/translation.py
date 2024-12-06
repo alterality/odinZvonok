@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import LegalEntity, OurService, Advantage, Assistance, WorkStage, Document
+from .models import LegalEntity, OurService, IndividualAdvantage, IndividualAssistance, IndividualWorkStage, Document
 
 
 @register(LegalEntity)
@@ -12,18 +12,18 @@ class OurServiceTranslationOptions(TranslationOptions):
     fields = ('title', 'field1', 'field2', 'field3', 'field4', 'field5')
 
 
-@register(Advantage)
-class AdvantageTranslationOptions(TranslationOptions):
+@register(IndividualAdvantage)
+class IndividualAdvantageTranslationOptions(TranslationOptions):
     fields = ('title', 'field1', 'field2', 'field3', 'field4')
 
 
-@register(Assistance)
-class AssistanceTranslationOptions(TranslationOptions):
+@register(IndividualAssistance)
+class IndividualAssistanceTranslationOptions(TranslationOptions):
     fields = ('title', 'field1', 'field2', 'field3', 'field4')
 
 
-@register(WorkStage)
-class WorkStageTranslationOptions(TranslationOptions):
+@register(IndividualWorkStage)
+class IndividualWorkStageTranslationOptions(TranslationOptions):
     fields = ('title', 'field1', 'field2', 'field3', 'field4', 'field5')
 
 
