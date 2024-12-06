@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     #apps
+    'individuals',
+    'vacancies',
+    'legal_entities',
     'rest_framework',
     'forms',
     'aboutcompany',
