@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import gettext as _  # используем gettext вместо gettext_lazy
+from django.utils.translation import gettext as _  
 from django.core.exceptions import ValidationError
 
 
@@ -9,7 +9,7 @@ class PartnershipProgram(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
-        return _("Партнёрская программа")  # Получаем строку с переводом
+        return _("Партнёрская программа")  
 
     def save(self, *args, **kwargs):
         if not self.pk and PartnershipProgram.objects.count() >= 1:
@@ -50,7 +50,7 @@ class Details(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
-        return self.section1_title  # Возвращаем строку заголовка секции
+        return self.section1_title 
 
     def save(self, *args, **kwargs):
         if not self.pk and Details.objects.count() >= 1:

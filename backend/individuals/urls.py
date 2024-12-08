@@ -12,9 +12,9 @@ from .views import (
 router = DefaultRouter()
 router.register(r"legal-entities", LegalEntityViewSet)
 router.register(r"our-services", OurServiceViewSet)
-router.register(r"advantages", IndividualAdvantageViewSet)
+router.register(r"advantagesIviduals", IndividualAdvantageViewSet)
 router.register(r"assistance", IndividualAssistanceViewSet)
-router.register(r"work-stages", IndividualWorkStageViewSet)
+router.register(r"work-stagesIndividuals", IndividualWorkStageViewSet)
 router.register(r"documents", DocumentViewSet)
 
 urlpatterns = router.urls
