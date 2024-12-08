@@ -191,3 +191,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vercel
+
+
+./backend/media
+./backend/api/media
+/backend/media
+/backend/api/media
