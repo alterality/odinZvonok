@@ -1,0 +1,475 @@
+.advantages-container {
+  background-color: rgba(29, 29, 27, 1); 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 0; 
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1480px; 
+  height: 500px; 
+}
+
+.text-container {
+  width: 50%;
+  padding-left: 20px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading {
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 1); 
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.8); 
+}
+
+.subtext {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6); 
+}
+
+.image-container {
+  width: 50%;
+  height: 100%; 
+  margin-left: 20px; 
+  margin-right: -20px; 
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  margin: 0; 
+}
+
+.advantages-container {
+  background-color: rgba(29, 29, 27, 1); 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 20px; 
+  margin: 0; 
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1480px; 
+  height: 500px; 
+}
+
+.text-container {
+  width: 50%;
+  padding-left: 20px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading {
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 1); 
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.subtext {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6); 
+}
+
+.image-container {
+  width: 50%;
+  height: 100%; 
+  margin-left: 20px; 
+  margin-right: 0; 
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  margin: 0; 
+}
+
+.additional-container {
+  background-color: rgba(100, 100, 100, 1); 
+  padding: 40px; 
+  margin: 0;
+}
+
+.additional-heading {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 1); 
+  margin-bottom: 30px;
+}
+
+.additional-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9); 
+  margin-bottom: 10px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.6); 
+  margin: 10px 0;
+}
+
+.black-container {
+  background-color: rgba(0, 0, 0, 1); 
+  padding: 40px; 
+  margin: 0; 
+}
+
+.black-heading {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 1); 
+  margin-bottom: 20px;
+}
+
+.squares-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; 
+}
+
+.square {
+  width: 25%; 
+  height: 200px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(169, 169, 169, 1); 
+  border-radius: 8px; 
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: transparent; 
+}
+
+.square-text {
+  text-align: center;
+}
+
+
+.gray-container {
+  background-color: rgba(169, 169, 169, 1); 
+  padding: 40px; 
+}
+
+.gray-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gray-text {
+  width: 50%;
+}
+
+.gray-heading {
+  font-size: 28px;
+  color: rgb(255, 255, 255); 
+  margin-bottom: 40px;
+}
+
+.gray-paragraph {
+  font-size: 16px;
+  color: rgb(255, 255, 255); 
+  margin-bottom: 10px;
+}
+
+.gray-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3); 
+  margin: 10px 0;
+  width: calc(100% - 50px); 
+  margin-right: auto; 
+}
+
+
+.gray-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.gray-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; 
+}
+
+
+
+.helpblack-main-content-container {
+  display: flex;
+  gap: 2rem;
+  background-color: black;
+  color: white;
+  padding: 2rem;
+}
+
+.helpblack-text-section-wrapper {
+  flex: 3; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  height: 100%; 
+  padding-bottom: 1rem; 
+  margin-top: 45px;
+}
+
+
+.helpblack-section-heading-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.helpblack-text-item-container {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.helpblack-text-block-content {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-right: 2rem; 
+}
+
+.helpblack-text-item-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: rgba(255, 75, 15, 1); 
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.helpblack-horizontal-separator-line {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.4); 
+  margin-top: 0.5rem;
+}
+
+
+.helpblack-image-section-wrapper {
+  flex: 2; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helpblack-image-container img {
+  max-width: 80%; 
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+
+
+/* Контейнер с реквизитами */
+.rekvizit-container {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 40px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.rekvizit-heading {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 1);
+  margin-bottom: 20px;
+}
+
+.rekvizit-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  gap: 20px;
+  height: 512px;  
+}
+
+.rekvizit-left-image, .rekvizit-right-image {
+  width: 25%;  
+  height: 100%; 
+}
+
+.rekvizit-image {
+  width: 100%;
+  height: 100%;  
+  object-fit: cover;
+}
+
+.rekvizit-text {
+  width: 30%;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: flex-start;  
+  line-height: 1.9;  
+}
+
+.rekvizit-subheading {
+  font-size: 20px;  
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.rekvizit-info-box {
+  font-size: 18px;  
+  color: rgba(0, 0, 0, 0.7);
+  text-align: left;  
+  margin-bottom: 20px;  
+}
+
+
+
+/* Контейнер формы */
+.AboutUsFiz-form-container {
+  background-color: rgba(135, 135, 135, 1);
+  padding: 40px;
+  color: white; 
+}
+
+/* Заголовок формы */
+.AboutUsFiz-form-heading {
+  font-size: 34px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Основное содержимое формы */
+.AboutUsFiz-form-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Левый контейнер с текстом */
+.AboutUsFiz-form-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.AboutUsFiz-form-left-heading {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-left: -255px;
+}
+
+.AboutUsFiz-form-left-subheading {
+  font-size: 16px;
+  margin: 120px 15px 55px 468px ;
+  color: rgba(255, 255, 255, 0.7); 
+}
+
+.AboutUsFiz-form-left-space {
+  flex-grow: 1;
+}
+.AboutUsFiz-form-left h4{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.AboutUsFiz-form-right {
+  flex: 1;
+}
+
+.AboutUsFiz-form-right-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 40px; 
+  margin-bottom: 20px;
+}
+
+
+
+/* Поля формы */
+.AboutUsFiz-input-field, .AboutUsFiz-textarea-field {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.278);
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Styling for red asterisk */
+.AboutUsFiz-input-field::placeholder::after, .AboutUsFiz-textarea-field::placeholder::after {
+  content: '*';
+  color: red !important;
+}
+
+.AboutUsFiz-input-field::placeholder, .AboutUsFiz-textarea-field::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.AboutUsFiz-textarea-field {
+  resize: none;
+  height: 100px;
+}
+
+/* Чекбокс */
+.AboutUsFiz-form-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.AboutUsFiz-form-checkbox-input {
+  margin-right: 10px;
+}
+
+.AboutUsFiz-form-checkbox-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Кнопка отправки */
+.AboutUsFiz-form-submit-button {
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.AboutUsFiz-form-submit-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
