@@ -7,12 +7,10 @@ class AboutCompany(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
-
     def save(self, *args, **kwargs):
         if not self.pk and AboutCompany.objects.count() >= 1:
             raise ValidationError("Вы не можете создать более 1 страниц О компании.")
         super(AboutCompany, self).save(*args, **kwargs)
-
 
     def __str__(self) -> str:
         return self.body
@@ -32,9 +30,9 @@ class TeamMember(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        if not self.pk and AboutCompany.objects.count() >= 5:
+        if not self.pk and TeamMember.objects.count() >= 5:
             raise ValidationError("Вы не можете создать более 5 сотрудников.")
-        super(AboutCompany, self).save(*args, **kwargs)
+        super(TeamMember, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Член команды"
@@ -51,9 +49,9 @@ class ClientPartner(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        if not self.pk and AboutCompany.objects.count() >= 4:
+        if not self.pk and ClientPartner.objects.count() >= 4:
             raise ValidationError("Вы не можете создать более 4 партнеров и компаний.")
-        super(AboutCompany, self).save(*args, **kwargs)
+        super(ClientPartner, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Клиент или партнёр"

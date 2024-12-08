@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _  # используем gettext вместо gettext_lazy
 from django.core.exceptions import ValidationError
 
 
@@ -9,8 +9,8 @@ class PartnershipProgram(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
-        return _("Партнёрская программа")
-    
+        return _("Партнёрская программа")  # Получаем строку с переводом
+
     def save(self, *args, **kwargs):
         if not self.pk and PartnershipProgram.objects.count() >= 1:
             raise ValidationError("Вы не можете создать более 1 страниц о партнерской программе.")
@@ -37,7 +37,7 @@ class Vacancy(models.Model):
 
 
 class Details(models.Model):
-    title = models.CharField(max_length=255, verbose_name=_("описание"))
+    title = models.CharField(max_length=255, verbose_name=_("Описание"))
     section1_title = models.CharField(max_length=255, verbose_name=_("Заголовок 1"))
     section1_field1 = models.TextField(verbose_name=_("Текстовое поле 1"))
     section1_field2 = models.TextField(verbose_name=_("Текстовое поле 2"))
@@ -50,8 +50,8 @@ class Details(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
     def __str__(self):
-        return self.section1_title
-    
+        return self.section1_title  # Возвращаем строку заголовка секции
+
     def save(self, *args, **kwargs):
         if not self.pk and Details.objects.count() >= 1:
             raise ValidationError("Вы не можете создать более 1 страниц о деталях партнерской программы.")
