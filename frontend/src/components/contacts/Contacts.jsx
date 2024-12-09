@@ -4,15 +4,15 @@ import './Contacts.css';
 const Contacts = () => {
   return (
 <div class="contacts">
-    <div class="contacts-header">Контакты</div>
+    <div class="contacts-header header-font">Контакты</div>
     <div class="contacts-content">
         {/* <!-- Первая колонка: Сотрудничество и Офис --> */}
         <div>
             <div class="contacts-cooperation">
-                <div class="contacts-cooperation-text">Сотрудничество</div>
+                <div class="contacts-cooperation-text header-font">Сотрудничество</div>
             </div>
             <div class="contacts-office">
-                <div class="contacts-office-text">Офис</div>
+                <div class="contacts-office-text header-font">Офис</div>
                 <div class="contacts-address-phone">
 
                 </div>

@@ -60,7 +60,7 @@ const AboutUsUr = () => {
     <div className="advantages-container-ur">
       <div className="content-wrapper-ur">
         <div className="text-container-ur">
-          <h3 className="heading-ur">{legalEntities.title}</h3>
+          <h3 className="heading-ur header-font">{legalEntities.title}</h3>
           <p className="text-ur">{legalEntities.description}</p>
         </div>
         <div className="image-container-ur">
@@ -72,7 +72,7 @@ const AboutUsUr = () => {
     {/* Второй контейнер */}
     <div class="services-container">
   <div class="services-text">
-    <h2>{services.title}</h2>
+    <h2 className='header-font'>{services.title}</h2>
   </div>
   <div class="services-images">
       {servicesForWhom.map((service ,index) => (
@@ -86,7 +86,7 @@ const AboutUsUr = () => {
 
 
 <div className="black-container">
-        <h3 className="black-heading">{advantages.title}</h3>
+        <h3 className="black-heading header-font">{advantages.title}</h3>
         <div className="squares-container">
           {whyUs.map((item, index) => (
               <div className="square" key={index}>
@@ -101,7 +101,7 @@ const AboutUsUr = () => {
       <div className="gray-container-ur">
         <div className="gray-content-ur">
           <div className="gray-text-ur">
-          <h3 className="gray-heading-ur">{assistances.title}</h3>
+          <h3 className="gray-heading-ur header-font">{assistances.title}</h3>
             {goods.map((good, index) => (
                 <div key={index}>
                   <p className="gray-paragraph-ur" >{good}</p>
@@ -118,7 +118,7 @@ const AboutUsUr = () => {
 
     <div class="helpblack-main-content-container-ur">
 <div class="helpblack-text-section-wrapper-ur">
-  <div class="helpblack-section-heading-title-ur">{workStages.title}</div>
+  <div class="helpblack-section-heading-title-ur header-font">{workStages.title}</div>
   {stages.map((stage,index)=> (
       <div className="helpblack-text-item-container-ur" key={index}>
         <p className="helpblack-text-block-content-ur">{stage}</p>
@@ -136,7 +136,7 @@ const AboutUsUr = () => {
 
       {/* Новый контейнер с реквизитами */}
       <div className="rekvizit-container-ur">
-        <h3 className="rekvizit-heading-ur">Реквизиты</h3>
+        <h3 className="rekvizit-heading-ur header-font">Реквизиты</h3>
 
         <div className="rekvizit-content-ur">
         {/* Картинка слева */}
@@ -171,7 +171,7 @@ const AboutUsUr = () => {
 
 
     <div className="AboutUsFiz-form-container-ur">
-<h3 className="AboutUsFiz-form-heading-ur">Форма заявки</h3>
+<h3 className="AboutUsFiz-form-heading-ur header-font">Форма заявки</h3>
 <div className="AboutUsFiz-form-content-ur">
   {/* Левый контейнер с текстом */}
   <div className="AboutUsFiz-form-left-ur">

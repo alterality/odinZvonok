@@ -1,3 +1,5 @@
+@import "../../assets/fonts/fonts.css";
+
 .about-us-main {
     display: flex;
     align-items: flex-start;
@@ -13,6 +15,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: black;
+    font-family: Stapel;
   }
   
   .left-image-container {

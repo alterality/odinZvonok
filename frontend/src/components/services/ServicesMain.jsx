@@ -8,7 +8,7 @@ import './ServicesMain.css';
 const ServicesMain = () => {
   return (
     <div className="services-container">
-      <h2 className="services-header">УСЛУГИ И ТАРИФЫ</h2>
+      <h2 className="services-header header-font">УСЛУГИ И ТАРИФЫ</h2>
       
       <div className="services-images-row">
         <img src={servis1} alt="Service 1" className="service-itemMain" />

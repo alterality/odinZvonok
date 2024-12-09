@@ -19,7 +19,7 @@ const AboutCompany = () => {
       <div className="first-container">
         {/* Текстовая часть */}
         <div className="text-section">
-          <h1>О нашей компании</h1>
+          <h1 className="header-font">О нашей компании</h1>
           <p>
             {aboutCompany.body}
           </p>
@@ -37,7 +37,7 @@ const AboutCompany = () => {
       {/* Контейнер с членами команды */}
       <div className="team-container">
         <div className="team-box black-box">
-          <p>Наша команда</p>
+          <p className="header-font">Наша команда</p>
         </div>
         {team.map((employee, index) => (
           <div key={index} className="team-box employee-box">
@@ -51,7 +51,7 @@ const AboutCompany = () => {
        
 
       <div className="black-container">
-        <h3 className="black-heading">КЛИЕНТЫ И ПАРТНЕРЫ</h3>
+        <h3 className="black-heading header-font">КЛИЕНТЫ И ПАРТНЕРЫ</h3>
         <div className="squares-container">
           {clients.map((client, index) => (
             <div className="square" key={index}>
@@ -64,7 +64,7 @@ const AboutCompany = () => {
 
       <div className="aboutcomp-formcomt">
         <div className="aboutcomp-wrapper">
-  <h2>Оставить заявку</h2>
+  <h2 className="header-font">Оставить заявку</h2>
 
   <div className="aboutcomp-container">
     {/* Левая колонка с полями ввода */}

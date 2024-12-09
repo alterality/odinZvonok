@@ -15,7 +15,7 @@ const Services = () => {
        <div className="services-container">
       {/* 1.1 секция */}
       <div className="section-middle">
-        <h1 className="services-title">ОКАЗЫВАЕМ СЛЕДУЮЩИЕ УСЛУГИ</h1>
+        <h1 className="services-title header-font">ОКАЗЫВАЕМ СЛЕДУЮЩИЕ УСЛУГИ</h1>
 
         <div className="gray-container">
           <img src={servicesimg} alt="Service" className="service-image" />
@@ -32,28 +32,28 @@ const Services = () => {
           {/* 1.2 секция  */}
         <div className="services-section">
          <hr />
-          <h2>КВАРТИРЫ</h2>
+          <h2 className='header-font'>КВАРТИРЫ</h2>
          <hr />
 
          <div className="service-item">
            <div className="service-left">
-            <h3>РЕМОНТ БЫТОВОЙ ТЕХНИКИ</h3>
-             <p>(001)</p>
+            <h3 className='header-font'>РЕМОНТ БЫТОВОЙ ТЕХНИКИ</h3>
+             <p className='header-font'>(001)</p>
           </div>
           <div className="service-center">
-            <p>(качественно, быстро, надежно)</p>
+            <p className='header-font'>(качественно, быстро, надежно)</p>
          </div>
          <div className="service-right">+</div>
         </div>
         <hr className="horizontal-divider" />
 
-        <div className="service-item">
+        <div className="service-item ">
           <div className="service-left">
-           <h3>БЫТОВЫЕ УСЛУГИ</h3>
-            <p>(002)</p>
+           <h3 className='header-font'>БЫТОВЫЕ УСЛУГИ</h3>
+            <p className='header-font'>(002)</p>
          </div>
        <div className="service-center">
-          <p>(качественно, быстро, надежно)</p>
+          <p className='header-font'>(качественно, быстро, надежно)</p>
       </div>
        <div className="service-right">+</div>
       </div>
@@ -61,11 +61,11 @@ const Services = () => {
 
       <div className="service-item">
         <div className="service-left">
-          <h3>САНТЕХНИКА</h3>
-           <p>(003)</p>
+          <h3 className='header-font'>САНТЕХНИКА</h3>
+           <p className='header-font'>(003)</p>
     </div>
     <div className="service-center">
-      <p>(качественно, быстро, надежно)</p>
+      <p className='header-font'>(качественно, быстро, надежно)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -73,11 +73,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>ЭЛЕКТРОНИКА</h3>
-      <p>(004)</p>
+      <h3 className='header-font'>ЭЛЕКТРОНИКА</h3>
+      <p className='header-font'>(004)</p>
     </div>
     <div className="service-center">
-      <p>(качественно, быстро, надежно)</p>
+      <p className='header-font'>(качественно, быстро, надежно)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -85,11 +85,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>КЛИНИНГОВЫЕ УСЛУГИ</h3>
-      <p>(005)</p>
+      <h3 className='header-font'>КЛИНИНГОВЫЕ УСЛУГИ</h3>
+      <p className='header-font'>(005)</p>
     </div>
     <div className="service-center">
-      <p>(качественно, быстро, надежно)</p>
+      <p className='header-font'>(качественно, быстро, надежно)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -97,11 +97,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>ТАРИФЫ</h3>
-      <p>(006)</p>
+      <h3 className='header-font'>ТАРИФЫ</h3>
+      <p className='header-font'>(006)</p>
     </div>
     <div className="service-center">
-      <p>(по разумным ценам, быстро и с гарантией)</p>
+      <p className='header-font'>(по разумным ценам, быстро и с гарантией)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -133,7 +133,7 @@ const Services = () => {
           
           {/* 1.2 секция  */}
         <div className="services-section">
-          <h2>ЧАСТНЫЕ ДОМА </h2>
+          <h2 className='header-font'>ЧАСТНЫЕ ДОМА </h2>
          <hr />
 
          <div className="white-container">
@@ -150,11 +150,11 @@ const Services = () => {
 
          <div className="service-item">
            <div className="service-left">
-            <h3>Ремонт бытовой техники</h3>
-             <p>(001)</p>
+            <h3 className='header-font'>Ремонт бытовой техники</h3>
+             <p className='header-font'>(001)</p>
           </div>
           <div className="service-center">
-            <p>(качественно, быстро, надежно)</p>
+            <p className='header-font'>(качественно, быстро, надежно)</p>
          </div>
          <div className="service-right">+</div>
         </div>
@@ -162,11 +162,11 @@ const Services = () => {
 
         <div className="service-item">
           <div className="service-left">
-           <h3>Установка сантехники</h3>
-            <p>(002)</p>
+           <h3 className='header-font'>Установка сантехники</h3>
+            <p className='header-font'>(002)</p>
          </div>
        <div className="service-center">
-          <p>(монтаж и замена оборудования)</p>
+          <p className='header-font'>(монтаж и замена оборудования)</p>
       </div>
        <div className="service-right">+</div>
       </div>
@@ -174,11 +174,11 @@ const Services = () => {
 
       <div className="service-item">
         <div className="service-left">
-          <h3>Электромонтажные работы</h3>
-           <p>(003)</p>
+          <h3 className='header-font'>Электромонтажные работы</h3>
+           <p className='header-font'>(003)</p>
     </div>
     <div className="service-center">
-      <p>(проводка, установка розеток и освещения)</p>
+      <p className='header-font'>(проводка, установка розеток и освещения)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -186,11 +186,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Косметический ремонт</h3>
-      <p>(004)</p>
+      <h3 className='header-font'>Косметический ремонт</h3>
+      <p className='header-font'>(004)</p>
     </div>
     <div className="service-center">
-      <p>(обновление стен и потолков)</p>
+      <p className='header-font'>(обновление стен и потолков)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -198,11 +198,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Услуги по уборке</h3>
-      <p>(005)</p>
+      <h3 className='header-font'>Услуги по уборке</h3>
+      <p className='header-font'>(005)</p>
     </div>
     <div className="service-center">
-      <p>(генеральная уборка помещений)</p>
+      <p className='header-font'>(генеральная уборка помещений)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -210,11 +210,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Установка дверей и окон</h3>
-      <p>(006)</p>
+      <h3 className='header-font'>Установка дверей и окон</h3>
+      <p className='header-font'>(006)</p>
     </div>
     <div className="service-center">
-      <p>(профессиональный монтаж)</p>
+      <p className='header-font'>(профессиональный монтаж)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -242,7 +242,7 @@ const Services = () => {
           
           {/* 1.2 секция  */}
         <div className="services-section">
-          <h2>БИЗНЕС</h2>
+          <h2 className='header-font'>БИЗНЕС</h2>
          <hr />
 
          <div className="bisiness-container">
@@ -259,11 +259,11 @@ const Services = () => {
 
          <div className="service-item">
            <div className="service-left">
-            <h3>Ремонт бытовой техники</h3>
-             <p>(001)</p>
+            <h3 className='header-font'>Ремонт бытовой техники</h3>
+             <p className='header-font'>(001)</p>
           </div>
           <div className="service-center">
-            <p>(качественно, быстро, надежно)</p>
+            <p className='header-font'>(качественно, быстро, надежно)</p>
          </div>
          <div className="service-right">+</div>
         </div>
@@ -271,11 +271,11 @@ const Services = () => {
 
         <div className="service-item">
           <div className="service-left">
-           <h3>Установка сантехники</h3>
-            <p>(002)</p>
+           <h3 className='header-font'>Установка сантехники</h3>
+            <p className='header-font'>(002)</p>
          </div>
        <div className="service-center">
-          <p>(монтаж и замена оборудования)</p>
+          <p className='header-font'>(монтаж и замена оборудования)</p>
       </div>
        <div className="service-right">+</div>
       </div>
@@ -283,11 +283,11 @@ const Services = () => {
 
       <div className="service-item">
         <div className="service-left">
-          <h3>Электромонтажные работы</h3>
-           <p>(003)</p>
+          <h3 className='header-font'>Электромонтажные работы</h3>
+           <p className='header-font'>(003)</p>
     </div>
     <div className="service-center">
-      <p>(проводка, установка розеток и освещения)</p>
+      <p className='header-font'>(проводка, установка розеток и освещения)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -295,11 +295,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Косметический ремонт</h3>
-      <p>(004)</p>
+      <h3 className='header-font'>Косметический ремонт</h3>
+      <p className='header-font'>(004)</p>
     </div>
     <div className="service-center">
-      <p>(обновление стен и потолков)</p>
+      <p className='header-font'>(обновление стен и потолков)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -307,11 +307,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Услуги по уборке</h3>
-      <p>(005)</p>
+      <h3 className='header-font'>Услуги по уборке</h3>
+      <p className='header-font'>(005)</p>
     </div>
     <div className="service-center">
-      <p>(генеральная уборка помещений)</p>
+      <p className='header-font'>(генеральная уборка помещений)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -319,11 +319,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Установка дверей и окон</h3>
-      <p>(006)</p>
+      <h3 className='header-font'>Установка дверей и окон</h3>
+      <p className='header-font'>(006)</p>
     </div>
     <div className="service-center">
-      <p>(профессиональный монтаж)</p>
+      <p className='header-font'>(профессиональный монтаж)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -349,7 +349,7 @@ const Services = () => {
           
           {/* 1.2 секция  */}
         <div className="services-section">
-          <h2> ДОП.УСЛУГИ</h2>
+          <h2 className='header-font'> ДОП.УСЛУГИ</h2>
          <hr />
 
          <div className="white-container">
@@ -366,11 +366,11 @@ const Services = () => {
 
          <div className="service-item">
            <div className="service-left">
-            <h3>Ремонт бытовой техники</h3>
-             <p>(001)</p>
+            <h3 className='header-font'>Ремонт бытовой техники</h3>
+             <p className='header-font'>(001)</p>
           </div>
           <div className="service-center">
-            <p>(качественно, быстро, надежно)</p>
+            <p className='header-font'>(качественно, быстро, надежно)</p>
          </div>
          <div className="service-right">+</div>
         </div>
@@ -378,11 +378,11 @@ const Services = () => {
 
         <div className="service-item">
           <div className="service-left">
-           <h3>Установка сантехники</h3>
-            <p>(002)</p>
+           <h3 className='header-font'>Установка сантехники</h3>
+            <p className='header-font'>(002)</p>
          </div>
        <div className="service-center">
-          <p>(монтаж и замена оборудования)</p>
+          <p className='header-font'>(монтаж и замена оборудования)</p>
       </div>
        <div className="service-right">+</div>
       </div>
@@ -390,11 +390,11 @@ const Services = () => {
 
       <div className="service-item">
         <div className="service-left">
-          <h3>Электромонтажные работы</h3>
-           <p>(003)</p>
+          <h3 className='header-font'>Электромонтажные работы</h3>
+           <p className='header-font'>(003)</p>
     </div>
     <div className="service-center">
-      <p>(проводка, установка розеток и освещения)</p>
+      <p className='header-font'>(проводка, установка розеток и освещения)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -402,11 +402,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Косметический ремонт</h3>
-      <p>(004)</p>
+      <h3 className='header-font'>Косметический ремонт</h3>
+      <p className='header-font'>(004)</p>
     </div>
     <div className="service-center">
-      <p>(обновление стен и потолков)</p>
+      <p className='header-font'>(обновление стен и потолков)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -414,11 +414,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Услуги по уборке</h3>
-      <p>(005)</p>
+      <h3 className='header-font'>Услуги по уборке</h3>
+      <p className='header-font'>(005)</p>
     </div>
     <div className="service-center">
-      <p>(генеральная уборка помещений)</p>
+      <p className='header-font'>(генеральная уборка помещений)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -426,11 +426,11 @@ const Services = () => {
 
   <div className="service-item">
     <div className="service-left">
-      <h3>Установка дверей и окон</h3>
-      <p>(006)</p>
+      <h3 className='header-font'>Установка дверей и окон</h3>
+      <p className='header-font'>(006)</p>
     </div>
     <div className="service-center">
-      <p>(профессиональный монтаж)</p>
+      <p className='header-font'>(профессиональный монтаж)</p>
     </div>
     <div className="service-right">+</div>
   </div>
@@ -448,7 +448,7 @@ const Services = () => {
      {/*//! форма зявки */}
      <div className="serviceform-formcomt">
     <div className="serviceform-wrapper">
-  <h2>Оставить заявку</h2>
+  <h2 className='header-font'>Оставить заявку</h2>
 
   <div className="serviceform-container">
     {/* Левая колонка с полями ввода */}
