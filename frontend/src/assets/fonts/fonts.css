@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Inter';
+    src: local('Inter'),
+    url('Inter-VariableFont_opsz,wght.ttf');
+}
+@font-face {
+    font-family: 'Stapel';
+    src: url('Stapel-Light.eot');
+    src: local('Stapel Light'), local('Stapel-Light'),
+    url('Stapel-Light.eot?#iefix') format('embedded-opentype'),
+    url('Stapel-Light.woff2') format('woff2'),
+    url('Stapel-Light.woff') format('woff'),
+    url('Stapel-Light.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}

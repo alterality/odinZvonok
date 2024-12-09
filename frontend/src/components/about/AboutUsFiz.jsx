@@ -62,7 +62,7 @@ const AboutUsFiz = () => {
       <div className="advantages-container">
         <div className="content-wrapper">
           <div className="text-container">
-            <h3 className="heading">{individualEntities.title}</h3>
+            <h3 className="heading header-font" >{individualEntities.title}</h3>
             <p className="text">{individualEntities.description}</p>
           </div>
           <div className="image-container">
@@ -73,7 +73,7 @@ const AboutUsFiz = () => {
 
       {/* Второй контейнер */}
       <div className="additional-container">
-        <h3 className="additional-heading">{ourServices.title}</h3>
+        <h3 className="additional-heading header-font">{ourServices.title}</h3>
         {servicesOur.map((service, index) => (
             <div key={index}>
               <p className="additional-text">{service}</p>
@@ -83,7 +83,7 @@ const AboutUsFiz = () => {
       </div>
 
       <div className="black-container">
-        <h3 className="black-heading">{advantagesIvidual.title}</h3>
+        <h3 className="black-heading header-font">{advantagesIvidual.title}</h3>
         <div className="squares-container">
           {advantages.map((advantage,index)=> (
               <div className="square" key={index}>
@@ -97,7 +97,7 @@ const AboutUsFiz = () => {
       <div className="gray-container">
         <div className="gray-content">
           <div className="gray-text">
-            <h3 className="gray-heading">{assistance.title}</h3>
+            <h3 className="gray-heading header-font">{assistance.title}</h3>
             {helps.map((help, index) =>(
                 <div key={index}>
                   <p className="gray-paragraph">{help}</p>
@@ -115,7 +115,7 @@ const AboutUsFiz = () => {
 
       <div class="helpblack-main-content-container">
   <div class="helpblack-text-section-wrapper">
-    <div class="helpblack-section-heading-title">{workStagesIndividual.title}</div>
+    <div class="helpblack-section-heading-title header-font">{workStagesIndividual.title}</div>
     {stages.map((stage, index) => (
         <div className="helpblack-text-item-container" key={index}>
           <p className="helpblack-text-block-content">{stage}</p>
@@ -134,7 +134,7 @@ const AboutUsFiz = () => {
 
       {/* Новый контейнер с реквизитами */}
       <div className="rekvizit-container">
-      <h3 className="rekvizit-heading">Реквизиты</h3>
+      <h3 className="rekvizit-heading header-font">Реквизиты</h3>
 
         <div className="rekvizit-content">
           {/* Картинка слева */}
@@ -169,7 +169,7 @@ const AboutUsFiz = () => {
 
 
       <div className="AboutUsFiz-form-container">
-  <h3 className="AboutUsFiz-form-heading">Форма заявки</h3>
+  <h3 className="AboutUsFiz-form-heading header-font">Форма заявки</h3>
   <div className="AboutUsFiz-form-content">
     {/* Левый контейнер с текстом */}
     <div className="AboutUsFiz-form-left">

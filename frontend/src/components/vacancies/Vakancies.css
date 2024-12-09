@@ -10,7 +10,9 @@
   background-position: center;
   overflow: hidden;
 }
-
+.vakancies-page *{
+  font-family: Stapel;
+}
 .overlay {
     position: absolute;
     top: 0;
@@ -306,6 +308,9 @@
   padding: 0.5rem 1rem;
   position: relative;
   height: 3.5rem;
+}
+.vakancies-table-row *{
+  font-family: Inter;
 }
 
 .vakancies-step-number {

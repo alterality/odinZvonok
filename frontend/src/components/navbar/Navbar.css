@@ -13,7 +13,9 @@
         transition: top 0.3s ease;
       }
 
-
+.navbar *{
+    font-family: Stapel;
+}
 /* Логотип */
 .logo {
     display: flex;
@@ -39,9 +41,6 @@
     font-weight: 400;
     color: #ffffff;
     transition: color 0.3s;
-    font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 
 .links a:hover {
@@ -53,10 +52,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    
 }
 
 .accordion-button {
@@ -67,9 +62,6 @@
     font-weight: 400;
     color: #fffbfb;
     outline: none;
-    font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 
 .language-options {
@@ -111,9 +103,6 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
-    font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 
 .contact-button:hover {

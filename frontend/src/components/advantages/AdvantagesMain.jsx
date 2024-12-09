@@ -25,7 +25,7 @@ const AdvantagesMain = () => {
   }, [homeAdvantage]);
   return (
     <div className="advantages-main">
-      <h2 className="advantages-header">НАШИ ПРЕИМУЩЕСТВА</h2>
+      <h2 className="advantages-header header-font">НАШИ ПРЕИМУЩЕСТВА</h2>
       <div className="advantages-content">
         <div className="advantages-left">
           {descriptions.slice(0, 6).map((des, index) => (
