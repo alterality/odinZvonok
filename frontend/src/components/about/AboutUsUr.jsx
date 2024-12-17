@@ -70,11 +70,11 @@ const AboutUsUr = () => {
     </div>
 
     {/* Второй контейнер */}
-    <div class="services-container">
-  <div class="services-text">
+    <div className="services-container" style={{backgroundColor:'#878787'}}>
+  <div className="services-text">
     <h2 className='header-font'>{services.title}</h2>
   </div>
-  <div class="services-images">
+  <div className="services-images">
       {servicesForWhom.map((service ,index) => (
           <div key={index}>
             <img src={service.image} alt="Service 1"/>
@@ -90,7 +90,7 @@ const AboutUsUr = () => {
         <div className="squares-container">
           {whyUs.map((item, index) => (
               <div className="square" key={index}>
-                <p className="square-text">{item}</p>
+                <p className="square-text header-font">{item}</p>
               </div>
           ))}
         </div>
@@ -116,9 +116,9 @@ const AboutUsUr = () => {
       </div>
     </div>
 
-    <div class="helpblack-main-content-container-ur">
-<div class="helpblack-text-section-wrapper-ur">
-  <div class="helpblack-section-heading-title-ur header-font">{workStages.title}</div>
+    <div className="helpblack-main-content-container-ur">
+<div className="helpblack-text-section-wrapper-ur">
+  <div className="helpblack-section-heading-title-ur header-font">{workStages.title}</div>
   {stages.map((stage,index)=> (
       <div className="helpblack-text-item-container-ur" key={index}>
         <p className="helpblack-text-block-content-ur">{stage}</p>

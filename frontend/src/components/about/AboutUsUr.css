@@ -242,7 +242,7 @@
   .helpblack-main-content-container-ur {
     display: flex;
     gap: 2rem;
-    background-color: black;
+    background-color: #1D1D1B;
     color: white;
     padding: 2rem;
   }
@@ -493,4 +493,62 @@
   .AboutUsFiz-form-submit-button:hover-ur {
     background-color: rgba(0, 0, 0, 0.7);
   }
+@media (max-width: 768px) {
+  .services-container{
+    padding: 15px;
+  }
+  .services-images{
+    overflow-x: auto;
+
+  }
+
+
+  .advantages-container-ur .content-wrapper-ur{
+    padding-top: 105px;
+    display: flex;
+    flex-direction: column;
+    max-height: 1200px;
+    min-height: 700px;
+  }
+  .text-container-ur{
+    width: 100%;
+  }
+  .image-container-ur{
+    width: 100%;
+    margin: 0;
+  }
+  .AboutUsFiz-form-container-ur{
+    display: flex;
+    flex-direction: column;
+  }
+  .helpblack-image-section-wrapper-ur img{
+    width: 100%;
+  }
+  .helpblack-main-content-container-ur{
+    display: flex;
+    flex-direction: column;
+  }
+  .AboutUsFiz-form-left-heading-ur{
+    margin-left: 0;
+  }
+  .AboutUsFiz-form-left-subheading-ur{
+    margin: 0;
+  }
+  .gray-content-ur{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    width: 100%;
+  }
+  .gray-container-ur{
+    padding: 5px;
+  }
+  .gray-text-ur{
+    width: 100%;
+  }
+  .gray-image-ur{
+    margin-bottom: 5px;
+    width: 100%;
+  }
+}
   

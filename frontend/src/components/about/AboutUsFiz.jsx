@@ -87,7 +87,7 @@ const AboutUsFiz = () => {
         <div className="squares-container">
           {advantages.map((advantage,index)=> (
               <div className="square" key={index}>
-                <p className="square-text">{advantage}</p>
+                <p className="square-text header-font">{advantage}</p>
               </div>
           ))}
         </div>
@@ -113,9 +113,9 @@ const AboutUsFiz = () => {
       
       {/* 4 */}
 
-      <div class="helpblack-main-content-container">
-  <div class="helpblack-text-section-wrapper">
-    <div class="helpblack-section-heading-title header-font">{workStagesIndividual.title}</div>
+      <div className="helpblack-main-content-container">
+  <div className="helpblack-text-section-wrapper">
+    <div className="helpblack-section-heading-title header-font">{workStagesIndividual.title}</div>
     {stages.map((stage, index) => (
         <div className="helpblack-text-item-container" key={index}>
           <p className="helpblack-text-block-content">{stage}</p>

@@ -15,13 +15,6 @@
   height: 500px; 
 }
 
-.text-container {
-  width: 50%;
-  padding-left: 20px; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .heading {
   font-size: 24px;
@@ -42,12 +35,6 @@
   color: rgba(255, 255, 255, 0.6); 
 }
 
-.image-container {
-  width: 50%;
-  height: 100%; 
-  margin-left: 20px; 
-  margin-right: -20px; 
-}
 
 .image {
   width: 100%;
@@ -63,15 +50,6 @@
   align-items: center;
   padding: 20px; 
   margin: 0; 
-}
-
-.content-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1480px; 
-  height: 500px; 
 }
 
 .text-container {
@@ -140,7 +118,7 @@
 }
 
 .black-container {
-  background-color: rgba(0, 0, 0, 1); 
+  background-color: #1D1D1B;
   padding: 40px; 
   margin: 0; 
 }
@@ -229,7 +207,7 @@
 .helpblack-main-content-container {
   display: flex;
   gap: 2rem;
-  background-color: black;
+  background-color: #1D1D1B;
   color: white;
   padding: 2rem;
 }
@@ -280,7 +258,7 @@
 
 
 .helpblack-image-section-wrapper {
-  flex: 2; 
+  flex: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -472,4 +450,58 @@
 
 .AboutUsFiz-form-submit-button:hover {
   background-color: rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 768px) {
+  .advantages-container .content-wrapper{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    max-height: 1200px;
+    min-height: 700px;
+  }
+  .text-container{
+    width: 100%;
+  }
+  .image-container{
+    width: 100%;
+  }
+  .AboutUsFiz-form-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .helpblack-image-section-wrapper img{
+    width: 100%;
+  }
+  .helpblack-main-content-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .AboutUsFiz-form-left-heading{
+    margin-left: 0;
+  }
+  .AboutUsFiz-form-left-subheading{
+    margin: 0;
+  }
+  .gray-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .gray-container{
+    padding: 5px;
+  }
+  .gray-text{
+    width: 100%;
+  }
+  .gray-image{
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .black-container .squares-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .square{
+    width: 100%;
+  }
 }

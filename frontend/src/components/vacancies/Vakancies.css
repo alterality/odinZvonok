@@ -214,7 +214,7 @@
 }
 
 .vakancies-job-card {
-  background-color: #000;
+  background-color: #1D1D1B;
   color: #fff;
   width: 210px;
   height: 450px;
@@ -267,7 +267,7 @@
 
 
 .partnership-main {
-  background-color: black;
+  background-color: #1D1D1B;
   color: white;
   padding: 2rem;
 }
@@ -352,7 +352,7 @@
   border-bottom: 1px solid gray;
   border-radius: 4px;
   margin-bottom: 1rem;
-  width: 20rem;
+  width: 100%;
 }
 
 .vakancies-textarea-field {
@@ -380,7 +380,39 @@
   margin: 0 0 30px 0;
 }
 
+@media (max-width: 768px) {
+  .vakancies-table-row{
+    height: auto;
+  }
+  .vakancies-form-container{
+    width: 100%;
 
+  }
+  h2{
+    font-size: 18px;
+  }
+  p,span{
+    font-size: 12px;
+  }
+  .vakancies-form{
+    display: flex;
+    flex-direction: column;
+  }
+  .vakancies-job-list{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+  }
+  .vakancies-open-jobs{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  .vakancies-section-title{
+    font-size: 18px;
+    text-align: center;
+  }
+}
 
 
 
