@@ -108,7 +108,7 @@ const Vakancies = () => {
 </div>
 
       <div className="vakancies-open-jobs">
-        <h2 className="vakancies-section-title">ОТКРЫТЫЕ ВАКАНСИИ В НАШЕЙ КОМПАНИИ</h2>
+        <h2 className="vakancies-section-title header-font">ОТКРЫТЫЕ ВАКАНСИИ В НАШЕЙ КОМПАНИИ</h2>
         <div className="vakancies-job-list">
           {vacancies.slice(0, visibleJobs).map((vacancy) => (
               <div key={vacancy.id} className="vakancies-job-card">
@@ -129,7 +129,7 @@ const Vakancies = () => {
 
 
       <div className="partnership-main">
-  <h2 className="partnership-header">
+  <h2 className="partnership-header header-font">
     ПАРТНЕРСКАЯ ПРОГРАММА ПО УСЛУГАМ <br /> САНТЕХНИКИ, ЭЛЕКТРИКИ И РЕМОНТА <br /> БЫТОВОЙ ТЕХНИКИ
   </h2>
 

@@ -128,14 +128,14 @@
   
 .aboutcomp-formcomt{
     width: 100%;
-    background-color: black;
+    background-color: #1D1D1B;
 }
 
 
 .aboutcomp-wrapper {
     width: 65%; 
     margin: 0 auto; 
-    background-color: black; 
+    background-color: #1D1D1B;
     padding: 2rem;
     color: white;
     box-sizing: border-box;

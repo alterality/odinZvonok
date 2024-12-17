@@ -7,7 +7,7 @@ import './ServicesMain.css';
 
 const ServicesMain = () => {
   return (
-    <div className="services-container">
+    <div className="services-container" style={{backgroundColor: "#fff"}}>
       <h2 className="services-header header-font">УСЛУГИ И ТАРИФЫ</h2>
       
       <div className="services-images-row">
