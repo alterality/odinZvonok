@@ -1,7 +1,9 @@
 import React from 'react';
 import './NotFound.css';
+import {useNavigate} from "react-router-dom";
 
 const NotFound = () => {
+  const navigate = useNavigate()
   return (
     <div className="notfound-container">
       <div className="overlaynotfound"></div>
@@ -21,7 +23,7 @@ const NotFound = () => {
           <li>Для поиска нужной вам продукции используйте строку поиска в верхней части страницы.</li>
           <li>Перейдите по ссылке ниже, чтобы вернуться на правильный путь.</li>
         </ul>
-        <button className="action-button">Вернитесь на правильный путь</button>
+        <button className="action-button" onClick={()=> navigate('/')} >Вернитесь на правильный путь</button>
       </div>
     </div>
   );

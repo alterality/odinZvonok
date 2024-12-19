@@ -17,20 +17,20 @@
 
 
 .heading {
-  font-size: 24px;
+  font-size: 40px;
   margin: 0 0 10px;
   color: rgba(255, 255, 255, 1); 
 }
 
 .text {
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.5;
   margin: 0 0 10px;
   color: rgba(255, 255, 255, 0.8); 
 }
 
 .subtext {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.6); 
 }
@@ -61,20 +61,20 @@
 }
 
 .heading {
-  font-size: 24px;
+  font-size: 40px;
   margin: 0 0 10px;
   color: rgba(255, 255, 255, 1); 
 }
 
 .text {
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.5;
   margin: 0 0 10px;
   color: rgba(255, 255, 255, 0.8);
 }
 
 .subtext {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.6); 
 }
@@ -100,13 +100,13 @@
 }
 
 .additional-heading {
-  font-size: 24px;
+  font-size: 40px;
   color: rgba(255, 255, 255, 1); 
   margin-bottom: 30px;
 }
 
 .additional-text {
-  font-size: 16px;
+  font-size: 24px;
   color: rgba(255, 255, 255, 0.9); 
   margin-bottom: 10px;
 }
@@ -124,7 +124,7 @@
 }
 
 .black-heading {
-  font-size: 24px;
+  font-size: 40px;
   color: rgba(255, 255, 255, 1); 
   margin-bottom: 20px;
 }
@@ -170,13 +170,13 @@
 }
 
 .gray-heading {
-  font-size: 28px;
+  font-size: 40px;
   color: rgb(255, 255, 255); 
   margin-bottom: 40px;
 }
 
 .gray-paragraph {
-  font-size: 16px;
+  font-size: 24px;
   color: rgb(255, 255, 255); 
   margin-bottom: 10px;
 }
@@ -224,7 +224,7 @@
 
 
 .helpblack-section-heading-title {
-  font-size: 1.8rem;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 1.5rem;
   color: white;
@@ -236,7 +236,7 @@
 }
 
 .helpblack-text-block-content {
-  font-size: 1rem;
+  font-size: 24px;
   margin-bottom: 1rem;
   padding-right: 2rem; 
 }
@@ -273,59 +273,72 @@
 
 
 
-/* Контейнер с реквизитами */
-.rekvizit-container {
-  background-color: rgba(255, 255, 255, 1);
-  padding: 40px;
-  margin: 20px 0;
-  border-radius: 10px;
+.fiz-document-container {
+  width: 100%;
+  max-width: 1450px;
+  margin: 20px auto;
+  background-color: #1D1D1B; /* Черный фон */
+  color: #fff; /* Белый текст */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.rekvizit-heading {
-  font-size: 24px;
-  color: rgba(0, 0, 0, 1);
+.fiz-document-container h3 {
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
-.rekvizit-content {
+.fiz-document-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;  
-  gap: 20px;
-  height: 512px;  
+  align-items: center;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
-.rekvizit-left-image, .rekvizit-right-image {
-  width: 25%;  
-  height: 100%; 
+.fiz-document-item:last-child {
+  margin-bottom: 0;
 }
 
-.rekvizit-image {
-  width: 100%;
-  height: 100%;  
-  object-fit: cover;
-}
-
-.rekvizit-text {
-  width: 30%;  
+.fiz-document-info {
   display: flex;
-  flex-direction: column;
-  justify-content: center;  
-  align-items: flex-start;  
-  line-height: 1.9;  
+  align-items: center;
+  gap: 10px;
 }
 
-.rekvizit-subheading {
-  font-size: 20px;  
-  font-weight: bold;
-  margin-bottom: 15px;
+.fiz-pdf-icon {
+  width: 40px;
+  height: 40px;
 }
 
-.rekvizit-info-box {
-  font-size: 18px;  
-  color: rgba(0, 0, 0, 0.7);
-  text-align: left;  
-  margin-bottom: 20px;  
+.fiz-document-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.fiz-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.fiz-download-btn {
+  background-color: #888;
+  color: #fff;
+}
+
+.fiz-open-btn {
+  background-color: #555;
+  color: #fff;
+}
+
+.fiz-btn:hover {
+  opacity: 0.9;
 }
 
 
@@ -459,11 +472,37 @@
     max-height: 1200px;
     min-height: 700px;
   }
+  .text{
+    font-size: 16px;
+  }
+  .helpblack-text-block-content{
+    font-size: 16px;
+  }
+  .gray-paragraph{
+    font-size: 16px;
+  }
+  .additional-text{
+    font-size: 16px;
+  }
+  .helpblack-section-heading-title{
+    font-size: 28px;
+  }
+  .additional-heading{
+    font-size: 28px;
+  }
+  .heading{
+    font-size: 30px;
+  }
+  .gray-heading{
+    font-size: 28px;
+  }
   .text-container{
     width: 100%;
+    padding-left: 0;
   }
   .image-container{
     width: 100%;
+    margin-left: 0;
   }
   .AboutUsFiz-form-container{
     display: flex;
@@ -503,5 +542,11 @@
   }
   .square{
     width: 100%;
+  }
+  .fiz-document-item{
+    flex-direction: column;
+  }
+  .fiz-document-actions{
+    margin-top: 5px;
   }
 }

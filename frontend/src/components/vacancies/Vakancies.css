@@ -240,6 +240,10 @@
   font-size: 0.9rem;
   color: #ccc;
   margin-bottom: auto;
+  overflow: hidden; /* Скрытие лишнего текста */
+  display: -webkit-box; /* Для поддержки webkit-браузеров */
+  -webkit-box-orient: vertical; /* Ориентация текста в вертикальную коробку */
+  -webkit-line-clamp: 20;
 }
 
 .vakancies-apply-button {

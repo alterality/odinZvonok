@@ -132,39 +132,52 @@ const AboutUsFiz = () => {
       </div>
 
 
-      {/* Новый контейнер с реквизитами */}
-      <div className="rekvizit-container">
-      <h3 className="rekvizit-heading header-font">Реквизиты</h3>
-
-        <div className="rekvizit-content">
-          {/* Картинка слева */}
-          <div className="rekvizit-left-image">
-            <img src={rekvisitImage} alt="Реквизит" className="rekvizit-image" />
+      {/* пдф файлы */}
+      <div className="fiz-document-container">
+        <h3>ПЕРЕЧЕНЬ ДОКУМЕНТОВ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ:</h3>
+        <div className="fiz-document-item">
+          <div className="fiz-document-info">
+            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <p>Копия паспорта</p>
           </div>
-
-          {/* Текст по центру */}
-          <div className="rekvizit-text">
-            <h5 className="rekvizit-subheading">Реквизиты ООО «Один Звонок»</h5>
-            <div className="rekvizit-info-box">
-              <p>ИП Айтматов Н.Н. 620131,</p>
-              <p>Бишкек, ул. Ч.Айтматова 47а, 2 эт. к. № 3</p>
-              <p>ИНН 665840178949 ОГРНИП 316965800190501</p>
-              <p>ОКПО 0107604604</p>
-              <p>р/счёт № 40802810900000111539</p>
-              <p>К/С 30101810145250000974</p>
-              <p>ОАО «Коммерческий банк КЫРГЫЗСТАН»</p>
-              <p>в г. Бишкек БИК 044525974</p>
-              <p>БИК 044525974</p>
-            </div>
+          <div className="fiz-document-actions">
+            <button className="fiz-btn fiz-download-btn">Скачать</button>
+            <button className="fiz-btn fiz-open-btn">Открыть</button>
           </div>
-
-          {/* Картинка справа */}
-          <div className="rekvizit-right-image">
-            <img src={rekvisitImage} alt="Реквизит" className="rekvizit-image" />
+        </div>
+        <div className="fiz-document-item">
+          <div className="fiz-document-info">
+            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <p>Справка с места жительства</p>
+          </div>
+          <div className="fiz-document-actions">
+            <button className="fiz-btn fiz-download-btn">Скачать</button>
+            <button className="fiz-btn fiz-open-btn">Открыть</button>
+          </div>
+        </div>
+        <div className="fiz-document-item">
+          <div className="fiz-document-info">
+            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <p>Копия нотариальной доверенности лица, уполномоченного на заключение договора</p>
+          </div>
+          <div className="fiz-document-actions">
+            <button className="fiz-btn fiz-download-btn">Скачать</button>
+            <button className="fiz-btn fiz-open-btn">Открыть</button>
+          </div>
+        </div>
+        <div className="fiz-document-item">
+          <div className="fiz-document-info">
+            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <p>Копии разрешительной документации</p>
+          </div>
+          <div className="fiz-document-actions">
+            <button className="fiz-btn fiz-download-btn">Скачать</button>
+            <button className="fiz-btn fiz-open-btn">Открыть</button>
           </div>
         </div>
       </div>
 
+      {/* пдф файлы */}
        
 
 
