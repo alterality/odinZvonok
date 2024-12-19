@@ -37,4 +37,34 @@
     border-radius: 8px;
     cursor: pointer;
   }
+@media (max-width: 768px) {
+  .services-images-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .service-itemMain {
+    width: 45% !important;
+  }
+}
+@media (max-width: 425px) {
+  .services-images-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .service-itemMain {
+    width: 45%;
+  }
+}
+@media (max-width: 1024px){
+  .service-itemMain {
+    width: 225px;
+    height: auto;
+  }
+}
   
