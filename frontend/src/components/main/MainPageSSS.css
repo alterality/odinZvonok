@@ -1,0 +1,71 @@
+.center-square-mobile{
+    display: none;
+}
+@media (max-width: 768px) {
+    .center-square-mobile {
+        display: block;
+        position: static;
+        width: 100%;
+        background-color: rgba(29, 29, 27, 0.5);
+        padding: 1rem;
+    }
+    .h2-mobile{
+        color: white;
+        font-size: 24px;
+        text-align: center;
+    }
+    .submit-button-mobile {
+        width: 100%;
+    }
+    .form-container-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-left-mobile {
+        width: 100%;
+    }
+
+    /* .form-right-mobile {
+      flex: 1;
+    } */
+
+    .input-field-mobile, .textarea-field-mobile {
+        padding: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.401);
+        color: white;
+        border: none;
+        border-bottom: 1px solid gray;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .textarea-field-mobile {
+        width: 100%;
+        height: 89%;
+        resize: none;
+    }
+
+    .input-field-mobile::placeholder, .textarea-field-mobile::placeholder {
+        color: gray;
+    }
+
+    .submit-button-mobile {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .policy-link-mobile {
+        color: rgba(255, 75, 15, 1);
+        margin-left: 0.3rem;
+    }
+}

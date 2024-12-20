@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 100px;
+
   }
   
   .services-header {
@@ -19,10 +19,11 @@
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    overflow-x: hidden;
   }
   
   .service-itemMain {
-    width: 350px; /* Увеличили ширину изображений */
+    width: 24%; /* Увеличили ширину изображений */
     height: auto;
   }
   
@@ -46,7 +47,7 @@
   }
 
   .service-itemMain {
-    width: 45% !important;
+    width: 100% !important;
   }
 }
 @media (max-width: 425px) {
@@ -58,12 +59,12 @@
   }
 
   .service-itemMain {
-    width: 45%;
+    width: auto;
   }
 }
 @media (max-width: 1024px){
   .service-itemMain {
-    width: 225px;
+    width: 24%;
     height: auto;
   }
 }
