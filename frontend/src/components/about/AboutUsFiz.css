@@ -550,3 +550,8 @@
     margin-top: 5px;
   }
 }
+@media (max-width: 1200px) and (min-width: 769px){
+  .helpblack-image-container{
+    width: 100%;
+  }
+}

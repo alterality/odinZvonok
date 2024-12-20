@@ -1,9 +1,10 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 .vakancies-page {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-image: url('../../assets/vakancies.png');
   background-size: cover;
@@ -14,13 +15,13 @@
   font-family: Stapel;
 }
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.226); 
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.226);
+}
 
 .vakancies-vertical-line {
   position: absolute;
@@ -50,8 +51,12 @@
   top: 14%;
 }
 
-.vakancies-horizontal-line.line2 {
-  top: 55%;
+.vakancies-horizontal-line.line22 {
+  top: 55% !important;
+}
+
+.vakancies-horizontal-line.line2-3{
+  display: none;
 }
 
 .vakancies-horizontal-line.line3 {
@@ -60,10 +65,10 @@
 
 .vakancies-top-section {
   position: absolute;
-  top: 55%; 
-  left: 3.5%; 
-  width: calc(59% - 3.5%); 
-  height: calc(95% - 14%); 
+  top: 55%;
+  left: 3.5%;
+  width: calc(59% - 3.5%);
+  height: calc(95% - 14%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,7 +108,7 @@
 
 .vakancies-bottom-section {
   position: absolute;
-  top: 60%; 
+  top: 60%;
   left: 3.5%;
   width: calc(50% - 3.5%);
   z-index: 2;
@@ -114,7 +119,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.3rem; 
+  gap: 0.3rem;
 }
 
 .vakancies-rectangles {
@@ -129,18 +134,18 @@
   color: white;
   padding: 0.3rem;
   border: 1px solid #ccc;
-  width: calc(42% - 0.3rem); 
+  width: calc(42% - 0.3rem);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.2rem;
-  min-height: 80px; 
+  min-height: 80px;
 }
 
 
 .vakancies-rectangle h6 {
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
   margin-bottom: 0.2rem;
 }
 
@@ -151,7 +156,7 @@
 }
 
 .rectangle-icon {
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
   color: #ccc;
 }
 
@@ -240,10 +245,6 @@
   font-size: 0.9rem;
   color: #ccc;
   margin-bottom: auto;
-  overflow: hidden; /* Скрытие лишнего текста */
-  display: -webkit-box; /* Для поддержки webkit-браузеров */
-  -webkit-box-orient: vertical; /* Ориентация текста в вертикальную коробку */
-  -webkit-line-clamp: 20;
 }
 
 .vakancies-apply-button {
@@ -383,6 +384,9 @@
 .vakancies-right-text-form-container{
   margin: 0 0 30px 0;
 }
+.vakancies-bottom-section-mobile{
+  display: none;
+}
 
 @media (max-width: 768px) {
   .vakancies-table-row{
@@ -390,7 +394,6 @@
   }
   .vakancies-form-container{
     width: 100%;
-
   }
   h2{
     font-size: 18px;
@@ -407,6 +410,7 @@
     flex-direction: row;
     padding: 5px;
   }
+  
   .vakancies-open-jobs{
     padding: 5px;
     display: flex;
@@ -416,7 +420,88 @@
     font-size: 18px;
     text-align: center;
   }
+  .vakancies-bottom-section {
+    display: none;
+  }
+  .invite-rectangle {
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 97px;
+  }
+  .vakancies-bottom-section-mobile{
+    display: block;
+    background-color: rgb(137, 137, 137);
+    padding: 20px;
+  }
+  .vakancies-horizontal-line.line2-3{
+    display: block;
+    top: 64%
+  }
+  .vakancies-horizontal-line.line22 {
+    top: 38% !important;
+  }
+  .vakancies-partner-program {
+    position: absolute;
+    top: 31%; /* Начало первой горизонтальной линии */
+    left: 3%; /* Отступ от второй вертикальной линии */
+    width: calc(50% - 3.5%); /* Расстояние между второй и третьей вертикальными линиями */
+    height: calc(55% - 14%); /* Расстояние между первой и второй горизонтальными линиями */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 2; /* Чтобы заголовок был поверх других элементов */
+  }
+  .vakancies-top-text{
+    position: absolute;
+    top: 11%; /* Начало первой горизонтальной линии */
+    left: 48%; /* Отступ от второй вертикальной линии */
+    width: calc(50% - 3.5%); /* Расстояние между второй и третьей вертикальными линиями */
+    height: calc(55% - 14%); /* Расстояние между первой и второй горизонтальными линиями */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 2; /* Чтобы заголовок был поверх других элементов */
+  }
+  .vakancies-center-square{
+   top: 45%
+  }
 }
-
-
-
+@media (max-width: 426px) {
+  .rectangle-icon{
+    width: 50px;
+  }
+  .invite-rectangle {
+    background-color: transparent;
+    border: none;
+    margin: 0 auto;
+    max-width: 620px;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 28px;
+  }
+  .vakancies-job-card{
+    width: auto;
+  }
+  .vakancies-center-square{
+    left: 40%;
+  }
+}
