@@ -14,7 +14,7 @@ const AboutUsMain = () => {
     }, [dispatch]);
   return (
     <div className="about-us-main">
-      <div className="header-text">О КОМПАНИИ</div>
+      <h2 className="header-text">О КОМПАНИИ</h2>
       
       <div className="left-image-container">
         <img src={aboutusmainpng} alt="About Us" className="main-image" />
