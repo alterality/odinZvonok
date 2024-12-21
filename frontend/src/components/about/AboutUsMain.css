@@ -75,7 +75,7 @@
   @media (max-width: 900px){
     .about-us-main{
       flex-direction: column;
-      padding: 5px;
+      padding: 15px;
     }
     .right-text-container{
       margin-top: 0;
@@ -103,7 +103,7 @@
   }
 @media (max-width: 340px) {
   .text-box{
-    height: 100%;
+    height: auto;
   }
   
 }

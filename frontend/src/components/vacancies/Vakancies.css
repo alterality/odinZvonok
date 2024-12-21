@@ -387,11 +387,26 @@
 .vakancies-bottom-section-mobile{
   display: none;
 }
+.vakancies-garant-section{
+  display: none;
+}
 
 @media (max-width: 768px) {
   .vakancies-table-row{
     height: auto;
   }
+  .vakancies-garant-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    background-color: #878787;
+  }
+  .vakancies-garant-section .vakancies-rectangle{
+    background-color: #1D1D1B66;
+  }
+
   .vakancies-form-container{
     width: 100%;
   }
@@ -410,7 +425,7 @@
     flex-direction: row;
     padding: 5px;
   }
-  
+
   .vakancies-open-jobs{
     padding: 5px;
     display: flex;
@@ -503,5 +518,9 @@
   }
   .vakancies-center-square{
     left: 40%;
+  }
+  .vakancies-garant-section .rectangle-content{
+    display: flex;
+    flex-direction: column;
   }
 }
