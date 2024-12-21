@@ -4,10 +4,11 @@ import helpimgright from '../../assets/plumbing.png'
 import blackcontimg from '../../assets/ремонт.png'
 import rekvisitImage from '../../assets/сертификатодинзвонок.png'
 import './AboutUsFiz.css';
+import pdfFile from '../../assets/pdf.png'
 import {useDispatch, useSelector} from "react-redux";
 import {
   getAdvantages, getAssistance,
-  getIndividualAdvantages,
+  getIndividualAdvantages, getIndividualDocuments,
   getIndividualEntities, getIndividualWorkStages,
   getOurServices,
   getWorkStages
@@ -20,6 +21,7 @@ const AboutUsFiz = () => {
   const selectedLanguage = 'ru'
   const [servicesOur,setServicesOur] = useState([])
   const dispatch = useDispatch();
+  const [docs, setDocs] = useState([])
   const toMassive = (someObject) =>{
     return Object.keys(someObject)
         .filter(
@@ -31,18 +33,27 @@ const AboutUsFiz = () => {
         .sort() // Сортируем для предсказуемого порядка
         .map(key => someObject[key])
   }
-  const {individualEntities,workStages,ourServices, advantagesIvidual,assistance, workStagesIndividual} = useSelector(state => state.api);
+  // const toDocArray = (someObject) => {
+  //   return Object.keys(someObject)
+  //       .filter(
+  //           key => key.startsWith("doc") // Оставляем только ключи, начинающиеся с "doc"
+  //       )
+  //       .sort() // Сортируем ключи для предсказуемого порядка
+  //       .map(key => someObject[key]); // Преобразуем в массив значений
+  // };
+  const {individualEntities,workStages,ourServices, advantagesIvidual,assistance, workStagesIndividual, individualDocuments} = useSelector(state => state.api);
   useEffect(() => {
     dispatch(getIndividualEntities())
     dispatch(getIndividualWorkStages())
     dispatch(getOurServices())
     dispatch(getIndividualAdvantages())
     dispatch(getAssistance())
+    dispatch(getIndividualDocuments())
 
   }, [dispatch]);
   useEffect(() => {
-    console.log(advantagesIvidual)
-  }, [advantagesIvidual]);
+    console.log(individualDocuments)
+  }, [individualDocuments]);
   useEffect(() => {
     setServicesOur(toMassive(ourServices))
   }, [ourServices]);
@@ -137,56 +148,83 @@ const AboutUsFiz = () => {
         <h3>ПЕРЕЧЕНЬ ДОКУМЕНТОВ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ:</h3>
         <div className="fiz-document-item">
           <div className="fiz-document-info">
-            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <img src={pdfFile} alt="PDF" className="fiz-pdf-icon" />
             <p>Копия паспорта</p>
           </div>
           <div className="fiz-document-actions">
-            <button className="fiz-btn fiz-download-btn">Скачать</button>
-            <button className="fiz-btn fiz-open-btn">Открыть</button>
+            <a href={individualDocuments.doc1}
+               className="fiz-btn fiz-download-btn">
+                Скачать
+            </a>
+            <a
+                href={individualDocuments.doc1}
+                target="_blank"
+               rel="noopener noreferrer"
+               className="fiz-btn fiz-open-btn">Открыть</a>
           </div>
         </div>
         <div className="fiz-document-item">
           <div className="fiz-document-info">
-            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <img src={pdfFile} alt="PDF" className="fiz-pdf-icon" />
             <p>Справка с места жительства</p>
           </div>
           <div className="fiz-document-actions">
-            <button className="fiz-btn fiz-download-btn">Скачать</button>
-            <button className="fiz-btn fiz-open-btn">Открыть</button>
+            <a href={individualDocuments.doc2}
+               className="fiz-btn fiz-download-btn">
+              Скачать
+            </a>
+            <a
+                href={individualDocuments.doc2}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fiz-btn fiz-open-btn">Открыть</a>
           </div>
         </div>
         <div className="fiz-document-item">
           <div className="fiz-document-info">
-            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <img src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
             <p>Копия нотариальной доверенности лица, уполномоченного на заключение договора</p>
           </div>
           <div className="fiz-document-actions">
-            <button className="fiz-btn fiz-download-btn">Скачать</button>
-            <button className="fiz-btn fiz-open-btn">Открыть</button>
+            <a href={individualDocuments.doc3}
+               className="fiz-btn fiz-download-btn">
+              Скачать
+            </a>
+            <a
+                href={individualDocuments.doc3}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fiz-btn fiz-open-btn">Открыть</a>
           </div>
         </div>
         <div className="fiz-document-item">
           <div className="fiz-document-info">
-            <img src="pdf-icon.png" alt="PDF" className="fiz-pdf-icon" />
+            <img src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
             <p>Копии разрешительной документации</p>
           </div>
           <div className="fiz-document-actions">
-            <button className="fiz-btn fiz-download-btn">Скачать</button>
-            <button className="fiz-btn fiz-open-btn">Открыть</button>
+            <a href={individualDocuments.doc4}
+               className="fiz-btn fiz-download-btn">
+              Скачать
+            </a>
+            <a
+                href={individualDocuments.doc4}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fiz-btn fiz-open-btn">Открыть</a>
           </div>
         </div>
       </div>
 
       {/* пдф файлы */}
-       
 
 
       <div className="AboutUsFiz-form-container">
-  <h3 className="AboutUsFiz-form-heading header-font">Форма заявки</h3>
-  <div className="AboutUsFiz-form-content">
-    {/* Левый контейнер с текстом */}
-    <div className="AboutUsFiz-form-left">
-      <h4 id='right-headingob' className="AboutUsFiz-form-right-heading">Общая информация</h4>
+        <h3 className="AboutUsFiz-form-heading header-font">Форма заявки</h3>
+        <div className="AboutUsFiz-form-content">
+          {/* Левый контейнер с текстом */}
+          <div className="AboutUsFiz-form-left">
+            <h4 id='right-headingob' className="AboutUsFiz-form-right-heading">Общая информация</h4>
       <p className="AboutUsFiz-form-left-subheading">
         Пожалуйста, заполните общую информацию о себе, чтобы мы могли связаться с вами и предложить оптимальные решения вашей задачи.
       </p>

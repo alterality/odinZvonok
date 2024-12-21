@@ -12,7 +12,10 @@
     z-index: 10000;
     transition: top 0.3s ease;
 }
-
+.menu-block{
+    display: flex;
+    align-items: center;
+}
 .navbar * {
     font-family: Stapel;
 }
@@ -149,9 +152,19 @@
 .menu a:hover {
     color: #e9e9e9;
 }
-
+.close-btn{
+    display: none;
+}
 /* Адаптивные стили */
 @media (max-width: 1300px) {
+    .close-btn{
+        display: block;
+        position: absolute;
+        top: 25px;
+        width: auto;
+        right: 20px;
+        height: 25px;
+    }
     .menu {
         display: none;
         flex-direction: column;
@@ -197,9 +210,8 @@
     .logo {
         margin-left: 10px;
     }
-    .language-switcher{
-        position: absolute;
-        top: 25px;
-        right: 45px;
+    .menu-block{
+        display: flex;
+        align-items: normal;
     }
 }
