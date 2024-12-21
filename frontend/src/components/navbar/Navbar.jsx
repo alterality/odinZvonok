@@ -8,6 +8,7 @@ const Navbar = () => {
   const [language, setLanguage] = useState('Русский');
   const [isAccordionOpen, setAccordionOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isClientsOpen,setIsClientsOpen] = useState(false)
 
   const toggleLanguage = () => {
     setAccordionOpen(!isAccordionOpen);
@@ -21,6 +22,13 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+  const toggleClients = () =>{
+    setIsClientsOpen(!isClientsOpen)
+  }
+  const clickOnMenuOption = () =>{
+    setMenuOpen(false)
+    setIsClientsOpen(false);
+  }
 
   const navigate = useNavigate();
 
@@ -39,14 +47,21 @@ const Navbar = () => {
           <img src={closeIcon} className='close-btn' onClick={toggleMenu}/>
           <div className='menu-block'>
             <div className="links">
-              <Link to="/" onClick={() => setMenuOpen(false)}>Главная</Link>
-              <Link to="/aboutcompany" onClick={() => setMenuOpen(false)}>О нас</Link>
-              <Link to="/services" onClick={() => setMenuOpen(false)}>Услуги и Тарифы</Link>
-              <Link to="/aboutusfiz" onClick={() => setMenuOpen(false)}>Физ.Лицам</Link>
-              <Link to="/aboutusur" onClick={() => setMenuOpen(false)}>Юр.Лицам</Link>
-              <Link to="/capremont" onClick={() => setMenuOpen(false)}>Капитальный ремонт</Link>
-              <Link to="/vacancies" onClick={() => setMenuOpen(false)}>Вакансии</Link>
-              <Link to="/contacts" onClick={() => setMenuOpen(false)}>Контакты</Link>
+              <Link to="/" onClick={clickOnMenuOption}>Главная</Link>
+              <Link to="/aboutcompany" onClick={clickOnMenuOption}>О нас</Link>
+              <Link to="/services" onClick={clickOnMenuOption}>Услуги и Тарифы</Link>
+              <div className='clients-accordion'>
+                <button onClick={toggleClients} className="clients-accordion-button">
+                  Клиентам
+                </button>
+                {isClientsOpen && <div className="clients-options">
+                  <Link to="/aboutusfiz" onClick={clickOnMenuOption}>Физ.Лицам</Link>
+                  <Link to="/aboutusur" onClick={clickOnMenuOption}>Юр.Лицам</Link>
+                </div>}
+              </div>
+              <Link to="/capremont" onClick={clickOnMenuOption}>Капитальный ремонт</Link>
+              <Link to="/vacancies" onClick={clickOnMenuOption}>Вакансии</Link>
+              <Link to="/contacts" onClick={clickOnMenuOption}>Контакты</Link>
             </div>
             <div>
               <div className="language-switcher">
