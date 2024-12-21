@@ -47,7 +47,7 @@ const Navbar = () => {
           <img src={closeIcon} className='close-btn' onClick={toggleMenu}/>
           <div className='menu-block'>
             <div className="links">
-              <Link to="/" onClick={clickOnMenuOption}>Главная</Link>
+
               <Link to="/aboutcompany" onClick={clickOnMenuOption}>О нас</Link>
               <Link to="/services" onClick={clickOnMenuOption}>Услуги и Тарифы</Link>
               <div className='clients-accordion'>
@@ -71,8 +71,8 @@ const Navbar = () => {
                 {isAccordionOpen && (
                     <div className="language-options">
                       <button onClick={() => changeLanguage('Русский')}>Русский</button>
-                      <button onClick={() => changeLanguage('Кыргызский')}>Кыргызский</button>
-                      <button onClick={() => changeLanguage('Английский')}>Английский</button>
+                      <button onClick={() => changeLanguage('Кыргыз')}>Кыргыз</button>
+                      <button onClick={() => changeLanguage('English')}>English</button>
                     </div>
                 )}
               </div>
