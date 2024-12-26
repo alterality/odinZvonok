@@ -1,0 +1,275 @@
+.overhaul-container{
+    background-color: rgba(29, 29, 27, 1);
+}
+.overhaul-textcontainer{
+    background-color: rgba(29, 29, 27, 1); 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0; 
+  }
+.overhaul-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1480px; 
+    height: 500px; 
+  }
+  
+  .overhaul-text-container {
+    width: 50%;
+    padding-left: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .overhaul-heading {
+    font-size: 24px;
+    margin: 0 0 10px;
+    color: rgba(255, 255, 255, 1); 
+  }
+  
+  .overhaul-text {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+    color: rgba(255, 255, 255, 0.8); 
+  }
+  
+  .overhaul-subtext {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.6); 
+  }
+  
+  .overhaul-image-container {
+    width: 50%;
+    height: 100%; 
+    margin-left: 20px;
+  }
+  
+  .overhaul-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    margin: 0; 
+  }
+
+.overhaul-services-container {
+    background-color: rgba(135, 135, 135, 1);
+    padding: 20px;
+  }
+  
+  .overhaul-services-header {
+    text-align:left;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .overhaul-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .overhaul-service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-bottom: 0;
+    height: 150px;
+    border: 1px solid rgba(135, 135, 135, 1);
+    border-radius: 10px;
+  }
+  
+  .overhaul-service-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .overhaul-service-name {
+    font-weight: bold;
+    color: rgba(135, 135, 135, 1);
+    font-size: 1.5rem;
+  }
+  
+  .overhaul-service-number {
+    margin-top: 5px;
+    color: rgba(135, 135, 135, 1);  }
+  
+  .overhaul-service-description {
+    margin: 0 10px;
+    color: rgba(135, 135, 135, 1);
+  }
+  
+  .overhaul-add-service {
+    cursor: pointer;
+  }
+  .overhaul-add-service img{
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .overhaul-form-wrapper {
+    width: 65%; 
+    margin: 0 auto; 
+    background-color: rgba(29, 29, 27, 1); 
+    padding: 2rem;
+    color: white;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    min-height: 45vh;
+  }
+  
+  /* Заголовок */
+  .overhaul-form-wrapper h2 {
+    margin-bottom: 2rem;
+    align-self: start;
+
+  }
+  
+  /* Формы с двумя колонками */
+  .overhaul-form-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 100%; 
+  }
+  
+  /* Левая колонка */
+  .overhaul-form-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Правая колонка */
+  .overhaul-form-right {
+    flex: 1;
+  }
+  
+  /* Поля ввода и текстовое поле */
+  .overhaul-form-input, .overhaul-form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: rgba(29, 29, 27, 1);
+    color: white;
+    border: 1px solid gray; 
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+  
+  .overhaul-form-textarea {
+    resize: none;
+    height: 150px;
+  }
+  
+  /* Плейсхолдеры */
+  .overhaul-form-input::placeholder, .overhaul-form-textarea::placeholder {
+    color: gray;
+  }
+  
+  /* Блок с соглашением */
+  .overhaul-form-agreement {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    width: 100%; 
+  }
+  
+  /* Ссылка на политику */
+  .overhaul-form-policy-link {
+    color: rgba(255, 75, 15, 1);
+    margin-left: 0.3rem;
+    text-decoration: none;
+  }
+  
+  /* Кнопка отправки */
+  .overhaul-form-button {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    width: 100%;
+    background-color: rgba(135, 135, 135, 1); 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .overhaul-form-button:hover {
+    background-color: rgb(96, 96, 96); 
+  }
+
+
+  @media (max-width: 768px) {
+    .overhaul-content-wrapper {
+      padding-top: 100px;
+      flex-direction: column; 
+      justify-content: flex-start; 
+      height: auto;
+    }
+  
+    .overhaul-text-container {
+      width: 100%;
+      padding: 60px; 
+      margin-bottom: 20px; 
+    }
+  
+    .overhaul-image-container {
+      width: 100%;
+      height: auto;
+      margin-left: 0; 
+      margin-right: 0; 
+    }
+  
+    .overhaul-image {
+      height: auto; 
+      max-height: 400px; 
+    }
+
+    .overhaul-form-container {
+        flex-direction: column;
+
+      }
+    .overhaul-form-wrapper {
+        width: 100%; 
+        margin: 0 auto; 
+        background-color: rgba(29, 29, 27, 1); 
+        padding: 2rem;
+        color: white;
+        box-sizing: border-box;
+        display: flex; 
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+        min-height: 45vh;
+      }
+  }
+  
+
+  
+  @media (max-width: 426px){
+    .overhaul-service-name {
+        font-weight: bold;
+        color: rgba(135, 135, 135, 1);
+        font-size: 0.9rem;
+      }
+      .overhaul-service-description {
+        margin: 0 10px;
+        color: rgba(135, 135, 135, 1);
+        font-size: 0.7rem;
+      }
+      
+  }

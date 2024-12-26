@@ -17,8 +17,6 @@ const MainPage = () => {
               <div className="vertical-line line1"></div>
               <div className="vertical-line line2"></div>
               <div className="vertical-line line3"></div>
-
-              <div className="horizontal-line line1"></div>
               <div className="horizontal-line line2"></div>
               <div className="horizontal-line line3"></div>
 
