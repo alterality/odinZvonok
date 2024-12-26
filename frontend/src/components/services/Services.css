@@ -1,9 +1,165 @@
+.ServicesCont{
+  padding-top: 100px;
+}
 
+.header-block{
+  background-color: #1D1D1B;
+  padding: 60px 30px;
+}
+.header-block h1{
+  color: #FFFFFF;
+  font-size: 80px;
+}
+.tarif-plan{
+  background-color: #1D1D1B;
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 5px;
+}
+.tarif-plan-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  align-items: center;
+  border-bottom: 1px solid #878787;
+}
+.tarifs-section{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.tarif-header{
+  font-size: 40px;
+  line-height: 50.6px;
+  text-align: left;
 
+}
+.business-header{
+  color: #FFFFFF;
+}
+.business-container{
+  background-color: #878787;
+}
+.services-business-form{
+  background-color: #1D1D1B;
+  height: auto;
+  padding: 25px 5px;
+  margin: 25px;
+  border-radius: 8px;
+}
+.services-business-form-header{
+  text-align: left;
+  font-family: Stapel;
+  padding: 10px;
+}
+.services-business-form-underheader{
+  font-family: Stapel;
+  padding: 20px 80px 20px 50%;
+  text-align: left;
+  text-indent: 2em;
+}
+.services-business-form-leftBlock{
+  text-align: left;
+  width: 600px;
+  padding: 0 20px;
+  font-size: 24px;
+}
+.services-business-form-mainInfo{
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.services-business-form-mainInfo-rightBlock{
+  display: flex;
+  flex-direction: row;
+}
+.services-business-form-mainInfo-rightBlock p{
+  width: 40%;
+  margin-right: 50px;
+  text-align: left;
+  font-size: 18px;
+}
+.services-business-form-application{
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+}
+.services-business-form-application-rightBlock{
+  width: 100%;
+}
 
+.services-business-form-inputs{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.services-business-form-input, .services-business-form-textarea{
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1D1D1B;
+  color: white;
+  border: 1px solid #DADADA;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.services-business-form-input::placeholder, .services-business-form-textarea::placeholder {
+  color: gray;
+}
+.services-business-form-button{
+  margin-top: 1rem;
+  padding: 0.75rem;
+  width: 100%;
+  background-color: #1D1D1B66;
+  color: white;
+  border: 1px solid #DADADA;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: Stapel;
+}
+.services-business-form-button:hover{
+  background-color: rgba(52, 52, 50, 0.8);
+}
+.apartment-container{
+  background-color: #878787;
+}
+.house-header{
+  color: #1D1D1B;
+}
+.house-container{
+  background-color: #DADADA;
+}
+.add-services-header{
+  color: #1D1D1B;
+}
+.add-services-container{
+  background-color: #DADADA;
+}
+.container-info{
+  display: flex;
+  width: 100%;
+}
+.container-info h2{
+  text-align: left;
+  margin: 20px 55px;
+}
+.infoBlock{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.infoBlock p{
+  text-align: left;
+  font-family: Stapel;
+  font-size: 18px;
+  line-height: 22.77px;
+}
 .services-container {
   position: relative;
-  background-color: #000;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -43,27 +199,16 @@
 }
 
 
-.gray-container {
-  background-color: #444;
+.info-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 9px 40px 0 44px ;
-}
-.white-container {
-  background-color: rgba(218, 218, 218, 1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 9px 40px 0 44px ;
-  color: #000;
+  flex-wrap: wrap;
 }
 .bisiness-container {
-  background-color: #444;
+  background-color: #878787;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 9px 40px 0 44px ;
@@ -79,11 +224,14 @@
 }
 
 .service-image {
-  width: 235px;
-  height: 235px;
+  width: 370px;
+  height: 370px;
   object-fit: cover;
+  margin-right: 100px;
 }
-
+.blackText p{
+  color: #1D1D1B;
+}
 .divider {
   border: 1px solid white;
   margin-bottom: 10px;
@@ -101,18 +249,26 @@
 .services-section h2 {
   text-align: left;
   margin: 20px 55px;
-  color: rgb(196, 196, 196);
 }
 
 .service-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 97%;
+  width: 100%;
   padding: 2px 30px 0 50px;
   gap: 20px;
+  background-color: #1D1D1B;
+  border-radius: 8px;
+  margin: 2px 0;
 }
 
+.service-left{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 40%;
+}
 .service-left h3,
 .service-left p {
   margin: 8px 5px 25px;
@@ -122,7 +278,7 @@
 .service-center {
   flex: 1;
   color: rgb(196, 196, 196);
-  text-align: center;
+  text-align: left;
 }
 
 .service-right {
@@ -259,3 +415,56 @@
   background-color: rgb(96, 96, 96); 
 }
 
+@media (max-width: 768px) {
+    .container-info{
+      flex-direction: column;
+      align-items: center;
+    }
+  .infoBlock{
+    width: 100%;
+  }
+  .service-image{
+    margin: 0;
+    width: 270px;
+    height: 270px;
+  }
+  .services-container{
+    padding: 25px !important;
+  }
+  .section-middle{
+    width: 100%;
+  }
+  .services-business-form-header{
+    font-size: 24px;
+  }
+  .services-business-form-underheader{
+    padding: 14px;
+    font-size: 20px;
+  }
+  .services-business-form-leftBlock{
+    width: 100%;
+    padding: 5px;
+  }
+  .services-business-form-mainInfo{
+    flex-direction: column;
+  }
+  .services-business-form-mainInfo-rightBlock{
+    flex-direction: column;
+  }
+  .services-business-form-mainInfo-rightBlock p{
+    width: 100%;
+    padding: 25px;
+    font-size: 12px;
+  }
+  .services-business-form-application{
+    flex-direction: column;
+  }
+  .header-block h1{
+    font-size: 30px;
+  }
+}
+@media (max-width: 670px) {
+  .tarifs-section{
+    flex-wrap: wrap;
+  }
+}

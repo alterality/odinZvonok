@@ -12,25 +12,27 @@ const AboutUsMain = () => {
     useEffect(() => {
         dispatch(getHomeAboutCompany())
     }, [dispatch]);
-  return (
-    <div className="about-us-main">
-      <h2 className="header-text">О КОМПАНИИ</h2>
-      
-      <div className="left-image-container">
-        <img src={aboutusmainpng} alt="About Us" className="main-image" />
-          <Link to='/aboutcompany'><img src={morepng} alt="More" className="more-icon"/></Link>
-      </div>
+    return (
+        <div className="about-us-main">
+            <h2 className="header-text">О КОМПАНИИ</h2>
 
-        <div className="right-text-container">
-        <div className="text-box black-text">
-            {homeAboutCompany.description1}
+            <div className='about-us-main-infoBlock'>
+                <div className="left-image-container">
+                    <img src={aboutusmainpng} alt="About Us" className="main-image"/>
+                    <Link to='/aboutcompany'><img src={morepng} alt="More" className="more-icon"/></Link>
+                </div>
+
+                <div className="right-text-container">
+                    <div className="text-box black-text">
+                        {homeAboutCompany.description1}
+                    </div>
+                    <div className="text-box orange-text">
+                        {homeAboutCompany.description2}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="text-box orange-text">
-            {homeAboutCompany.description2}
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default AboutUsMain;
