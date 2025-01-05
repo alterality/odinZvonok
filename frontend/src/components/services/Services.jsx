@@ -815,7 +815,14 @@ const Services = () => {
                                 </div>
                             </ExpandableBlock>
                             <ExpandableBlock title="Капитальные работы" number="005">
-
+                                <div className="capital-works-title">
+                                    <p>
+                                        «Предоставляем услуги капитального ремонта разного профиля. Полный перечень услуг можете посмотреть в разделе Капитыльный ремонт»
+                                    </p>
+                                </div>
+                                <button className="capital-works-btn">
+                                    Перейти на страницу
+                                </button>
                             </ExpandableBlock>
                         </div>
                     </div>

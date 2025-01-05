@@ -1,6 +1,35 @@
 .ServicesCont{
   padding-top: 100px;
 }
+.capital-works-title{
+  width: 100%;
+  background-color: #878787;
+  border-radius: 8px;
+  padding: 25px ;
+
+}
+.capital-works-title p {
+  font-family: Stapel;
+  font-size: 40px;
+  text-align: left;
+}
+.capital-works-btn{
+  width: 100%;
+  font-family: Stapel;
+  background-color: #878787;
+  border: 1px solid #DADADA;
+  border-radius: 8px;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-top: 10px;
+  padding: 20px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+
+}
+.capital-works-btn:hover{
+  background-color: #FF4B0F;
+}
 .service-item-content{
   display: flex;
   flex-wrap: wrap;
@@ -569,7 +598,12 @@
   .service-item-content-section{
     width: 40%;
   }
-
+  .capital-works-title p{
+    font-size: 20px;
+  }
+  .capital-works-btn{
+    font-size: 14px;
+  }
   .infoBlock{
     width: 100%;
   }
