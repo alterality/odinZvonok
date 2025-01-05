@@ -1,6 +1,172 @@
 .ServicesCont{
   padding-top: 100px;
 }
+.capital-works-title{
+  width: 100%;
+  background-color: #878787;
+  border-radius: 8px;
+  padding: 25px ;
+
+}
+.capital-works-title p {
+  font-family: Stapel;
+  font-size: 40px;
+  text-align: left;
+}
+.capital-works-btn{
+  width: 100%;
+  font-family: Stapel;
+  background-color: #878787;
+  border: 1px solid #DADADA;
+  border-radius: 8px;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-top: 10px;
+  padding: 20px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+
+}
+.capital-works-btn:hover{
+  background-color: #FF4B0F;
+}
+.service-item-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.service-item-content-section{
+  display: flex;
+  flex-direction: column;
+ width: 30%;
+}
+.transport-service-nav{
+  background: #1D1D1B;
+  padding: 5px 5px 0;
+  border-radius: 10px;
+  height: 44px;
+}
+.transport-service-tabs{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  width: 100%;
+}
+.transport-service-tab{
+  list-style: none;
+  margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px 15px;
+  position: relative;
+  background: #1D1D1B;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  user-select: none;
+  color: #878787;
+}
+#underline{
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #878787;
+}
+.transport-service-tab-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab-content{
+  padding: 25px;
+  display: flex;
+}
+.tab-content p{
+  text-align: left;
+  margin-left: 10px;
+  justify-content: left;
+  font-size: 18px ;
+  font-family: Inter;
+}
+.tab-content-image{
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+
+.transport-service-content{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+.transport-service-content-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 250px;
+  position: relative;
+  margin-bottom: 5px;
+}
+.transport-service-appear-block{
+  width: 1450px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 10px);
+  transform: translateY(-50%);
+  background-color: lightblue;
+  border-radius: 10px;
+}
+.transport-service-content-title{
+  padding: 10px 20px;
+  text-align: left;
+  background: none;
+  color: #fff;
+  border: none;
+  width: 200px;
+  border-bottom: 1px solid ;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.add-services-list{
+  padding: 20px;
+}
+.content-section-list{
+  display: flex;
+  flex-direction: column;
+
+}
+.service-item-content-section h3{
+  text-align: left;
+}
+.content-section-list-element{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #878787;
+  padding-bottom: 5px;
+  color: #878787;
+  margin-bottom: 5px;
+}
+
 
 .header-block{
   background-color: #1D1D1B;
@@ -253,21 +419,20 @@
 
 .service-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 2px 30px 0 50px;
-  gap: 20px;
-  background-color: #1D1D1B;
-  border-radius: 8px;
-  margin: 2px 0;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  margin-bottom: 0;
+  height: 150px;
 }
 
 .service-left{
   display: flex;
   flex-direction: column;
+  width: 30%;
   text-align: left;
-  width: 40%;
 }
 .service-left h3,
 .service-left p {
@@ -414,12 +579,31 @@
 .serviceform-button:hover {
   background-color: rgb(96, 96, 96); 
 }
-
+@media (max-width: 1100px) {
+  .tab-content{
+    flex-direction: column;
+    align-items: center;
+  }
+  .tab-content p{
+    margin-left: 0;
+    padding: 10px ;
+    font-size: 14px;
+  }
+}
 @media (max-width: 768px) {
     .container-info{
       flex-direction: column;
       align-items: center;
     }
+  .service-item-content-section{
+    width: 40%;
+  }
+  .capital-works-title p{
+    font-size: 20px;
+  }
+  .capital-works-btn{
+    font-size: 14px;
+  }
   .infoBlock{
     width: 100%;
   }
@@ -462,9 +646,43 @@
   .header-block h1{
     font-size: 30px;
   }
+  .center-text p{
+    width: auto;
+  }
+  .tarif-header{
+    font-size: 24px;
+  }
+  .service-item{
+    padding: 15px;
+    gap: normal;
+  }
+  .add-services-list{
+    padding: 15px;
+  }
+  .tab-content{
+    padding: 10px;
+  }
 }
 @media (max-width: 670px) {
   .tarifs-section{
     flex-wrap: wrap;
+  }
+  .add-services-list{
+    padding: 10px;
+  }
+}
+@media (max-width: 430px) {
+  .service-item-content-section{
+    width: 100%;
+  }
+  .transport-service-tab{
+    padding: 5px;
+  }
+  .tab-content-image{
+    width: 90%;
+    border-radius: 8px;
+  }
+  .tab-content{
+    padding: 5px;
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FaInstagram, FaWhatsapp, FaTelegram} from 'react-icons/fa';
 import servicesimg from '../../assets/Designer (33) 1.png';
 import privatehouses from '../../assets/частныедома.png';
@@ -6,11 +6,197 @@ import bisinessimg from '../../assets/бизнес.png';
 import additionalimg from '../../assets/допуслуги.png'
 import servicesPNG from '../../assets/servicesPNG.png'
 import './Services.css';
+import {animate} from "motion/react";
+import addimg from "../../assets/Group 5.png";
+import * as motion from "motion/react-client"
+import { AnimatePresence } from "motion/react"
+const ExpandableBlock = ({ title,number, children}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const contentRef = React.useRef(null);
+    const blockRef = React.useRef(null);
+    const toggleOpen = () => {
+        setIsOpen((prev) => !prev);
+
+        // Анимация высоты
+        if (!isOpen) {
+            const height = contentRef.current.scrollHeight;
+            animate(contentRef.current, { height: [`0px`, `${height}px`] }, { duration: 0.1 });
+            animate(blockRef.current, { borderRadius: ["8px 8px 8px 8px", "8px 8px 0 0"] }, { duration: 0.5 });
+        } else {
+            animate(contentRef.current, { height: [`${contentRef.current.offsetHeight}px`, `0px`] }, { duration: 0.1 });
+            animate(blockRef.current, { borderRadius: ["8px 8px 0 0", "8px 8px 8px 8px"] }, { duration: 0.5 });
+        }
+    };
+
+    return (
+        <div
+            ref={blockRef}
+            style={{
+                borderRadius: "8px",
+                marginBottom: "1rem",
+                overflow: "hidden",
+            }}
+        >
+            <div
+                onClick={toggleOpen}
+                style={{
+                    cursor: "pointer",
+                    backgroundColor: "#1D1D1B",
+                    fontWeight: "bold",
+
+                }}
+                className="service-item"
+            >
+                <div className="service-left">
+                    <div className="overhaul-service-name">{title}</div>
+                    <div className="overhaul-service-number">{number}</div>
+                </div>
+                <div className="overhaul-service-description"><p>(качественно, быстро, надежно)</p></div>
+                <div className="overhaul-add-service" style={{transform: isOpen ? 'rotate(45deg)': "none" , transition: 'transform 0.5s ease'}}><img src={addimg} alt=""/></div>
+            </div>
+            <div
+                ref={contentRef}
+                style={{
+                    height: "0",
+                    borderRadius: '0 0 8px 8px ',
+                    overflow: "hidden",
+                    backgroundColor: "#1D1D1B",
+                    transition: "height 0.5s ease",
+                }}
+
+            >
+                <div
+                    style={{padding: "1rem"}}
+                >
+                    {children}
+                </div>
+            </div>
+        </div>
+    );
+};
+const SSS = ({title, img}) =>{
+    const [isVisible, setIsVisible] = useState(false);
+    return (
+        <div className='transport-service-content-item'>
+            <AnimatePresence initial={false}>
+                {isVisible ? (
+                    <motion.div
+                        initial={{opacity: 0, scale: 0}}
+                        animate={{opacity: 1, scale: 1}}
+                        exit={{opacity: 0, scale: 0}}
+                        className='transport-service-appear-block'
+                        key="box"
+                    >
+                        <img src={img} alt={title}/>
+                        <p>{title}</p>
+                    </motion.div>
+                ) : null}
+            </AnimatePresence>
+            <motion.button
+                onMouseEnter={() => setIsVisible(true)}
+                onMouseLeave={() => setIsVisible(false)}
+                whileHover={{scale: 1.1}}
+                className="transport-service-content-title"
+            >
+                {title}
+            </motion.button>
+        </div>
+    )
+}
+
+
+const TransportSlide =({tabs}) => {
+    const [selectedTab, setSelectedTab] = useState(tabs[0].id)
+    const container = {
+        width: "100%",
+        height: "100%",
+        maxHeight: "1000px",
+        borderRadius: 10,
+        background: "#1D1D1B",
+        overflow: "hidden",
+        boxShadow:
+            "0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075)",
+        display: "flex",
+        flexDirection: "column",
+    }
+    const icon= {
+        padding: '25px'
+    }
+    return (
+        <div style={container}>
+            <nav  className="transport-service-nav">
+                <ul  className='transport-service-tabs'>
+                    {tabs.map((item) => (
+                        <motion.li
+                            key={item.id}
+                            initial={false}
+                            animate={{
+                                backgroundColor:
+                                    item === selectedTab ? "#1D1D1B" : "#1D1D1B",
+                            }}
+
+                            className = "transport-service-tab"
+                            style={item.id === selectedTab && {color : "white", fontSize: '22px'}}
+                            onClick={() => setSelectedTab(item.id)}
+                        >
+                            <p>{`${item.title}`}</p>
+                            {item.id === selectedTab ? (
+                                <motion.div
+                                    layoutId="underline"
+                                    id="underline"
+                                />
+                            ) : null}
+                        </motion.li>
+                    ))}
+                </ul>
+            </nav>
+            <main className='transport-service-tab-content'>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={selectedTab ? selectedTab.label : "empty"}
+                        initial={{ opacity: 0, y: 20 }}  // Starting state: hidden and slightly below
+                        animate={{ opacity: 1, y: 0 }}   // Final state: fully visible and in place
+                        exit={{ opacity: 0, y: -20 }}    // Exit state: hidden and slightly above
+                        transition={{ duration: 0.3 }}   //
+                        className='tab-content'
+                    >
+                        <img
+                            className='tab-content-image'
+                            src={selectedTab ? tabs[selectedTab-1].img : ''}
+                            alt="Tab content"
+                            />
+                        <p>
+                            {selectedTab ? tabs[selectedTab-1].description : ""}
+                        </p>
+                    </motion.div>
+                </AnimatePresence>
+            </main>
+        </div>
+    )
+}
 
 const Services = () => {
+    const transports = [
+        {
+            id: 1, title: 'Минивен', img : 'https://www.mercedesmagazin.ru/img/nblock/143-2/mercedes-W639.jpg',
+
+            description: 'С точки зpения банальной эpудиции каждый индивидуум, кpитически мотивиpующий абстpакцию, не может игноpиpовать кpитеpии утопического субьективизма, концептуально интеpпpетиpуя общепpинятые дефанизиpующие поляpизатоpы, поэтому консенсус, достигнутый диалектической матеpиальной классификацией всеобщих мотиваций в паpадогматических связях пpедикатов, pешает пpоблему усовеpшенствования фоpмиpующих геотpансплантационных квазипузлистатов всех кинетически коpеллиpующих аспектов.',
+
+        },
+        {
+            id: 2, title: 'Портер', img : 'https://kimuracars.com/img/autocatalog_korea/cars/17/hyundai_porter_2_3769164.jpg', description: 'Небольшие, короткие, мини, легкие тексты для чтения со школьниками. Детские тексты, тексты с простыми словами, любые тексты для детей.',
+        },
+        {
+            id: 3, title: 'Спринтер', img : 'https://a.d-cd.net/acfc69es-960.jpg', description: '',
+        },
+        {
+            id: 4, title: 'Фуры', img : 'https://static.tildacdn.com/tild6232-6661-4339-a366-653430386266/a0fe0e60a2b351cb9f89.jpg', description: '',
+        }
+    ]
     return (
         <div className="ServicesCont">
-            <div className='header-block'><h1 className="services-title header-font">ОКАЗЫВАЕМ СЛЕДУЮЩИЕ УСЛУГИ</h1></div>
+            <div className='header-block'><h1 className="services-title header-font">ОКАЗЫВАЕМ СЛЕДУЮЩИЕ УСЛУГИ</h1>
+            </div>
             {/* //! КВАРТИРЫ  */}
             <div className="services-container apartment-container">
                 <div className="section-middle">
@@ -58,7 +244,7 @@ const Services = () => {
 
                             </div>
                             <ul>
-                            <li></li>
+                                <li></li>
                                 <li></li>
                                 <li></li>
                             </ul>
@@ -344,71 +530,300 @@ const Services = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className='add-services-list'>
+                            <ExpandableBlock title="Альпинисты" number='001'>
+                                <div className="service-item-content">
+                                    <div className='service-item-content-section'>
+                                        <h3>HFHHF</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>HFHHF</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>HFHHF</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>HFHHF</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>HFHHF</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>HFHHF</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ExpandableBlock>
+                            <ExpandableBlock title="Клининг" number='002'>
 
-                        <div className="service-item">
-                            <div className="service-left">
-                                <h3 className='header-font'>Ремонт бытовой техники</h3>
-                                <p className='header-font'>(001)</p>
-                            </div>
-                            <div className="service-center">
-                                <p className='header-font'>(качественно, быстро, надежно)</p>
-                            </div>
-                            <div className="service-right">+</div>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="service-left">
-                                <h3 className='header-font'>Установка сантехники</h3>
-                                <p className='header-font'>(002)</p>
-                            </div>
-                            <div className="service-center">
-                                <p className='header-font'>(монтаж и замена оборудования)</p>
-                            </div>
-                            <div className="service-right">+</div>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="service-left">
-                                <h3 className='header-font'>Электромонтажные работы</h3>
-                                <p className='header-font'>(003)</p>
-                            </div>
-                            <div className="service-center">
-                                <p className='header-font'>(проводка, установка розеток и освещения)</p>
-                            </div>
-                            <div className="service-right">+</div>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="service-left">
-                                <h3 className='header-font'>Косметический ремонт</h3>
-                                <p className='header-font'>(004)</p>
-                            </div>
-                            <div className="service-center">
-                                <p className='header-font'>(обновление стен и потолков)</p>
-                            </div>
-                            <div className="service-right">+</div>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="service-left">
-                                <h3 className='header-font'>Услуги по уборке</h3>
-                                <p className='header-font'>(005)</p>
-                            </div>
-                            <div className="service-center">
-                                <p className='header-font'>(генеральная уборка помещений)</p>
-                            </div>
-                            <div className="service-right">+</div>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="service-left">
-                                <h3 className='header-font'>Установка дверей и окон</h3>
-                                <p className='header-font'>(006)</p>
-                            </div>
-                            <div className="service-center">
-                                <p className='header-font'>(профессиональный монтаж)</p>
-                            </div>
-                            <div className="service-right">+</div>
+                            </ExpandableBlock>
+                            {/*<ExpandableBlock title="Грузоперевозка" number='003'>*/}
+                            {/*    <div className="transport-service-content">*/}
+                            {/*        <SSS title="Минивен"/>*/}
+                            {/*        <SSS title="Минивен"/>*/}
+                            {/*        <SSS title="Минивен"/>*/}
+                            {/*        <SSS title="Минивен"/>*/}
+                            {/*        <SSS title="Минивен"/>*/}
+                            {/*    </div>*/}
+                            {/*</ExpandableBlock>*/}
+                            <ExpandableBlock title="Грузоперевозка" number="003">
+                                <TransportSlide tabs={transports}/>
+                            </ExpandableBlock>
+                            <ExpandableBlock title="Мелкосрочные работы" number="004">
+                                <div className="service-item-content">
+                                    <div className='service-item-content-section'>
+                                        <h3>Сантехника</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>05</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>06</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>Электрика</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>Двери и окна</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>Настенные работы</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>Напольные покрытия</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='service-item-content-section'>
+                                        <h3>Бытовая техника</h3>
+                                        <div className="content-section-list">
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>01</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>02</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>03</p>
+                                            </div>
+                                            <div className="content-section-list-element">
+                                                <p>Элемент</p>
+                                                <p>04</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ExpandableBlock>
+                            <ExpandableBlock title="Капитальные работы" number="005">
+                                <div className="capital-works-title">
+                                    <p>
+                                        «Предоставляем услуги капитального ремонта разного профиля. Полный перечень услуг можете посмотреть в разделе Капитыльный ремонт»
+                                    </p>
+                                </div>
+                                <button className="capital-works-btn">
+                                    Перейти на страницу
+                                </button>
+                            </ExpandableBlock>
                         </div>
                     </div>
 
