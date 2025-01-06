@@ -206,14 +206,6 @@ const Vakancies = () => {
                 </div>
               </div>
 
-              <div className="vakancies-agreement">
-                <input type="checkbox" id="privacyPolicy"/>
-                <label htmlFor="privacyPolicy">
-                  Я прочитал и согласен с
-                  <a href="#" className="vakancies-policy-link">политикой конфиденциальности</a>
-                </label>
-              </div>
-
               <button className="vakancies-submit-button">Отправить</button>
             </div>
           </div>

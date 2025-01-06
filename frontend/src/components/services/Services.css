@@ -187,9 +187,14 @@
   display: flex;
   justify-content: space-between;
   padding: 5px 0;
+  text-align: left;
   align-items: center;
   border-bottom: 1px solid #878787;
 }
+.tarif-plan-advantages{
+  padding: 15px;
+}
+
 .tarifs-section{
   display: flex;
   flex-direction: row;
@@ -431,7 +436,6 @@
 .service-left{
   display: flex;
   flex-direction: column;
-  width: 30%;
   text-align: left;
 }
 .service-left h3,
@@ -675,6 +679,9 @@
   .service-item-content-section{
     width: 100%;
   }
+  .services-business-form{
+    margin: 25px 0;
+  }
   .transport-service-tab{
     padding: 5px;
   }
@@ -684,5 +691,19 @@
   }
   .tab-content{
     padding: 5px;
+  }
+  .serviceform-container{
+    flex-direction: column;
+  }
+  .serviceform-wrapper{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .serviceform-formcomt{
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+
   }
 }

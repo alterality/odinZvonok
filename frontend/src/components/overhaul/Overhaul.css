@@ -109,7 +109,6 @@
   .overhaul-service-info {
     display: flex;
     flex-direction: column;
-    width: 30%;
   }
   
   .overhaul-service-name {

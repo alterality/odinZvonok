@@ -80,13 +80,6 @@ const AboutCompany = () => {
     </div>
   </div>
 
-  <div className="aboutcomp-agreement">
-    <input type="checkbox" id="aboutcompPrivacyPolicy" />
-    <label htmlFor="aboutcompPrivacyPolicy">
-      Я прочитал и согласен с 
-      <a href="#" className="aboutcomp-policy-link">политикой конфиденциальности</a>
-    </label>
-  </div>
 
   <button className="aboutcomp-button">Отправить</button>
 </div>
