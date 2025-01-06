@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'forms',
     'aboutcompany',
     'main_page',
+    'services',
 ]
 
 MIDDLEWARE = [
