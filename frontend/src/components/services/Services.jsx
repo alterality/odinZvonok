@@ -10,6 +10,7 @@ import {animate} from "motion/react";
 import addimg from "../../assets/Group 5.png";
 import * as motion from "motion/react-client"
 import { AnimatePresence } from "motion/react"
+import {useNavigate} from "react-router-dom";
 const ExpandableBlock = ({ title,number, children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = React.useRef(null);
@@ -51,7 +52,6 @@ const ExpandableBlock = ({ title,number, children}) => {
                     <div className="overhaul-service-name">{title}</div>
                     <div className="overhaul-service-number">{number}</div>
                 </div>
-                <div className="overhaul-service-description"><p>(качественно, быстро, надежно)</p></div>
                 <div className="overhaul-add-service" style={{transform: isOpen ? 'rotate(45deg)': "none" , transition: 'transform 0.5s ease'}}><img src={addimg} alt=""/></div>
             </div>
             <div
@@ -176,6 +176,7 @@ const TransportSlide =({tabs}) => {
 }
 
 const Services = () => {
+    const navigate = useNavigate()
     const transports = [
         {
             id: 1, title: 'Минивен', img : 'https://www.mercedesmagazin.ru/img/nblock/143-2/mercedes-W639.jpg',
@@ -243,15 +244,17 @@ const Services = () => {
                                 </div>
 
                             </div>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
+                            <div className="tarif-plan-advantages">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             <h2>Стоимость тарифа 1500 сом в месяц</h2>
                         </div>
                         <div className='tarif-plan'>
-                            <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
+                        <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
                             <div>
                                 <div className='tarif-plan-item'>
                                     <p>Сантехника</p>
@@ -274,15 +277,17 @@ const Services = () => {
                                     <img src={servicesPNG} alt="include"/>
                                 </div>
                             </div>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
+                            <div className="tarif-plan-advantages">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             <h2>Стоимость тарифа 2500 сом в месяц</h2>
                         </div>
                     </div>
@@ -339,15 +344,17 @@ const Services = () => {
                                     <img src={servicesPNG} alt="include"/>
                                 </div>
                             </div>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
+                            <div className="tarif-plan-advantages">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             <h2>Стоимость тарифа 1500 сом в месяц</h2>
                         </div>
                         <div className='tarif-plan'>
-                            <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
+                        <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
                             <div>
                                 <div className='tarif-plan-item'>
                                     <p>Сантехника</p>
@@ -374,15 +381,17 @@ const Services = () => {
                                     <img src={servicesPNG} alt="include"/>
                                 </div>
                             </div>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
+                            <div className="tarif-plan-advantages">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             <h2>Стоимость тарифа 2500 сом в месяц</h2>
                         </div>
                     </div>
@@ -469,14 +478,6 @@ const Services = () => {
                                     <div className="services-business-form-inputs">
                                     <textarea className="services-business-form-textarea" rows="8"
                                               placeholder="Сообщение*"></textarea>
-                                        <div className="serviceform-agreement">
-                                            <input type="checkbox" id="aboutcompPrivacyPolicy"/>
-                                            <label htmlFor="aboutcompPrivacyPolicy">
-                                                Я прочитал и согласен с
-                                                <a href="#" className="serviceform-policy-link">политикой
-                                                    конфиденциальности</a>
-                                            </label>
-                                        </div>
                                         <button className="services-business-form-button">Отправить</button>
                                     </div>
                                 </div>
@@ -534,112 +535,6 @@ const Services = () => {
                             <ExpandableBlock title="Альпинисты" number='001'>
                                 <div className="service-item-content">
                                     <div className='service-item-content-section'>
-                                        <h3>HFHHF</h3>
-                                        <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='service-item-content-section'>
-                                        <h3>HFHHF</h3>
-                                        <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='service-item-content-section'>
-                                        <h3>HFHHF</h3>
-                                        <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='service-item-content-section'>
-                                        <h3>HFHHF</h3>
-                                        <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='service-item-content-section'>
-                                        <h3>HFHHF</h3>
-                                        <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='service-item-content-section'>
-                                        <h3>HFHHF</h3>
                                         <div className="content-section-list">
                                             <div className="content-section-list-element">
                                                 <p>Элемент</p>
@@ -820,7 +715,7 @@ const Services = () => {
                                         «Предоставляем услуги капитального ремонта разного профиля. Полный перечень услуг можете посмотреть в разделе Капитыльный ремонт»
                                     </p>
                                 </div>
-                                <button className="capital-works-btn">
+                                <button className="capital-works-btn" onClick={()=> navigate("/capremont")}>
                                     Перейти на страницу
                                 </button>
                             </ExpandableBlock>
@@ -848,14 +743,6 @@ const Services = () => {
                         <div className="serviceform-right">
                             <textarea className="serviceform-textarea" rows="4" placeholder="Сообщение*"></textarea>
                         </div>
-                    </div>
-
-                    <div className="serviceform-agreement">
-                        <input type="checkbox" id="aboutcompPrivacyPolicy"/>
-                        <label htmlFor="aboutcompPrivacyPolicy">
-                            Я прочитал и согласен с
-                            <a href="#" className="serviceform-policy-link">политикой конфиденциальности</a>
-                        </label>
                     </div>
 
                     <button className="serviceform-button">Отправить</button>
