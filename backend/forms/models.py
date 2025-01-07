@@ -21,7 +21,7 @@ class BusinessApplication(models.Model):
     company_type = models.CharField(max_length=255, verbose_name='Тип компании')
     contact_person = models.CharField(max_length=255, verbose_name='Контактное лицо')
     phone_number = models.CharField(max_length=30, verbose_name='Номер телефона')
-    site = models.TextField(max_length=255, verbose_name='Сайт')
+    site = models.TextField(max_length=255, null=True, blank=True, verbose_name='Сайт')
     content = models.TextField(verbose_name='Сообщение')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
 

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'aboutcompany',
     'main_page',
     'services',
+    'cap_repairs'
 ]
 
 MIDDLEWARE = [

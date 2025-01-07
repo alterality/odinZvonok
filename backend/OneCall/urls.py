@@ -50,6 +50,7 @@ urlpatterns = [
     path('api/', include('main_page.urls')),
     path('api/', include('services.urls')),
     path('api/', include('forms.urls')),
+    path('api/', include('cap_repairs.urls')),
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
@@ -63,6 +64,7 @@ urlpatterns += i18n_patterns(
     path('api/', include('main_page.urls')),
     path('api/', include('services.urls')),
     path('api/', include('forms.urls')),
+    path('api/', include('cap_repairs.urls')),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
