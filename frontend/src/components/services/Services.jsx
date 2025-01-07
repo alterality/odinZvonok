@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FaInstagram, FaWhatsapp, FaTelegram} from 'react-icons/fa';
 import servicesimg from '../../assets/Designer (33) 1.png';
 import privatehouses from '../../assets/частныедома.png';
@@ -11,6 +11,8 @@ import addimg from "../../assets/Group 5.png";
 import * as motion from "motion/react-client"
 import { AnimatePresence } from "motion/react"
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getApartmentServices, getHouseServices} from "../../store/apiSlice";
 const ExpandableBlock = ({ title,number, children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = React.useRef(null);
@@ -74,35 +76,7 @@ const ExpandableBlock = ({ title,number, children}) => {
         </div>
     );
 };
-const SSS = ({title, img}) =>{
-    const [isVisible, setIsVisible] = useState(false);
-    return (
-        <div className='transport-service-content-item'>
-            <AnimatePresence initial={false}>
-                {isVisible ? (
-                    <motion.div
-                        initial={{opacity: 0, scale: 0}}
-                        animate={{opacity: 1, scale: 1}}
-                        exit={{opacity: 0, scale: 0}}
-                        className='transport-service-appear-block'
-                        key="box"
-                    >
-                        <img src={img} alt={title}/>
-                        <p>{title}</p>
-                    </motion.div>
-                ) : null}
-            </AnimatePresence>
-            <motion.button
-                onMouseEnter={() => setIsVisible(true)}
-                onMouseLeave={() => setIsVisible(false)}
-                whileHover={{scale: 1.1}}
-                className="transport-service-content-title"
-            >
-                {title}
-            </motion.button>
-        </div>
-    )
-}
+
 
 
 const TransportSlide =({tabs}) => {
@@ -177,6 +151,16 @@ const TransportSlide =({tabs}) => {
 
 const Services = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const {apartmentServices,houseServices} = useSelector((state) => state.api)
+    useEffect(() => {
+        dispatch(getApartmentServices())
+        dispatch(getHouseServices())
+    }, [dispatch]);
+    useEffect(() => {
+        console.log(apartmentServices, 'квартиры')
+        console.log(houseServices, 'дома')
+    }, [houseServices,apartmentServices]);
     const transports = [
         {
             id: 1, title: 'Минивен', img : 'https://www.mercedesmagazin.ru/img/nblock/143-2/mercedes-W639.jpg',

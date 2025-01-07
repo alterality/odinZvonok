@@ -206,7 +206,7 @@
     display: none;
   }
   .top-text{
-    background-color: rgba(51, 50, 50, 0.51);
+    background-color: rgba(51, 50, 50, 0.99);
     left: 0;
     width: 50%;
     padding: 40px;
@@ -218,7 +218,7 @@
     border-radius: 0;
   }
   .bottom-text{
-    background-color: rgba(255, 75, 15, 0.36);
+    background-color: rgba(255, 75, 15, 0.98);
     left: 0;
     border-radius: 0;
     padding: 50px;
