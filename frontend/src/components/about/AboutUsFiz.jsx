@@ -264,12 +264,6 @@ const AboutUsFiz = () => {
                                 <textarea placeholder="Опишите проблему или добавьте пожелания*"
                                           className="AboutUsFiz-textarea-field"></textarea>
                             </div>
-                            <div className="AboutUsFiz-form-checkbox">
-                                <input type="checkbox" id="privacy-policy" className="AboutUsFiz-form-checkbox-input"/>
-                                <label htmlFor="privacy-policy" className="AboutUsFiz-form-checkbox-label">
-                                    Я прочитал и согласен с политикой конфиденциальности
-                                </label>
-                            </div>
                             <button type="submit" className="AboutUsFiz-form-submit-button">Отправить заявку</button>
                         </div>
                     </div>

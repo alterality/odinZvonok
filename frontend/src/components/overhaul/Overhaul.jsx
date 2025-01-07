@@ -45,7 +45,6 @@ const ExpandableBlock = ({ title,number, list }) => {
                     <div className="overhaul-service-name">{title}</div>
                     <div className="overhaul-service-number">{number}</div>
                 </div>
-                <div className="overhaul-service-description"><p>(качественно, быстро, надежно)</p></div>
                 <div className="overhaul-add-service" style={{transform: isOpen ? 'rotate(45deg)': "none" , transition: 'transform 0.5s ease'}}><img src={addimg} alt=""/></div>
             </div>
             <div

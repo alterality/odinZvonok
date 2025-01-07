@@ -24,13 +24,6 @@ function MainPageSSS() {
                     </div>
                 </div>
 
-                <div className="agreement-mobile">
-                    <input type="checkbox" id="privacyPolicy"/>
-                    <label color='black' htmlFor="privacyPolicy">
-                        Я прочитал и согласен с
-                        <a href="#" className="policy-link">политикой конфиденциальности</a>
-                    </label>
-                </div>
 
                 <button className="submit-button-mobile">Отправить</button>
             </div>
