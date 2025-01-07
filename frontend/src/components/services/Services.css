@@ -38,7 +38,7 @@
 .service-item-content-section{
   display: flex;
   flex-direction: column;
- width: 30%;
+ width: 100%;
 }
 .transport-service-nav{
   background: #1D1D1B;
