@@ -270,6 +270,141 @@ export const getIndividualWorkStages = createAsyncThunk(
         }
     }
 );
+export const getApartmentServices = createAsyncThunk(
+    "api/getApartmentServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/apartment-services/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getBusinessServices = createAsyncThunk(
+    "api/getBusinessServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/business-services/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getAdditionalServicesInformation = createAsyncThunk(
+    "api/getAdditionalServicesInformation",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/additional-services-information/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getCarRepairsInformation = createAsyncThunk(
+    "api/getCarRepairsInformation",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/car-repairs-information/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getCargoTransportation = createAsyncThunk(
+    "api/getCargoTransportation",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/cargo-transportation/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getCleaning = createAsyncThunk(
+    "api/getCleaning",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/cleaning/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getClimbers = createAsyncThunk(
+    "api/getClimbers",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/climbers/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getMinorRepairs = createAsyncThunk(
+    "api/getMinorRepairs",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/minor-repairs/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getHouseServices = createAsyncThunk(
+    "api/getHouseServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/house-services/1/`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const postApplication = createAsyncThunk(
+    "api/postApplication",
+    async function (application, { rejectWithValue }) {
+        try {
+            const response = await instance.post(`/application/`, {application});
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const postBusinessApplication = createAsyncThunk(
+    "api/postBusinessApplication",
+    async function (application, { rejectWithValue }) {
+        try {
+            const response = await instance.post(`/business-application/`,{application});
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
+
+
 
 const apiSlice = createSlice({
     name: "api",
@@ -298,6 +433,15 @@ const apiSlice = createSlice({
         workStages: [],
         advantagesIvidual: [],
         workStagesIndividual:[],
+        additionalServicesInformation: [],
+        apartmentServices:[],
+        businessServices: [],
+        carRepairsInformation: [],
+        cargoTransportation: [],
+        cleaning: [],
+        climbers: [],
+        minorRepairs: [],
+        houseServices:[],
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -566,6 +710,138 @@ const apiSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+            .addCase(getAdditionalServicesInformation.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getAdditionalServicesInformation.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.additionalServicesInformation= payload;
+            })
+            .addCase(getAdditionalServicesInformation.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getApartmentServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getApartmentServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.apartmentServices= payload;
+            })
+            .addCase(getApartmentServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getBusinessServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getBusinessServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.businessServices= payload;
+            })
+            .addCase(getBusinessServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getCarRepairsInformation.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getCarRepairsInformation.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.carRepairsInformaion= payload;
+            })
+            .addCase(getCarRepairsInformation.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getCargoTransportation.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getCargoTransportation.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.cargoTransportation= payload;
+            })
+            .addCase(getCargoTransportation.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getCleaning.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getCleaning.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.cleaning= payload;
+            })
+            .addCase(getCleaning.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getClimbers.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getClimbers.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.climbers= payload;
+            })
+            .addCase(getClimbers.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getMinorRepairs.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getMinorRepairs.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.minorRepairs= payload;
+            })
+            .addCase(getMinorRepairs.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getHouseServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getHouseServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.houseServices= payload;
+            })
+            .addCase(getHouseServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(postApplication.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(postApplication.fulfilled, (state, { payload }) => {
+                state.loading = false;
+            })
+            .addCase(postApplication.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(postBusinessApplication.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(postBusinessApplication.fulfilled, (state, { payload }) => {
+                state.loading = false;
+            })
+            .addCase(postBusinessApplication.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+
+
 
     },
 });
