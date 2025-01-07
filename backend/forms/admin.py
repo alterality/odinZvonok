@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import ServiceRequest
+from .models import Application, BusinessApplication
 
-admin.site.register(ServiceRequest)
+admin.site.register(Application)
+admin.site.register(BusinessApplication)
