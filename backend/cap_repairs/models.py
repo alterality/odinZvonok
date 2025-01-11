@@ -18,8 +18,8 @@ class CapRepairsTitle(models.Model):
         return self.title
     
     class Meta:
-        verbose_name = 'Тариф для квартир'
-        verbose_name_plural = 'Тарифы для квартир'
+        verbose_name = 'Описание страницы кап. ремонта'
+        verbose_name_plural = 'Описание страницы кап. ремонта'
 
 
 
