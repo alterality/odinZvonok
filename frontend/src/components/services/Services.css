@@ -8,6 +8,14 @@
   padding: 25px ;
 
 }
+.cleaning{
+  background-color: #777777;
+  border-radius: 8px;
+  padding: 5px;
+}
+.cleaning h2{
+  font-family: Stapel;
+}
 .capital-works-title p {
   font-family: Stapel;
   font-size: 40px;
@@ -96,8 +104,8 @@
   text-align: left;
   margin-left: 10px;
   justify-content: left;
-  font-size: 18px ;
-  font-family: Inter;
+  font-size: 32px;
+  font-family: Stapel;
 }
 .tab-content-image{
   width: 70%;
@@ -165,6 +173,7 @@
   padding-bottom: 5px;
   color: #878787;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 
@@ -179,6 +188,9 @@
 .tarif-plan{
   background-color: #1D1D1B;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 8px;
   padding: 20px;
   margin: 5px;
@@ -194,6 +206,10 @@
 .tarif-plan-advantages{
   padding: 15px;
 }
+.tarif-plan-advantages ul{
+  text-align: left;
+}
+
 
 .tarifs-section{
   display: flex;
@@ -591,7 +607,7 @@
   .tab-content p{
     margin-left: 0;
     padding: 10px ;
-    font-size: 14px;
+    font-size: 24px;
   }
 }
 @media (max-width: 768px) {
@@ -599,9 +615,6 @@
       flex-direction: column;
       align-items: center;
     }
-  .service-item-content-section{
-    width: 40%;
-  }
   .capital-works-title p{
     font-size: 20px;
   }
@@ -705,5 +718,8 @@
     justify-content: center;
     padding: 25px;
 
+  }
+  .tab-content p{
+    font-size: 18px;
   }
 }

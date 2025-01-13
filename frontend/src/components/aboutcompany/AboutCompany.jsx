@@ -3,7 +3,7 @@ import aboutconpimg1 from '../../assets/aboutcomp.png';
 
 import './AboutCompany.css';
 import {useDispatch, useSelector} from "react-redux";
-import {getAboutCompany, getClients, getHomeAboutCompany, getTeam} from "../../store/apiSlice";
+import {getAboutCompany, getClients, getHomeAboutCompany, getTeam, resetIsLoaded} from "../../store/apiSlice";
 
 const AboutCompany = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,9 @@ const AboutCompany = () => {
     dispatch(getAboutCompany())
     dispatch(getTeam())
     dispatch(getClients())
+    return () => {
+      dispatch(resetIsLoaded());
+    };
   }, [dispatch]);
   return (
     <div className="about-company">

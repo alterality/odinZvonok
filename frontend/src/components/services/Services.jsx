@@ -12,7 +12,12 @@ import * as motion from "motion/react-client"
 import { AnimatePresence } from "motion/react"
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getApartmentServices, getHouseServices} from "../../store/apiSlice";
+import {
+    getAdditionalServicesInformation,
+    getApartmentServices,
+    getBusinessServices, getCargoTransportation, getCleaning, getClimbers,
+    getHouseServices, getMinorRepairs, resetIsLoaded
+} from "../../store/apiSlice";
 const ExpandableBlock = ({ title,number, children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = React.useRef(null);
@@ -83,7 +88,7 @@ const TransportSlide =({tabs}) => {
     const [selectedTab, setSelectedTab] = useState(tabs[0].id)
     const container = {
         width: "100%",
-        height: "100%",
+        height: "120%",
         maxHeight: "1000px",
         borderRadius: 10,
         background: "#1D1D1B",
@@ -152,16 +157,30 @@ const TransportSlide =({tabs}) => {
 const Services = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const {apartmentServices,houseServices} = useSelector((state) => state.api)
+    const {
+        apartmentServices,
+        houseServices,
+        businessServices,
+        additionalServicesInformation,
+        climbers,
+        cleaning,
+        minorRepairs,
+        cargoTransportation,
+    } = useSelector((state) => state.api)
     useEffect(() => {
         dispatch(getApartmentServices())
         dispatch(getHouseServices())
+        dispatch(getBusinessServices())
+        dispatch(getAdditionalServicesInformation())
+        dispatch(getClimbers())
+        dispatch(getCleaning())
+        dispatch(getMinorRepairs())
+        dispatch(getCargoTransportation())
+        return () => {
+            dispatch(resetIsLoaded());
+        };
     }, [dispatch]);
-    useEffect(() => {
-        console.log(apartmentServices, 'квартиры')
-        console.log(houseServices, 'дома')
-    }, [houseServices,apartmentServices]);
-    const transports = [
+    const [transports, setTransports] = useState([
         {
             id: 1, title: 'Минивен', img : 'https://www.mercedesmagazin.ru/img/nblock/143-2/mercedes-W639.jpg',
 
@@ -177,7 +196,27 @@ const Services = () => {
         {
             id: 4, title: 'Фуры', img : 'https://static.tildacdn.com/tild6232-6661-4339-a366-653430386266/a0fe0e60a2b351cb9f89.jpg', description: '',
         }
-    ]
+    ])
+    useEffect(() => {
+        // Выборочное обновление description
+        setTransports((prevTransports) =>
+            prevTransports?.map((transport) => {
+                if (transport.id === 1) {
+                    return { ...transport, description: cargoTransportation?.minivan };
+                }
+                if (transport.id === 2) {
+                    return { ...transport, description: cargoTransportation?.porter };
+                }
+                if (transport.id === 3) {
+                    return { ...transport, description: cargoTransportation?.sprinter };
+                }
+                if (transport.id === 4) {
+                    return { ...transport, description: cargoTransportation?.fura };
+                }
+                return transport;
+            })
+        );
+    }, [cargoTransportation]);
     return (
         <div className="ServicesCont">
             <div className='header-block'><h1 className="services-title header-font">ОКАЗЫВАЕМ СЛЕДУЮЩИЕ УСЛУГИ</h1>
@@ -192,18 +231,11 @@ const Services = () => {
                             <div className="info-container">
                                 <div className="center-text">
                                     <hr className="divider"/>
-                                    <p>Надёжные мастера для вашего дома: сантехника, электрика и ремонт бытовой техники.
-                                        Выполним работы быстро и качественно, чтобы ваш дом всегда оставался комфортным
-                                        и
-                                        безопасным.</p>
+                                    <p>{apartmentServices[0]?.text_1}</p>
                                 </div>
                                 <div className="right-text">
                                     <hr className="divider"/>
-                                    <p>От мелкого ремонта до комплексных услуг: мы решим любые бытовые задачи по
-                                        сантехнике,
-                                        электрике и ремонту техники. Оставьте заявку, и наши специалисты свяжутся с вами
-                                        для
-                                        уточнения всех деталей.</p>
+                                    <p>{apartmentServices[0]?.text_2}</p>
                                 </div>
                             </div>
                         </div>
@@ -212,67 +244,45 @@ const Services = () => {
                     {/* 1.2 секция  */}
                     <div className="tarifs-section">
                         <div className='tarif-plan'>
-                            <h2 className='header-font tarif-header'>ТАРИФ «СТАНДАРТ»</h2>
                             <div>
-                                <div className='tarif-plan-item'>
-                                    <p>Сантехника</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Электрика</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Плотницкие работы</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
+                                <h2 className='header-font tarif-header'>ТАРИФ «СТАНДАРТ»</h2>
+                                <div>
+                                    {apartmentServices[0]?.services?.map((service) => (
+                                        <div className='tarif-plan-item' key={service.id}>
+                                            <p>{service.value}</p>
+                                            <img src={servicesPNG} alt="include"/>
+                                        </div>
+                                    ))}
 
+                                </div>
+                                <div className="tarif-plan-advantages">
+                                    <ul>
+                                        {apartmentServices[0]?.advantages?.map((advantage) => (
+                                            <li key={advantage.id}>{advantage.value}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
-                            <div className="tarif-plan-advantages">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <h2>Стоимость тарифа 1500 сом в месяц</h2>
+                            <h2>{apartmentServices[0]?.price}</h2>
                         </div>
                         <div className='tarif-plan'>
-                        <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
+                            <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
                             <div>
-                                <div className='tarif-plan-item'>
-                                    <p>Сантехника</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Электрика</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Плотницкие работы</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Ремонт бытовой техники</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Установка межкомнатных дверей и замена замков </p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
+                                {apartmentServices[1]?.services?.map((service) => (
+                                    <div className='tarif-plan-item' key={service.id}>
+                                        <p>{service.value}</p>
+                                        <img src={servicesPNG} alt="include"/>
+                                    </div>
+                                ))}
                             </div>
                             <div className="tarif-plan-advantages">
                                 <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                    {apartmentServices[1]?.advantages?.map((advantage) => (
+                                        <li key={advantage.id}>{advantage.value}</li>
+                                    ))}
                                 </ul>
                             </div>
-                            <h2>Стоимость тарифа 2500 сом в месяц</h2>
+                            <h2>{apartmentServices[1]?.price}</h2>
                         </div>
                     </div>
                 </div>
@@ -295,18 +305,11 @@ const Services = () => {
                             <div className="info-container blackText">
                                 <div className="center-text">
                                     <hr className="divider-white"/>
-                                    <p>Надёжные мастера для вашего дома: сантехника, электрика и ремонт бытовой техники.
-                                        Выполним
-                                        работы быстро и качественно, чтобы ваш дом всегда оставался комфортным и
-                                        безопасным.</p>
+                                    <p>{houseServices[0]?.text_1}</p>
                                 </div>
                                 <div className="right-text">
                                     <hr className="divider-white"/>
-                                    <p>От мелкого ремонта до комплексных услуг: мы решим любые бытовые задачи по
-                                        сантехнике,
-                                        электрике и ремонту техники. Оставьте заявку, и наши специалисты свяжутся с вами
-                                        для
-                                        уточнения всех деталей.</p>
+                                    <p>{houseServices[0]?.text_2}</p>
                                 </div>
                             </div>
                         </div>
@@ -315,68 +318,44 @@ const Services = () => {
                         <div className='tarif-plan'>
                             <h2 className='header-font tarif-header'>ТАРИФ «СТАНДАРТ»</h2>
                             <div>
-                                <div className='tarif-plan-item'>
-                                    <p>Сантехника</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Электрика</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Плотницкие работы</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
+                                {houseServices[0]?.services?.map((service)=> (
+                                    <div className='tarif-plan-item' key={service.id}>
+                                        <p>{service.value}</p>
+                                        <img src={servicesPNG} alt="include"/>
+                                    </div>
+                                ))}
                             </div>
                             <div className="tarif-plan-advantages">
                                 <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                    {houseServices[0]?.advantages?.map((advantage)=>(
+                                        <li key={advantage.id}>
+                                            {advantage.value}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                            <h2>Стоимость тарифа 1500 сом в месяц</h2>
+                            <h2>{houseServices[0]?.price}</h2>
                         </div>
                         <div className='tarif-plan'>
                         <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
                             <div>
-                                <div className='tarif-plan-item'>
-                                    <p>Сантехника</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Электрика</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Плотницкие работы</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Ремонт бытовой техники</p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Установка межкомнатных дверей и замена замков </p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
-                                <div className='tarif-plan-item'>
-                                    <p>Установка межкомнатных дверей и замена замков </p>
-                                    <img src={servicesPNG} alt="include"/>
-                                </div>
+                                {houseServices[0]?.services?.map((service)=> (
+                                    <div className='tarif-plan-item' key={service.id}>
+                                        <p>{service.value}</p>
+                                        <img src={servicesPNG} alt="include"/>
+                                    </div>
+                                ))}
                             </div>
                             <div className="tarif-plan-advantages">
                                 <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                    {houseServices[1]?.advantages?.map((advantage) => (
+                                        <li key={advantage.id}>
+                                            {advantage.value}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                            <h2>Стоимость тарифа 2500 сом в месяц</h2>
+                            <h2>{houseServices[1]?.price}</h2>
                         </div>
                     </div>
                 </div>
@@ -403,25 +382,16 @@ const Services = () => {
 
                                     <div className="center-text">
                                         <hr className="divider"/>
-                                        <p>Надёжные мастера для вашего дома: сантехника, электрика и ремонт бытовой
-                                            техники.
-                                            Выполним работы быстро и качественно, чтобы ваш дом всегда оставался
-                                            комфортным
-                                            и безопасным.</p>
+                                        <p>{businessServices.text_1}</p>
                                     </div>
                                     <div className="right-text">
                                         <hr className="divider"/>
-                                        <p>От мелкого ремонта до комплексных услуг: мы решим любые бытовые задачи по
-                                            сантехнике,
-                                            электрике и ремонту техники. Оставьте заявку, и наши специалисты свяжутся с
-                                            вами
-                                            для
-                                            уточнения всех деталей.</p>
+                                        <p>{businessServices.text_2}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='services-business-form'>
+                        <form className='services-business-form'>
                             <h1 className='services-business-form-header'>ФОРМА ЗАЯВКИ</h1>
                             <div>
                                 <h1 className="services-business-form-underheader">
@@ -442,14 +412,19 @@ const Services = () => {
                                     </p>
                                     <div className="services-business-form-inputs">
                                         <input type="text" className="services-business-form-input"
+                                               name="company_name"
                                                placeholder="Название компании*"/>
                                         <input type="text" className="services-business-form-input"
+                                               name="company_type"
                                                placeholder="Тип компании (общепит, офис, барбершоп, и т. д.)*"/>
                                         <input type="text" className="services-business-form-input"
+                                               name='contact_person'
                                                placeholder="Контактное лицо*"/>
                                         <input className="services-business-form-input" type="tel"
+                                               name="phone_number"
                                                placeholder="Номер телефона*"/>
                                         <input className="services-business-form-input" type="text"
+                                               name="site"
                                                placeholder="Сайт (если есть)"/>
                                     </div>
                                 </div>
@@ -461,12 +436,13 @@ const Services = () => {
                                 <div className='services-business-form-application-rightBlock'>
                                     <div className="services-business-form-inputs">
                                     <textarea className="services-business-form-textarea" rows="8"
+                                              name="content"
                                               placeholder="Сообщение*"></textarea>
                                         <button className="services-business-form-button">Отправить</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
 
                     </div>
 
@@ -496,21 +472,11 @@ const Services = () => {
 
                                     <div className="center-text">
                                         <hr className="divider-white"/>
-                                        <p>Надёжные мастера для вашего дома: сантехника, электрика и ремонт бытовой
-                                            техники.
-                                            Выполним работы быстро и качественно, чтобы ваш дом всегда оставался
-                                            комфортным
-                                            и
-                                            безопасным.</p>
+                                        <p>{additionalServicesInformation.text_1}</p>
                                     </div>
                                     <div className="right-text">
                                         <hr className="divider-white"/>
-                                        <p>От мелкого ремонта до комплексных услуг: мы решим любые бытовые задачи по
-                                            сантехнике,
-                                            электрике и ремонту техники. Оставьте заявку, и наши специалисты свяжутся с
-                                            вами
-                                            для
-                                            уточнения всех деталей.</p>
+                                        <p>{additionalServicesInformation.text_2}</p>
                                     </div>
                                 </div>
                             </div>
@@ -520,28 +486,20 @@ const Services = () => {
                                 <div className="service-item-content">
                                     <div className='service-item-content-section'>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
+                                            {climbers?.services?.map((service)=> (
+                                                <div className="content-section-list-element" key={service.id}>
+                                                    <p>{service.value}</p>
+                                                    <p>0{service.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
                             </ExpandableBlock>
                             <ExpandableBlock title="Клининг" number='002'>
-
+                                <div className="cleaning">
+                                    <h2>{cleaning?.text}</h2>
+                                </div>
                             </ExpandableBlock>
                             {/*<ExpandableBlock title="Грузоперевозка" number='003'>*/}
                             {/*    <div className="transport-service-content">*/}
@@ -560,135 +518,67 @@ const Services = () => {
                                     <div className='service-item-content-section'>
                                         <h3>Сантехника</h3>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>05</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>06</p>
-                                            </div>
+                                            {minorRepairs?.santehnika?.map((item) => (
+                                                <div className="content-section-list-element" key={item.id}>
+                                                    <p>{item.value}</p>
+                                                    <p>0{item.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                     <div className='service-item-content-section'>
                                         <h3>Электрика</h3>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
+                                            {minorRepairs?.elektrika?.map((item) => (
+                                                <div className="content-section-list-element" key={item.id}>
+                                                    <p>{item.value}</p>
+                                                    <p>0{item.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                     <div className='service-item-content-section'>
                                         <h3>Двери и окна</h3>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
+                                            {minorRepairs?.doorsAndWindows?.map((item) => (
+                                                <div className="content-section-list-element" key={item.id}>
+                                                    <p>{item.value}</p>
+                                                    <p>0{item.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                     <div className='service-item-content-section'>
                                         <h3>Настенные работы</h3>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
+                                            {minorRepairs?.stena?.map((item) => (
+                                                <div className="content-section-list-element" key={item.id}>
+                                                    <p>{item.value}</p>
+                                                    <p>0{item.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                     <div className='service-item-content-section'>
                                         <h3>Напольные покрытия</h3>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
+                                            {minorRepairs?.pol?.map((item) => (
+                                                <div className="content-section-list-element" key={item.id}>
+                                                    <p>{item.value}</p>
+                                                    <p>0{item.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                     <div className='service-item-content-section'>
                                         <h3>Бытовая техника</h3>
                                         <div className="content-section-list">
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>01</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>02</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>03</p>
-                                            </div>
-                                            <div className="content-section-list-element">
-                                                <p>Элемент</p>
-                                                <p>04</p>
-                                            </div>
+                                            {minorRepairs?.bytTehnika?.map((item) => (
+                                                <div className="content-section-list-element" key={item.id}>
+                                                    <p>{item.value}</p>
+                                                    <p>0{item.id}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

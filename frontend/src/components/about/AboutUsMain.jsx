@@ -3,7 +3,7 @@ import aboutusmainpng from '../../assets/AdobeStock_292230412 1.png';
 import morepng from '../../assets/Component 8.png';
 import './AboutUsMain.css';
 import {useDispatch, useSelector} from "react-redux";
-import {getHomeAboutCompany} from "../../store/apiSlice";
+import {getHomeAboutCompany, resetIsLoaded} from "../../store/apiSlice";
 import {Link} from "react-router-dom";
 
 const AboutUsMain = () => {
@@ -11,6 +11,9 @@ const AboutUsMain = () => {
     const {homeAboutCompany} = useSelector(state => state.api);
     useEffect(() => {
         dispatch(getHomeAboutCompany())
+        return () => {
+            dispatch(resetIsLoaded());
+        };
     }, [dispatch]);
     return (
         <div className="about-us-main">

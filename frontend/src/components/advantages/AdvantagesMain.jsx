@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import advantagesimg from '../../assets/Frame 53.png';
 import './AdvantagesMain.css';
 import {useDispatch, useSelector} from "react-redux";
-import {getHomeAdvantage} from "../../store/apiSlice";
+import {getHomeAdvantage, resetIsLoaded} from "../../store/apiSlice";
 
 const AdvantagesMain = () => {
   const [descriptions,setDescriptions] = useState([])
@@ -11,6 +11,9 @@ const AdvantagesMain = () => {
   const {homeAdvantage} = useSelector(state => state.api);
   useEffect(() => {
     dispatch(getHomeAdvantage())
+    return () => {
+      dispatch(resetIsLoaded());
+    };
   }, [dispatch]);
   useEffect(() => {
     setDescriptions(Object.keys(homeAdvantage)

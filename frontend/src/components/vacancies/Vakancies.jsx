@@ -6,7 +6,7 @@ import vksimg3 from '../../assets/draw an icon of professionalism on a vector.pn
 import vksimg4 from '../../assets/location bishkek icon (2).png';
 import './Vakancies.css';
 import {useDispatch, useSelector} from "react-redux";
-import {getDetails, getPartnershipProgram, getVacancies} from "../../store/apiSlice";
+import {getDetails, getPartnershipProgram, getVacancies, resetIsLoaded} from "../../store/apiSlice";
 
 const Vakancies = () => {
   const [section1, setSection1] = useState([])
@@ -35,6 +35,9 @@ const Vakancies = () => {
     dispatch(getPartnershipProgram())
     dispatch(getDetails())
     dispatch(getVacancies())
+    return () => {
+      dispatch(resetIsLoaded());
+    };
   }, [dispatch]);
   useEffect(() => {
     setSection1(toMassive(details,1))

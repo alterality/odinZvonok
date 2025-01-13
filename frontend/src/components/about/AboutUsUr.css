@@ -164,12 +164,13 @@
     width: 25%; 
     height: 200px; 
     display: flex;
+    padding: 15px;
     justify-content: center;
     align-items: center;
     border: 2px solid rgba(169, 169, 169, 1); 
     border-radius: 8px; 
     color: white;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     background-color: transparent; 
   }
@@ -410,6 +411,8 @@
     font-size: 30px;
     margin-bottom: 20px;
     margin-left: -255px;
+    text-indent: 2em;
+    font-family: Stapel;
   }
   
   .AboutUsFiz-form-left-subheading-ur {

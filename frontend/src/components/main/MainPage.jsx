@@ -3,13 +3,16 @@ import React, {useEffect} from 'react';
 import { FaInstagram, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import './MainPage.css';
 import {useDispatch, useSelector} from "react-redux";
-import {getHomePage} from "../../store/apiSlice";
+import {getHomePage, resetIsLoaded} from "../../store/apiSlice";
 
 const MainPage = () => {
     const dispatch = useDispatch();
     const {homePage} = useSelector(state => state.api);
     useEffect(() => {
         dispatch(getHomePage())
+        return () => {
+            dispatch(resetIsLoaded());
+        };
     }, [dispatch]);
   return (
       <div className="main-page">

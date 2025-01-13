@@ -274,7 +274,7 @@ export const getApartmentServices = createAsyncThunk(
     "api/getApartmentServices",
     async function (_, { rejectWithValue }) {
         try {
-            const response = await instance.get(`/apartment-services/1/`);
+            const response = await instance.get(`/apartment-services/`);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -370,7 +370,7 @@ export const getHouseServices = createAsyncThunk(
     "api/getHouseServices",
     async function (_, { rejectWithValue }) {
         try {
-            const response = await instance.get(`/house-services/1/`);
+            const response = await instance.get(`/house-services/`);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -402,7 +402,90 @@ export const postBusinessApplication = createAsyncThunk(
         }
     }
 );
-
+export const getCapRepairsTitle = createAsyncThunk(
+    "api/getCapRepairsTitle",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/cap-repairs-title/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getFloorWorkCapServices = createAsyncThunk(
+    "api/getFloorWorkCapServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/floor-work-cap-services/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getWallWorkCapServices = createAsyncThunk(
+    "api/getWallWorkCapServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/wall-work-cap-services/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getTilingWorkCapServices = createAsyncThunk(
+    "api/getTilingWorkCapServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/tiling-work-cap-services/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getPlumbingWorkCapServices = createAsyncThunk(
+    "api/getPlumbingWorkCapServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/plumbing-work-cap-services/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getDismantlingWorkCapServices = createAsyncThunk(
+    "api/getDismantlingWorkCapServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/dismantling-work-cap-services/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
+export const getElectricalWorkCapServices = createAsyncThunk(
+    "api/getElectricalWorkCapServices",
+    async function (_, { rejectWithValue }) {
+        try {
+            const response = await instance.get(`/electrical-work-cap-services/1`,);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
+        }
+    }
+);
 
 
 
@@ -410,6 +493,7 @@ const apiSlice = createSlice({
     name: "api",
     initialState: {
         loading: false,
+        isLoaded: false,
         error: null,
         aboutCompany: [],
         services: [],
@@ -442,8 +526,24 @@ const apiSlice = createSlice({
         climbers: [],
         minorRepairs: [],
         houseServices:[],
+        capRepairsTitle:[],
+        floorWorkCapServices: [],
+        wallWorkCapServices:[],
+        tilingWorkCapServices:[],
+        plumbingWorkCapServices: [],
+        dismantlingWorkCapServices: [],
+        electricalWorkCapServices: [],
     },
-    reducers: {},
+    reducers: {
+        resetIsLoaded: (state) => {
+            state.isLoaded = false
+        },
+        isLoadedTrue: (state) =>{
+            state.isLoaded = true
+        }
+
+
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAboutCompany.pending, (state) => {
@@ -452,6 +552,7 @@ const apiSlice = createSlice({
             })
             .addCase(getAboutCompany.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.aboutCompany = payload;
             })
             .addCase(getAboutCompany.rejected, (state, action) => {
@@ -464,6 +565,7 @@ const apiSlice = createSlice({
             })
             .addCase(getServices.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.services = payload;
             })
             .addCase(getServices.rejected, (state, action) => {
@@ -476,6 +578,7 @@ const apiSlice = createSlice({
             })
             .addCase(getVacancies.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.vacancies = payload;
             })
             .addCase(getVacancies.rejected, (state, action) => {
@@ -488,6 +591,7 @@ const apiSlice = createSlice({
             })
             .addCase(getTeam.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.team = payload;
             })
             .addCase(getTeam.rejected, (state, action) => {
@@ -500,6 +604,7 @@ const apiSlice = createSlice({
             })
             .addCase(getAdvantages.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.advantages = payload;
             })
             .addCase(getAdvantages.rejected, (state, action) => {
@@ -512,6 +617,7 @@ const apiSlice = createSlice({
             })
             .addCase(getAssistance.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.assistance = payload;
             })
             .addCase(getAssistance.rejected, (state, action) => {
@@ -524,6 +630,7 @@ const apiSlice = createSlice({
             })
             .addCase(getAssistances.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.assistances = payload;
             })
             .addCase(getAssistances.rejected, (state, action) => {
@@ -536,6 +643,7 @@ const apiSlice = createSlice({
             })
             .addCase(getClients.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.clients = payload;
             })
             .addCase(getClients.rejected, (state, action) => {
@@ -548,6 +656,7 @@ const apiSlice = createSlice({
             })
             .addCase(getDetails.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.details = payload;
             })
             .addCase(getDetails.rejected, (state, action) => {
@@ -560,6 +669,7 @@ const apiSlice = createSlice({
             })
             .addCase(getDocuments.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.documents = payload;
             })
             .addCase(getDocuments.rejected, (state, action) => {
@@ -572,6 +682,7 @@ const apiSlice = createSlice({
             })
             .addCase(getHomeAboutCompany.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.homeAboutCompany = payload;
             })
             .addCase(getHomeAboutCompany.rejected, (state, action) => {
@@ -584,6 +695,7 @@ const apiSlice = createSlice({
             })
             .addCase(getHomeAdvantage.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.homeAdvantage = payload;
             })
             .addCase(getHomeAdvantage.rejected, (state, action) => {
@@ -596,6 +708,7 @@ const apiSlice = createSlice({
             })
             .addCase(getHomePage.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.homePage = payload;
             })
             .addCase(getHomePage.rejected, (state, action) => {
@@ -608,6 +721,7 @@ const apiSlice = createSlice({
             })
             .addCase(getIndividualDocuments.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.individualDocuments = payload;
             })
             .addCase(getIndividualDocuments.rejected, (state, action) => {
@@ -620,6 +734,7 @@ const apiSlice = createSlice({
             })
             .addCase(getIndividualEntities.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.individualEntities = payload;
             })
             .addCase(getIndividualEntities.rejected, (state, action) => {
@@ -632,6 +747,7 @@ const apiSlice = createSlice({
             })
             .addCase(getLegalDocuments.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.legalDocuments= payload;
             })
             .addCase(getLegalDocuments.rejected, (state, action) => {
@@ -644,6 +760,7 @@ const apiSlice = createSlice({
             })
             .addCase(getLegalEntities.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.legalEntities= payload;
             })
             .addCase(getLegalEntities.rejected, (state, action) => {
@@ -656,6 +773,7 @@ const apiSlice = createSlice({
             })
             .addCase(getOurServices.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.ourServices= payload;
             })
             .addCase(getOurServices.rejected, (state, action) => {
@@ -668,6 +786,7 @@ const apiSlice = createSlice({
             })
             .addCase(getPartnershipProgram.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.partnershipProgram= payload;
             })
             .addCase(getPartnershipProgram.rejected, (state, action) => {
@@ -680,6 +799,7 @@ const apiSlice = createSlice({
             })
             .addCase(getWorkStages.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.workStages= payload;
             })
             .addCase(getWorkStages.rejected, (state, action) => {
@@ -692,6 +812,7 @@ const apiSlice = createSlice({
             })
             .addCase(getIndividualAdvantages.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.advantagesIvidual= payload;
             })
             .addCase(getIndividualAdvantages.rejected, (state, action) => {
@@ -704,6 +825,7 @@ const apiSlice = createSlice({
             })
             .addCase(getIndividualWorkStages.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.workStagesIndividual= payload;
             })
             .addCase(getIndividualWorkStages.rejected, (state, action) => {
@@ -716,6 +838,7 @@ const apiSlice = createSlice({
             })
             .addCase(getAdditionalServicesInformation.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.additionalServicesInformation= payload;
             })
             .addCase(getAdditionalServicesInformation.rejected, (state, action) => {
@@ -728,6 +851,7 @@ const apiSlice = createSlice({
             })
             .addCase(getApartmentServices.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.apartmentServices= payload;
             })
             .addCase(getApartmentServices.rejected, (state, action) => {
@@ -740,6 +864,7 @@ const apiSlice = createSlice({
             })
             .addCase(getBusinessServices.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.businessServices= payload;
             })
             .addCase(getBusinessServices.rejected, (state, action) => {
@@ -752,6 +877,7 @@ const apiSlice = createSlice({
             })
             .addCase(getCarRepairsInformation.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.carRepairsInformaion= payload;
             })
             .addCase(getCarRepairsInformation.rejected, (state, action) => {
@@ -764,6 +890,7 @@ const apiSlice = createSlice({
             })
             .addCase(getCargoTransportation.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.cargoTransportation= payload;
             })
             .addCase(getCargoTransportation.rejected, (state, action) => {
@@ -776,6 +903,7 @@ const apiSlice = createSlice({
             })
             .addCase(getCleaning.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.cleaning= payload;
             })
             .addCase(getCleaning.rejected, (state, action) => {
@@ -788,6 +916,7 @@ const apiSlice = createSlice({
             })
             .addCase(getClimbers.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.climbers= payload;
             })
             .addCase(getClimbers.rejected, (state, action) => {
@@ -800,6 +929,7 @@ const apiSlice = createSlice({
             })
             .addCase(getMinorRepairs.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.minorRepairs= payload;
             })
             .addCase(getMinorRepairs.rejected, (state, action) => {
@@ -812,6 +942,7 @@ const apiSlice = createSlice({
             })
             .addCase(getHouseServices.fulfilled, (state, { payload }) => {
                 state.loading = false;
+                state.isLoaded = true
                 state.houseServices= payload;
             })
             .addCase(getHouseServices.rejected, (state, action) => {
@@ -840,10 +971,101 @@ const apiSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
-
+            .addCase(getCapRepairsTitle.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getCapRepairsTitle.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.capRepairsTitle = payload;
+            })
+            .addCase(getCapRepairsTitle.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getFloorWorkCapServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getFloorWorkCapServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.floorWorkCapServices = payload;
+            })
+            .addCase(getFloorWorkCapServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getWallWorkCapServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getWallWorkCapServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.wallWorkCapServices = payload;
+            })
+            .addCase(getWallWorkCapServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getTilingWorkCapServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getTilingWorkCapServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.tilingWorkCapServices = payload;
+            })
+            .addCase(getTilingWorkCapServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getPlumbingWorkCapServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getPlumbingWorkCapServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.plumbingWorkCapServices = payload;
+            })
+            .addCase(getPlumbingWorkCapServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getDismantlingWorkCapServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getDismantlingWorkCapServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.dismantlingWorkCapServices = payload;
+            })
+            .addCase(getDismantlingWorkCapServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getElectricalWorkCapServices.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getElectricalWorkCapServices.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.isLoaded = true
+                state.electricalWorkCapServices = payload;
+            })
+            .addCase(getElectricalWorkCapServices.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
 
 
     },
 });
 
 export default apiSlice.reducer;
+export const {resetIsLoaded, isLoadedTrue} = apiSlice.actions
