@@ -5,7 +5,7 @@
     align-items: flex-start;
     position: relative;
     padding: 2rem;
-    margin-top: 20px;
+    background-color: #FFFFFF;
 }
 .about-us-main-infoBlock{
   display: flex;

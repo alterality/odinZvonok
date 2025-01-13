@@ -11,7 +11,7 @@ import {
     getIndividualAdvantages, getIndividualDocuments,
     getIndividualEntities, getIndividualWorkStages,
     getOurServices,
-    getWorkStages
+    getWorkStages, resetIsLoaded
 } from "../../store/apiSlice";
 
 const AboutUsFiz = () => {
@@ -57,11 +57,11 @@ const AboutUsFiz = () => {
         dispatch(getIndividualAdvantages())
         dispatch(getAssistance())
         dispatch(getIndividualDocuments())
+        return () => {
+            dispatch(resetIsLoaded());
+        };
 
     }, [dispatch]);
-    useEffect(() => {
-        console.log(individualDocuments)
-    }, [individualDocuments]);
     useEffect(() => {
         setServicesOur(toMassive(ourServices))
     }, [ourServices]);
@@ -145,8 +145,8 @@ const AboutUsFiz = () => {
 
                 </div>
 
-                <div class="helpblack-image-section-wrapper">
-                    <img src={blackcontimg} alt="Картинка" class="helpblack-image-container"/>
+                <div className="helpblack-image-section-wrapper">
+                    <img src={blackcontimg} alt="Картинка" className="helpblack-image-container"/>
                 </div>
             </div>
 

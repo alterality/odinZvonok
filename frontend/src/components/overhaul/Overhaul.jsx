@@ -1,11 +1,19 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Advantages from '../../assets/c7ad060e4599347affa1e8cef879597f.png'
 import addimg from '../../assets/Group 5.png'
 import './Overhaul.css'
 import { animate } from "motion/react"
+import {useDispatch, useSelector} from "react-redux";
+import {
+    getCapRepairsTitle, getDismantlingWorkCapServices, getElectricalWorkCapServices,
+    getFloorWorkCapServices, getPlumbingWorkCapServices,
+    getTilingWorkCapServices,
+    getWallWorkCapServices, resetIsLoaded
+} from "../../store/apiSlice";
 
 const ExpandableBlock = ({ title,number, list }) => {
     const [isOpen, setIsOpen] = useState(false);
+
     const contentRef = React.useRef(null);
     const blockRef = React.useRef(null);
     const toggleOpen = () => {
@@ -62,10 +70,10 @@ const ExpandableBlock = ({ title,number, list }) => {
                     style={{padding: "1rem"}}
                 >
                     <div className="item-container">
-                        {list.map((item,id) => (
-                            <div className="item" key={id}>
-                                <p>{item}</p>
-                                <p>{id+1}</p>
+                        {list?.map((item) => (
+                            <div className="item" key={item.id}>
+                                <p>{item?.value}</p>
+                                <p>{item?.id}</p>
                             </div>
                         ))}
                     </div>
@@ -76,44 +84,37 @@ const ExpandableBlock = ({ title,number, list }) => {
 };
 
 const Overhaul = () => {
+    const {capRepairsTitle, floorWorkCapServices, wallWorkCapServices, tilingWorkCapServices, plumbingWorkCapServices, dismantlingWorkCapServices, electricalWorkCapServices} = useSelector((state) => state.api)
     const services = [
-        {name: "РАБОТА ПО ПОЛУ", number: "001"},
-        {name: "РАБОТЫ ПО СТЕНАМ", number: "002"},
-        {name: "ПЛИТОЧНЫЕ РАБОТЫ", number: "003"},
-        {name: "САНТЕХНИЧЕСКИЕ РАБОТЫ", number: "004"},
-        {name: "ДЕМОНТАЖНЫЕ РАБОТЫ", number: "005"},
-        {name: "ЭЛЕКТРОМОНТАЖНЫЕ РАБОТЫ", number: "006" }
+        {name: "РАБОТА ПО ПОЛУ", number: "001", list: floorWorkCapServices},
+        {name: "РАБОТЫ ПО СТЕНАМ", number: "002", list: wallWorkCapServices},
+        {name: "ПЛИТОЧНЫЕ РАБОТЫ", number: "003", list: tilingWorkCapServices},
+        {name: "САНТЕХНИЧЕСКИЕ РАБОТЫ", number: "004", list: plumbingWorkCapServices},
+        {name: "ДЕМОНТАЖНЫЕ РАБОТЫ", number: "005" , list: dismantlingWorkCapServices},
+        {name: "ЭЛЕКТРОМОНТАЖНЫЕ РАБОТЫ", number: "006" , list: electricalWorkCapServices}
       ];
-    const list = [
-        "asassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-        "asassa",
-        "asassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-        "asaassa",
-        "asassa",
-        "asaassa",
-    ]
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCapRepairsTitle())
+        dispatch(getFloorWorkCapServices())
+        dispatch(getWallWorkCapServices())
+        dispatch(getTilingWorkCapServices())
+        dispatch(getPlumbingWorkCapServices())
+        dispatch(getDismantlingWorkCapServices())
+        dispatch(getElectricalWorkCapServices())
+        return () => {
+            dispatch(resetIsLoaded());
+        };
+    }, [dispatch]);
+
   return (
     <div className='overhaul-container'>
        <div className="overhaul-textcontainer">
         <div className="overhaul-content-wrapper">
           <div className="overhaul-text-container">
-            <h3 className="overhaul-heading">КАПИТАЛЬНЫЙ РЕМОНТ — НОВЫЙ УРОВЕНЬ ВАШЕГО КОМФОРТА</h3>
-            <p className="text">Капитальный ремонт — это возможность создать пространство, которое полностью соответствует вашим потребностям и стилю. Мы помогаем воплотить в жизнь самые смелые идеи, обновляя не только внешний вид, но и функциональность вашего помещения.</p>
+            <h3 className="overhaul-heading">{capRepairsTitle?.title}</h3>
+            <p className="text">{capRepairsTitle?.text}</p>
           </div>
           <div className="overhaul-image-container">
             <img src={Advantages} alt="Advantages" className="overhaul-image" />
@@ -125,7 +126,9 @@ const Overhaul = () => {
       <h2 className="overhaul-services-header">Список услуг</h2>
       <div className="overhaul-services-list">
         {services.map((service, index) => (
-            <ExpandableBlock title={service.name} number={service.number} list={list}/>
+            <div key={index}>
+                <ExpandableBlock title={service.name} number={service.number} list={service?.list?.services}/>
+            </div>
         ))}
       </div>
     </div>

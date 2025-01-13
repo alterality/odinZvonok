@@ -1,19 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Contacts.css';
+import {useDispatch} from "react-redux";
+import {getHomeAboutCompany, isLoadedTrue, resetIsLoaded} from "../../store/apiSlice";
 
 const Contacts = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getHomeAboutCompany())
+        return () => {
+            dispatch(resetIsLoaded());
+        };
+    }, [dispatch]);
   return (
-<div class="contacts">
-    <div class="contacts-header header-font">Контакты</div>
-    <div class="contacts-content">
+<div className="contacts">
+    <div className="contacts-header header-font">Контакты</div>
+    <div className="contacts-content">
         {/* <!-- Первая колонка: Сотрудничество и Офис --> */}
         <div>
-            <div class="contacts-cooperation">
-                <div class="contacts-cooperation-text header-font">Сотрудничество</div>
+            <div className="contacts-cooperation">
+                <div className="contacts-cooperation-text header-font">Сотрудничество</div>
             </div>
-            <div class="contacts-office">
-                <div class="contacts-office-text header-font">Офис</div>
-                <div class="contacts-address-phone">
+            <div className="contacts-office">
+                <div className="contacts-office-text header-font">Офис</div>
+                <div className="contacts-address-phone">
 
                 </div>
 
@@ -22,22 +31,22 @@ const Contacts = () => {
 
         {/* <!-- Вторая колонка: Серый текст, Кнопка и Адрес --> */}
         <div>
-            <div class="contacts-form">
-                <div class="contacts-form-text">Мы свяжемся с вами</div>
-                <button class="contacts-submit-button">Отправить заявку</button>
+            <div className="contacts-form">
+                <div className="contacts-form-text">Мы свяжемся с вами</div>
+                <button className="contacts-submit-button">Отправить заявку</button>
             </div>
-            <div class="contacts-address-phone">
-                <div class="contacts-office-address">Бишкек,ул. Ч.Айтматова 47а, 2 эт. к. № 3</div>
-                <div class="contacts-work-time">График работы:с 08:00 до 23:00 Без выходных</div>
+            <div className="contacts-address-phone">
+                <div className="contacts-office-address">Бишкек,ул. Ч.Айтматова 47а, 2 эт. к. № 3</div>
+                <div className="contacts-work-time">График работы:с 08:00 до 23:00 Без выходных</div>
             </div>
         </div>
 
         {/* <!-- Третья колонка: Серый текст, Электронная почта и Телефон --> */}
         <div>
-            <div class="contacts-email">
-                <div class="contacts-email-text">Напишите нам на электронную почту:</div>
-                <div class="contacts-email-address">ODINZVONOK@GMAIL.COM</div>
-                <div class="contacts-phone-number">+996–777-888-666</div>
+            <div className="contacts-email">
+                <div className="contacts-email-text">Напишите нам на электронную почту:</div>
+                <div className="contacts-email-address">ODINZVONOK@GMAIL.COM</div>
+                <div className="contacts-phone-number">+996–777-888-666</div>
             </div>
         </div>
     </div>

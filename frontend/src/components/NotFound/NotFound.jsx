@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './NotFound.css';
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {isLoadedTrue, resetIsLoaded} from "../../store/apiSlice";
 
 const NotFound = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(isLoadedTrue());
+    return () => {
+      dispatch(resetIsLoaded());
+    };
+  }, []);
   return (
     <div className="notfound-container">
       <div className="overlaynotfound"></div>

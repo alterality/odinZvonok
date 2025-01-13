@@ -13,21 +13,26 @@ import Services from './components/services/Services';
 import ServicesMain from './components/services/ServicesMain';
 import Vakancies from './components/vacancies/Vakancies';
 import MyRoutes from "./routes/MyRoutes";
+import React, {useEffect, useState} from "react";
+import Preloader from "./components/Preloader/Preloader";
+
 
 function App() {
-  return (
-    <div className="App">
-    <Navbar/>
-    {/* <Vakancies/> */}
-    {/* <AboutUsUr/> */}
-    {/* <AboutUsFiz/> */}
-    {/* <Services/> */}
-    {/* <AboutCompany/> */}
-    {/* <NotFound/> */}
-      <MyRoutes/>
-    <Footer/>
-    </div>
-  );
+    // const [mediaFiles, setMediaFiles] = useState([]);
+    //
+    // // Эмулируем добавление изображений и видео в DOM
+    // useEffect(() => {
+    //     const images = document.querySelectorAll('img');
+    //     const videos = document.querySelectorAll('video');
+    //     setMediaFiles([...images, ...videos]);
+    // }, []);
+    return (
+        <div className="App">
+            <Navbar/>
+            <MyRoutes/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;
