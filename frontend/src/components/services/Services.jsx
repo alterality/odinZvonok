@@ -9,16 +9,17 @@ import './Services.css';
 import {animate} from "motion/react";
 import addimg from "../../assets/Group 5.png";
 import * as motion from "motion/react-client"
-import { AnimatePresence } from "motion/react"
+import {AnimatePresence} from "motion/react"
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getAdditionalServicesInformation,
     getApartmentServices,
     getBusinessServices, getCargoTransportation, getCleaning, getClimbers,
-    getHouseServices, getMinorRepairs, resetIsLoaded
+    getHouseServices, getMinorRepairs, postBusinessApplication, resetIsLoaded
 } from "../../store/apiSlice";
-const ExpandableBlock = ({ title,number, children}) => {
+
+const ExpandableBlock = ({title, number, children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = React.useRef(null);
     const blockRef = React.useRef(null);
@@ -28,11 +29,11 @@ const ExpandableBlock = ({ title,number, children}) => {
         // Анимация высоты
         if (!isOpen) {
             const height = contentRef.current.scrollHeight;
-            animate(contentRef.current, { height: [`0px`, `${height}px`] }, { duration: 0.1 });
-            animate(blockRef.current, { borderRadius: ["8px 8px 8px 8px", "8px 8px 0 0"] }, { duration: 0.5 });
+            animate(contentRef.current, {height: [`0px`, `${height}px`]}, {duration: 0.1});
+            animate(blockRef.current, {borderRadius: ["8px 8px 8px 8px", "8px 8px 0 0"]}, {duration: 0.5});
         } else {
-            animate(contentRef.current, { height: [`${contentRef.current.offsetHeight}px`, `0px`] }, { duration: 0.1 });
-            animate(blockRef.current, { borderRadius: ["8px 8px 0 0", "8px 8px 8px 8px"] }, { duration: 0.5 });
+            animate(contentRef.current, {height: [`${contentRef.current.offsetHeight}px`, `0px`]}, {duration: 0.1});
+            animate(blockRef.current, {borderRadius: ["8px 8px 0 0", "8px 8px 8px 8px"]}, {duration: 0.5});
         }
     };
 
@@ -59,7 +60,9 @@ const ExpandableBlock = ({ title,number, children}) => {
                     <div className="overhaul-service-name">{title}</div>
                     <div className="overhaul-service-number">{number}</div>
                 </div>
-                <div className="overhaul-add-service" style={{transform: isOpen ? 'rotate(45deg)': "none" , transition: 'transform 0.5s ease'}}><img src={addimg} alt=""/></div>
+                <div className="overhaul-add-service"
+                     style={{transform: isOpen ? 'rotate(45deg)' : "none", transition: 'transform 0.5s ease'}}><img
+                    src={addimg} alt=""/></div>
             </div>
             <div
                 ref={contentRef}
@@ -83,8 +86,7 @@ const ExpandableBlock = ({ title,number, children}) => {
 };
 
 
-
-const TransportSlide =({tabs}) => {
+const TransportSlide = ({tabs}) => {
     const [selectedTab, setSelectedTab] = useState(tabs[0].id)
     const container = {
         width: "100%",
@@ -98,13 +100,13 @@ const TransportSlide =({tabs}) => {
         display: "flex",
         flexDirection: "column",
     }
-    const icon= {
+    const icon = {
         padding: '25px'
     }
     return (
         <div style={container}>
-            <nav  className="transport-service-nav">
-                <ul  className='transport-service-tabs'>
+            <nav className="transport-service-nav">
+                <ul className='transport-service-tabs'>
                     {tabs.map((item) => (
                         <motion.li
                             key={item.id}
@@ -114,8 +116,8 @@ const TransportSlide =({tabs}) => {
                                     item === selectedTab ? "#1D1D1B" : "#1D1D1B",
                             }}
 
-                            className = "transport-service-tab"
-                            style={item.id === selectedTab && {color : "white", fontSize: '22px'}}
+                            className="transport-service-tab"
+                            style={item.id === selectedTab && {color: "white", fontSize: '22px'}}
                             onClick={() => setSelectedTab(item.id)}
                         >
                             <p>{`${item.title}`}</p>
@@ -133,19 +135,19 @@ const TransportSlide =({tabs}) => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={selectedTab ? selectedTab.label : "empty"}
-                        initial={{ opacity: 0, y: 20 }}  // Starting state: hidden and slightly below
-                        animate={{ opacity: 1, y: 0 }}   // Final state: fully visible and in place
-                        exit={{ opacity: 0, y: -20 }}    // Exit state: hidden and slightly above
-                        transition={{ duration: 0.3 }}   //
+                        initial={{opacity: 0, y: 20}}  // Starting state: hidden and slightly below
+                        animate={{opacity: 1, y: 0}}   // Final state: fully visible and in place
+                        exit={{opacity: 0, y: -20}}    // Exit state: hidden and slightly above
+                        transition={{duration: 0.3}}   //
                         className='tab-content'
                     >
                         <img
                             className='tab-content-image'
-                            src={selectedTab ? tabs[selectedTab-1].img : ''}
+                            src={selectedTab ? tabs[selectedTab - 1].img : ''}
                             alt="Tab content"
-                            />
+                        />
                         <p>
-                            {selectedTab ? tabs[selectedTab-1].description : ""}
+                            {selectedTab ? tabs[selectedTab - 1].description : ""}
                         </p>
                     </motion.div>
                 </AnimatePresence>
@@ -157,6 +159,52 @@ const TransportSlide =({tabs}) => {
 const Services = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
+    const [businessApplication, setBusinessApplication] = useState({
+        company_name: '',
+        company_type: '',
+        contact_person: '',
+        phone_number: '',
+        site: '',
+        content: '',
+    })
+    const [application, setApplication] = useState({
+        name: '',
+        email: '',
+        phone_number: '',
+        content: '',
+    })
+    const handleChangeBusiness = (e) => {
+        const {name, value} = e.target;
+        setBusinessApplication({...businessApplication, [name]: value});
+    }
+    const handleSubmitBusiness = async (e) => {
+        e.preventDefault()
+        await dispatch(postBusinessApplication(businessApplication))
+        setBusinessApplication({
+            company_name: '',
+            company_type: '',
+            contact_person: '',
+            phone_number: '',
+            site: '',
+            content: '',
+        })
+    }
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setApplication({...application, [name]: value});
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await dispatch(postBusinessApplication(application))
+        setApplication({
+            company_name: '',
+            company_type: '',
+            contact_person: '',
+            phone_number: '',
+            site: '',
+            content: '',
+        })
+    }
     const {
         apartmentServices,
         houseServices,
@@ -182,19 +230,25 @@ const Services = () => {
     }, [dispatch]);
     const [transports, setTransports] = useState([
         {
-            id: 1, title: 'Минивен', img : 'https://www.mercedesmagazin.ru/img/nblock/143-2/mercedes-W639.jpg',
+            id: 1, title: 'Минивен', img: 'https://www.mercedesmagazin.ru/img/nblock/143-2/mercedes-W639.jpg',
 
             description: 'С точки зpения банальной эpудиции каждый индивидуум, кpитически мотивиpующий абстpакцию, не может игноpиpовать кpитеpии утопического субьективизма, концептуально интеpпpетиpуя общепpинятые дефанизиpующие поляpизатоpы, поэтому консенсус, достигнутый диалектической матеpиальной классификацией всеобщих мотиваций в паpадогматических связях пpедикатов, pешает пpоблему усовеpшенствования фоpмиpующих геотpансплантационных квазипузлистатов всех кинетически коpеллиpующих аспектов.',
 
         },
         {
-            id: 2, title: 'Портер', img : 'https://kimuracars.com/img/autocatalog_korea/cars/17/hyundai_porter_2_3769164.jpg', description: 'Небольшие, короткие, мини, легкие тексты для чтения со школьниками. Детские тексты, тексты с простыми словами, любые тексты для детей.',
+            id: 2,
+            title: 'Портер',
+            img: 'https://kimuracars.com/img/autocatalog_korea/cars/17/hyundai_porter_2_3769164.jpg',
+            description: 'Небольшие, короткие, мини, легкие тексты для чтения со школьниками. Детские тексты, тексты с простыми словами, любые тексты для детей.',
         },
         {
-            id: 3, title: 'Спринтер', img : 'https://a.d-cd.net/acfc69es-960.jpg', description: '',
+            id: 3, title: 'Спринтер', img: 'https://a.d-cd.net/acfc69es-960.jpg', description: '',
         },
         {
-            id: 4, title: 'Фуры', img : 'https://static.tildacdn.com/tild6232-6661-4339-a366-653430386266/a0fe0e60a2b351cb9f89.jpg', description: '',
+            id: 4,
+            title: 'Фуры',
+            img: 'https://static.tildacdn.com/tild6232-6661-4339-a366-653430386266/a0fe0e60a2b351cb9f89.jpg',
+            description: '',
         }
     ])
     useEffect(() => {
@@ -202,16 +256,16 @@ const Services = () => {
         setTransports((prevTransports) =>
             prevTransports?.map((transport) => {
                 if (transport.id === 1) {
-                    return { ...transport, description: cargoTransportation?.minivan };
+                    return {...transport, description: cargoTransportation?.minivan};
                 }
                 if (transport.id === 2) {
-                    return { ...transport, description: cargoTransportation?.porter };
+                    return {...transport, description: cargoTransportation?.porter};
                 }
                 if (transport.id === 3) {
-                    return { ...transport, description: cargoTransportation?.sprinter };
+                    return {...transport, description: cargoTransportation?.sprinter};
                 }
                 if (transport.id === 4) {
-                    return { ...transport, description: cargoTransportation?.fura };
+                    return {...transport, description: cargoTransportation?.fura};
                 }
                 return transport;
             })
@@ -318,7 +372,7 @@ const Services = () => {
                         <div className='tarif-plan'>
                             <h2 className='header-font tarif-header'>ТАРИФ «СТАНДАРТ»</h2>
                             <div>
-                                {houseServices[0]?.services?.map((service)=> (
+                                {houseServices[0]?.services?.map((service) => (
                                     <div className='tarif-plan-item' key={service.id}>
                                         <p>{service.value}</p>
                                         <img src={servicesPNG} alt="include"/>
@@ -327,7 +381,7 @@ const Services = () => {
                             </div>
                             <div className="tarif-plan-advantages">
                                 <ul>
-                                    {houseServices[0]?.advantages?.map((advantage)=>(
+                                    {houseServices[0]?.advantages?.map((advantage) => (
                                         <li key={advantage.id}>
                                             {advantage.value}
                                         </li>
@@ -337,9 +391,9 @@ const Services = () => {
                             <h2>{houseServices[0]?.price}</h2>
                         </div>
                         <div className='tarif-plan'>
-                        <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
+                            <h2 className='header-font tarif-header'>ТАРИФ «ПРЕМИУМ»</h2>
                             <div>
-                                {houseServices[0]?.services?.map((service)=> (
+                                {houseServices[0]?.services?.map((service) => (
                                     <div className='tarif-plan-item' key={service.id}>
                                         <p>{service.value}</p>
                                         <img src={servicesPNG} alt="include"/>
@@ -391,7 +445,7 @@ const Services = () => {
                                 </div>
                             </div>
                         </div>
-                        <form className='services-business-form'>
+                        <form className='services-business-form' onSubmit={handleSubmitBusiness}>
                             <h1 className='services-business-form-header'>ФОРМА ЗАЯВКИ</h1>
                             <div>
                                 <h1 className="services-business-form-underheader">
@@ -413,19 +467,38 @@ const Services = () => {
                                     <div className="services-business-form-inputs">
                                         <input type="text" className="services-business-form-input"
                                                name="company_name"
-                                               placeholder="Название компании*"/>
+                                               value={businessApplication.company_name}
+                                               placeholder="Название компании*"
+                                               onChange={handleChangeBusiness}
+                                               required
+                                        />
                                         <input type="text" className="services-business-form-input"
                                                name="company_type"
-                                               placeholder="Тип компании (общепит, офис, барбершоп, и т. д.)*"/>
+                                               value={businessApplication.company_type}
+                                               placeholder="Тип компании (общепит, офис, барбершоп, и т. д.)*"
+                                               onChange={handleChangeBusiness}
+                                               required
+                                        />
                                         <input type="text" className="services-business-form-input"
                                                name='contact_person'
-                                               placeholder="Контактное лицо*"/>
+                                               value={businessApplication.contact_person}
+                                               placeholder="Контактное лицо*"
+                                               onChange={handleChangeBusiness}
+                                               required
+                                        />
                                         <input className="services-business-form-input" type="tel"
                                                name="phone_number"
-                                               placeholder="Номер телефона*"/>
+                                               value={businessApplication.phone_number}
+                                               placeholder="Номер телефона*"
+                                               onChange={handleChangeBusiness}
+                                               required
+                                        />
                                         <input className="services-business-form-input" type="text"
                                                name="site"
-                                               placeholder="Сайт (если есть)"/>
+                                               value={businessApplication.site}
+                                               placeholder="Сайт (если есть)"
+                                               onChange={handleChangeBusiness}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -437,7 +510,11 @@ const Services = () => {
                                     <div className="services-business-form-inputs">
                                     <textarea className="services-business-form-textarea" rows="8"
                                               name="content"
-                                              placeholder="Сообщение*"></textarea>
+                                              placeholder="Сообщение*"
+                                              value={businessApplication.content}
+                                              onChange={handleChangeBusiness}
+                                              required
+                                    ></textarea>
                                         <button className="services-business-form-button">Отправить</button>
                                     </div>
                                 </div>
@@ -486,7 +563,7 @@ const Services = () => {
                                 <div className="service-item-content">
                                     <div className='service-item-content-section'>
                                         <div className="content-section-list">
-                                            {climbers?.services?.map((service)=> (
+                                            {climbers?.services?.map((service) => (
                                                 <div className="content-section-list-element" key={service.id}>
                                                     <p>{service.value}</p>
                                                     <p>0{service.id}</p>
@@ -586,10 +663,11 @@ const Services = () => {
                             <ExpandableBlock title="Капитальные работы" number="005">
                                 <div className="capital-works-title">
                                     <p>
-                                        «Предоставляем услуги капитального ремонта разного профиля. Полный перечень услуг можете посмотреть в разделе Капитыльный ремонт»
+                                        «Предоставляем услуги капитального ремонта разного профиля. Полный перечень
+                                        услуг можете посмотреть в разделе Капитыльный ремонт»
                                     </p>
                                 </div>
-                                <button className="capital-works-btn" onClick={()=> navigate("/capremont")}>
+                                <button className="capital-works-btn" onClick={() => navigate("/capremont")}>
                                     Перейти на страницу
                                 </button>
                             </ExpandableBlock>
@@ -601,28 +679,32 @@ const Services = () => {
 
 
             {/*//! форма зявки */}
-            <div className="serviceform-formcomt">
+            <form className="serviceform-formcomt" onSubmit={handleSubmit}>
                 <div className="serviceform-wrapper">
                     <h2 className='header-font'>Оставить заявку</h2>
 
                     <div className="serviceform-container">
                         {/* Левая колонка с полями ввода */}
                         <div className="serviceform-left">
-                            <input type="text" className="serviceform-input" placeholder="Имя*"/>
-                            <input type="text" className="serviceform-input" placeholder="Номер телефона*"/>
-                            <input type="email" className="serviceform-input" placeholder="Электронная почта*"/>
+                            <input type="text" className="input-field" placeholder="Имя*" name="name"
+                                   value={application.name} onChange={handleChange} required/>
+                            <input type="text" className="input-field" placeholder="Номер телефона*" name="phone_number"
+                                   value={application.phone_number} onChange={handleChange} required/>
+                            <input type="email" className="input-field" placeholder="Электронная почта*" name="email"
+                                   value={application.email} onChange={handleChange} required/>
                         </div>
 
                         {/* Правая колонка с полем сообщения */}
                         <div className="serviceform-right">
-                            <textarea className="serviceform-textarea" rows="4" placeholder="Сообщение*"></textarea>
+                            <textarea className="serviceform-textarea" rows="4" placeholder="Сообщение*" name="content"
+                                      value={application.content} onChange={handleChange} required></textarea>
                         </div>
                     </div>
 
                     <button className="serviceform-button">Отправить</button>
                 </div>
 
-            </div>
+            </form>
 
 
         </div>

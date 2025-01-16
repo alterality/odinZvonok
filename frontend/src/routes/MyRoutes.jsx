@@ -71,39 +71,44 @@ const MyRoutes = () => {
   const [loading, setLoading] = useState(false); // Для отслеживания загрузки медиа
   const [showPreloader, setShowPreloader] = useState(false); // Управление видимостью прелоадера
   const [dataLoaded, setDataLoaded] = useState(false); // Для отслеживания загрузки данных API
-
+  const [progress, setProgress] = useState(0);
   const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
   // Функция для обработки загрузки медиа
   const handleMediaLoading = () => {
-    const mediaFiles = [...document.querySelectorAll("img, video")];
-    setLoading(true);
-
-    const promises = mediaFiles.map(
-        (file) =>
-            new Promise((resolve) => {
-              if (file.complete || file.readyState >= 4) {
-                resolve();
-              } else {
-                const onLoad = () => {
-                  file.removeEventListener("load", onLoad);
-                  file.removeEventListener("loadeddata", onLoad);
-                  resolve();
-                };
-                file.addEventListener("load", onLoad);
-                file.addEventListener("loadeddata", onLoad);
-              }
-            })
-    );
-
-    Promise.all(promises).then(() => {
+    const mediaFiles = Array.from(document.querySelectorAll("img, video"));
+    if (mediaFiles.length === 0) {
+      setProgress(100);
       setLoading(false);
+      return;
+    }
+
+    let loadedCount = 0;
+
+    const updateProgress = () => {
+      loadedCount++;
+      const progressValue = ((loadedCount / mediaFiles.length) * 100).toFixed(1);
+      setProgress(progressValue);
+
+      if (loadedCount === mediaFiles.length) {
+        setLoading(false);
+      }
+    };
+
+    mediaFiles.forEach((file) => {
+      if (file.complete || file.readyState >= 4) {
+        updateProgress();
+      } else {
+        file.addEventListener("load", updateProgress);
+        file.addEventListener("error", updateProgress);
+      }
     });
   };
 
   // Обработка смены маршрута
   useEffect(() => {
     setShowPreloader(true); // Показываем прелоадер при смене маршрута
+    setProgress(0)
     handleMediaLoading(); // Запускаем проверку загрузки медиа
   }, [location.pathname]);
 
@@ -127,7 +132,7 @@ const MyRoutes = () => {
 
   return (
       <>
-        <Preloader loading={showPreloader} />
+        <Preloader loading={showPreloader} progress={progress}/>
         <ScrollToTop />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>

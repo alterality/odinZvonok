@@ -4,6 +4,7 @@
     right: 0; /* Начинаем с правой стороны */
     width: 100%;
     height: 100%;
+    flex-direction: column;
     background-color: #1D1D1B;
     display: flex;
     justify-content: center;
