@@ -68,8 +68,11 @@ const pageTransition = {
 
 const MyRoutes = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
-  const [showPreloader, setShowPreloader] = useState(false);
+  const [loading, setLoading] = useState(false); // Для отслеживания загрузки медиа
+  const [showPreloader, setShowPreloader] = useState(false); // Управление видимостью прелоадера
+  const [dataLoaded, setDataLoaded] = useState(false); // Для отслеживания загрузки данных API
+
+  const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
   // Функция для обработки загрузки медиа
   const handleMediaLoading = () => {
@@ -98,29 +101,27 @@ const MyRoutes = () => {
     });
   };
 
-  // Запуск загрузки медиа при смене маршрута
+  // Обработка смены маршрута
   useEffect(() => {
-    setShowPreloader(true); // Включаем прелоадер сразу при смене маршрута
-    handleMediaLoading();
+    setShowPreloader(true); // Показываем прелоадер при смене маршрута
+    handleMediaLoading(); // Запускаем проверку загрузки медиа
   }, [location.pathname]);
 
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const { isLoaded } = useSelector((state) => state.api);
-
+  // Обновление статуса данных API
   useEffect(() => {
     setDataLoaded(isLoaded);
   }, [isLoaded]);
 
-  // Управление задержкой для прелоадера
+  // Управление видимостью прелоадера
   useEffect(() => {
     if (loading || !dataLoaded) {
-      setShowPreloader(true);
+      setShowPreloader(true); // Прелоадер видим, пока идет загрузка
     } else {
       const timer = setTimeout(() => {
-        setShowPreloader(false); // Скрытие прелоадера после задержки
-      }, 1); // 1500ms — это дополнительная задержка для прелоадера
+        setShowPreloader(false); // Скрываем прелоадер после завершения загрузки
+      }, 500); // Минимальная задержка (можно настроить)
 
-      return () => clearTimeout(timer); // Очистка таймера, если компонента размонтируется
+      return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
   }, [loading, dataLoaded]);
 
