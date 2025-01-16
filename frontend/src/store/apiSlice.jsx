@@ -382,7 +382,7 @@ export const postApplication = createAsyncThunk(
     "api/postApplication",
     async function (application, { rejectWithValue }) {
         try {
-            const response = await instance.post(`/application/`, {application});
+            const response = await instance.post(`/application/`, application);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -394,14 +394,20 @@ export const postBusinessApplication = createAsyncThunk(
     "api/postBusinessApplication",
     async function (application, { rejectWithValue }) {
         try {
-            const response = await instance.post(`/business-application/`,{application});
+            const response = await instance.post(
+                `/business-application/`,
+                application, // Send the application object directly
+            );
+
             return response.data;
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            console.log(application);
             return rejectWithValue(error.message);
         }
     }
 );
+
 export const getCapRepairsTitle = createAsyncThunk(
     "api/getCapRepairsTitle",
     async function (_, { rejectWithValue }) {

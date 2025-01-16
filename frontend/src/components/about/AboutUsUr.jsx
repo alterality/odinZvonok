@@ -12,7 +12,7 @@ import {
     getLegalDocuments,
     getLegalEntities,
     getServices,
-    getWorkStages, resetIsLoaded
+    getWorkStages, postBusinessApplication, resetIsLoaded
 } from "../../store/apiSlice";
 
 const AboutUsUr = () => {
@@ -85,8 +85,17 @@ const AboutUsUr = () => {
         const { name, value } = e.target;
         setApplication({ ...application, [name]: value });
     }
-    const handleSubmit = () =>{
-
+    const handleSubmit = async(e) =>{
+        e.preventDefault()
+        await dispatch(postBusinessApplication(application))
+        setApplication({
+            company_name: '',
+            company_type: '',
+            contact_person: '',
+            phone_number: '',
+            site: '',
+            content: '',
+        })
     }
 
     return (
