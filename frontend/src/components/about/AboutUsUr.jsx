@@ -14,6 +14,7 @@ import {
     getServices,
     getWorkStages, postBusinessApplication, resetIsLoaded
 } from "../../store/apiSlice";
+import LazyImage from "../LazyImage/LazyImage";
 
 const AboutUsUr = () => {
     const dispatch = useDispatch();
@@ -108,7 +109,7 @@ const AboutUsUr = () => {
                         <p className="text-ur">{legalEntities.description}</p>
                     </div>
                     <div className="image-container-ur">
-                        <img src={AdvantagesUr} alt="Advantages" className="image-ur"/>
+                        <LazyImage src={AdvantagesUr} alt="Advantages" className="image-ur"/>
                     </div>
                 </div>
             </div>
@@ -121,7 +122,7 @@ const AboutUsUr = () => {
                 <div className="services-images">
                     {servicesForWhom.map((service, index) => (
                         <div key={index}>
-                            <img src={service.image} alt="Service 1"/>
+                            <LazyImage src={service.image} alt="Service 1"/>
                             <p>{service.text}</p>
                         </div>
                     ))}
@@ -155,7 +156,7 @@ const AboutUsUr = () => {
 
                     </div>
                     <div className="gray-image-ur">
-                        <img src={helpimgright} alt="Service Illustration" className="gray-img-ur"/>
+                        <LazyImage src={helpimgright} alt="Service Illustration" className="gray-img-ur"/>
                     </div>
                 </div>
             </div>
@@ -173,7 +174,7 @@ const AboutUsUr = () => {
                 </div>
 
                 <div className="helpblack-image-section-wrapper-ur">
-                    <img src={blackcontimg} alt="Картинка" className="helpblack-image-container-ur"/>
+                    <LazyImage src={blackcontimg} alt="Картинка" className="helpblack-image-container-ur"/>
                 </div>
             </div>
 
@@ -182,7 +183,7 @@ const AboutUsUr = () => {
                 <h3>ПЕРЕЧЕНЬ ДОКУМЕНТОВ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ:</h3>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия свидетельства о регистрации юридического лица</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -202,7 +203,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия устава юридического лица</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -222,7 +223,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Реквизиты</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -242,7 +243,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия доверенности лица, уполномоченного на заключение договора </span>
                     </div>
                     <div className="Ur-document-actions">
@@ -262,7 +263,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span> Документы подтверждающие полномочия руководителя юридического лица </span>
                     </div>
                     <div className="Ur-document-actions">
@@ -282,7 +283,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия свидетельства о постановке на налоговый учет (ИНН)</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -302,7 +303,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копии разрешительной документации</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -326,7 +327,7 @@ const AboutUsUr = () => {
                 <h3>ПЕРЕЧЕНЬ ДОКУМЕНТОВ ДЛЯ ИНДИВИДУАЛЬНЫХ ПРЕДПРИНИМАТЕЛЕЙ:</h3>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия свидетельства о регистрации ИП</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -336,7 +337,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия паспорта ИП</span>
                     </div>
                     <div className="Ur-document-actions">
@@ -346,7 +347,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия свидетельства о постановке на налоговый учет </span>
                     </div>
                     <div className="Ur-document-actions">
@@ -356,7 +357,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копия нотариальной доверенности лица, уполномоченного на заключение договора </span>
                     </div>
                     <div className="Ur-document-actions">
@@ -366,7 +367,7 @@ const AboutUsUr = () => {
                 </div>
                 <div className="Ur-document-item">
                     <div className="Ur-document-info">
-                        <img src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
+                        <LazyImage src={pdfFile} alt="PDF" className="Ur-pdf-icon"/>
                         <span>Копии разрешительной документации</span>
                     </div>
                     <div className="Ur-document-actions">
