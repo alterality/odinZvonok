@@ -43,7 +43,7 @@ const Navbar = () => {
 
         </div>
 
-        <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+        <div className={`menu ${isMenuOpen ? 'open' : 'close'}`}>
           <img src={closeIcon} className='close-btn' onClick={toggleMenu}/>
           <div className='menu-block'>
             <div className="links">
@@ -69,7 +69,7 @@ const Navbar = () => {
                   {language}
                 </button>
                 {isAccordionOpen && (
-                    <div className="language-options">
+                    <div className={`language-options ${isAccordionOpen ? 'open' : ''}`}>
                       <button onClick={() => changeLanguage('Русский')}>Русский</button>
                       <button onClick={() => changeLanguage('Кыргыз')}>Кыргыз</button>
                       <button onClick={() => changeLanguage('English')}>English</button>
