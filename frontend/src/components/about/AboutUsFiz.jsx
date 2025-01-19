@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Advantages from '../../assets/section right top.png';
+import Advantages from '../../assets/aboutcomp.png';
 import helpimgright from '../../assets/plumbing.png'
 import blackcontimg from '../../assets/ремонт.png'
 import rekvisitImage from '../../assets/сертификатодинзвонок.png'
