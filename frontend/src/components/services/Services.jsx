@@ -10,7 +10,7 @@ import {animate} from "motion/react";
 import addimg from "../../assets/Group 5.png";
 import * as motion from "motion/react-client"
 import {AnimatePresence} from "motion/react"
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getAdditionalServicesInformation,
@@ -156,6 +156,7 @@ const TransportSlide = ({tabs}) => {
 }
 
 const Services = () => {
+    const location = useLocation();
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const [businessApplication, setBusinessApplication] = useState({
@@ -270,12 +271,20 @@ const Services = () => {
             })
         );
     }, [cargoTransportation]);
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.querySelector(location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, [location]);
     return (
         <div className="ServicesCont">
             <div className='header-block'><h1 className="services-title header-font">ОКАЗЫВАЕМ СЛЕДУЮЩИЕ УСЛУГИ</h1>
             </div>
             {/* //! КВАРТИРЫ  */}
-            <div className="services-container apartment-container">
+            <div className="services-container apartment-container" id="apartments">
                 <div className="section-middle">
                     <div className='container-info'>
                         <img src={servicesimg} alt="Service" className="service-image"/>
@@ -345,7 +354,7 @@ const Services = () => {
             {/* //! ЧАСТНЫЕ ДОМА  */}
 
 
-            <div className="services-container house-container">
+            <div className="services-container house-container" id='land-houses'>
 
                 {/* 1.1 секция */}
                 <div className="section-middle">
@@ -417,7 +426,7 @@ const Services = () => {
 
             {/* //! БИЗНЕС */}
 
-            <div className="services-container business-container">
+            <div className="services-container business-container" id='business'>
 
                 {/* 1.1 секция */}
                 <div className="section-middle">
@@ -532,7 +541,7 @@ const Services = () => {
             {/* //! ДОП.УСЛУГИ */}
 
 
-            <div className="services-container add-services-container">
+            <div className="services-container add-services-container" id='add-services'>
 
                 {/* 1.1 секция */}
                 <div className="section-middle">
@@ -678,7 +687,7 @@ const Services = () => {
 
 
             {/*//! форма зявки */}
-            <form className="serviceform-formcomt" onSubmit={handleSubmit}>
+            <form className="serviceform-formcomt" onSubmit={handleSubmit} id='application'>
                 <div className="serviceform-wrapper">
                     <h2 className='header-font'>Оставить заявку</h2>
 
