@@ -18,8 +18,6 @@ import {
     getBusinessServices, getCargoTransportation, getCleaning, getClimbers,
     getHouseServices, getMinorRepairs, postBusinessApplication, resetIsLoaded
 } from "../../store/apiSlice";
-import LazyImage from "../LazyImage/LazyImage";
-
 const ExpandableBlock = ({title, number, children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = React.useRef(null);
@@ -280,7 +278,7 @@ const Services = () => {
             <div className="services-container apartment-container">
                 <div className="section-middle">
                     <div className='container-info'>
-                        <LazyImage src={servicesimg} alt="Service" className="service-image"/>
+                        <img src={servicesimg} alt="Service" className="service-image"/>
                         <div className='infoBlock'>
                             <h2 className='header-font'>КВАРТИРЫ</h2>
                             <div className="info-container">
@@ -305,7 +303,7 @@ const Services = () => {
                                     {apartmentServices[0]?.services?.map((service) => (
                                         <div className='tarif-plan-item' key={service.id}>
                                             <p>{service.value}</p>
-                                            <LazyImage src={servicesPNG} alt="include"/>
+                                            <img src={servicesPNG} alt="include"/>
                                         </div>
                                     ))}
 
@@ -326,7 +324,7 @@ const Services = () => {
                                 {apartmentServices[1]?.services?.map((service) => (
                                     <div className='tarif-plan-item' key={service.id}>
                                         <p>{service.value}</p>
-                                        <LazyImage src={servicesPNG} alt="include"/>
+                                        <img src={servicesPNG} alt="include"/>
                                     </div>
                                 ))}
                             </div>
@@ -354,7 +352,7 @@ const Services = () => {
 
                     {/* 1.2 секция  */}
                     <div className="container-info">
-                        <LazyImage src={privatehouses} alt="Service" className="service-image"/>
+                        <img src={privatehouses} alt="Service" className="service-image"/>
                         <div className='infoBlock'>
                             <h2 className='header-font house-header'>ЧАСТНЫЕ ДОМА </h2>
                             <div className="info-container blackText">
@@ -376,7 +374,7 @@ const Services = () => {
                                 {houseServices[0]?.services?.map((service) => (
                                     <div className='tarif-plan-item' key={service.id}>
                                         <p>{service.value}</p>
-                                        <LazyImage src={servicesPNG} alt="include"/>
+                                        <img src={servicesPNG} alt="include"/>
                                     </div>
                                 ))}
                             </div>
@@ -397,7 +395,7 @@ const Services = () => {
                                 {houseServices[0]?.services?.map((service) => (
                                     <div className='tarif-plan-item' key={service.id}>
                                         <p>{service.value}</p>
-                                        <LazyImage src={servicesPNG} alt="include"/>
+                                        <img src={servicesPNG} alt="include"/>
                                     </div>
                                 ))}
                             </div>
@@ -430,7 +428,7 @@ const Services = () => {
 
 
                         <div className="container-info">
-                            <LazyImage src={bisinessimg} alt="Service" className="service-image"/>
+                            <img src={bisinessimg} alt="Service" className="service-image"/>
                             <div className="infoBlock">
                                 <h2 className='header-font business-header'>БИЗНЕС</h2>
                                 <div className="info-container">
@@ -542,7 +540,7 @@ const Services = () => {
                     {/* 1.2 секция  */}
                     <div className="services-section">
                         <div className='container-info'>
-                            <LazyImage src={additionalimg} alt="Service" className="service-image"/>
+                            <img src={additionalimg} alt="Service" className="service-image"/>
                             <div className='infoBlock'>
                                 <h2 className='header-font add-services-header'> ДОП.УСЛУГИ</h2>
 

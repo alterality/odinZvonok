@@ -4,7 +4,7 @@ import aboutconpimg1 from '../../assets/aboutcomp.png';
 import './AboutCompany.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getAboutCompany, getClients, getHomeAboutCompany, getTeam, resetIsLoaded} from "../../store/apiSlice";
-import LazyImage from "../LazyImage/LazyImage";
+// import LazyImage from "../LazyImage/LazyImage";
 
 const AboutCompany = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const AboutCompany = () => {
 
         {/* Изображение */}
         <div className="image-section">
-          <LazyImage src={aboutconpimg1} alt="Company" />
+          <img src={aboutconpimg1} alt="Company" />
           <div className="image-caption">
           Свяжитесь с нами, чтобы узнать больше <br/> о наших услугах и получить консультацию <br/> от нашего эксперта.
           </div>
@@ -46,7 +46,7 @@ const AboutCompany = () => {
         {team.map((employee, index) => (
           <div key={index} className="team-box employee-box">
             <div className="employee-name">{employee.name}</div>
-            <LazyImage src={employee.image} alt={employee.name} />
+            <img src={employee.image} alt={employee.name} />
             <div className="employee-position">{employee.position}</div>
           </div>
         ))}

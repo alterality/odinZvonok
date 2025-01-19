@@ -13,7 +13,6 @@ import {
     getOurServices,
     getWorkStages, resetIsLoaded
 } from "../../store/apiSlice";
-import LazyImage from "../LazyImage/LazyImage";
 
 const AboutUsFiz = () => {
     const [stages, setStages] = useState([])
@@ -86,7 +85,7 @@ const AboutUsFiz = () => {
                         <p className="text">{individualEntities.description}</p>
                     </div>
                     <div className="image-container">
-                        <LazyImage src={Advantages} alt="Advantages" className="image"/>
+                        <img src={Advantages} alt="Advantages" className="image"/>
                     </div>
                 </div>
             </div>
@@ -126,7 +125,7 @@ const AboutUsFiz = () => {
                         ))}
                     </div>
                     <div className="gray-image">
-                        <LazyImage src={helpimgright} alt="Service Illustration" className="gray-img"/>
+                        <img src={helpimgright} alt="Service Illustration" className="gray-img"/>
                     </div>
                 </div>
             </div>
@@ -147,7 +146,7 @@ const AboutUsFiz = () => {
                 </div>
 
                 <div className="helpblack-image-section-wrapper">
-                    <LazyImage src={blackcontimg} alt="Картинка" className="helpblack-image-container"/>
+                    <img src={blackcontimg} alt="Картинка" className="helpblack-image-container"/>
                 </div>
             </div>
 
@@ -157,7 +156,7 @@ const AboutUsFiz = () => {
                 <h3>ПЕРЕЧЕНЬ ДОКУМЕНТОВ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ:</h3>
                 <div className="fiz-document-item">
                     <div className="fiz-document-info">
-                        <LazyImage src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
+                        <img src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
                         <p>Копия паспорта</p>
                     </div>
                     <div className="fiz-document-actions">
@@ -174,7 +173,7 @@ const AboutUsFiz = () => {
                 </div>
                 <div className="fiz-document-item">
                     <div className="fiz-document-info">
-                        <LazyImage src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
+                        <img src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
                         <p>Справка с места жительства</p>
                     </div>
                     <div className="fiz-document-actions">
@@ -191,7 +190,7 @@ const AboutUsFiz = () => {
                 </div>
                 <div className="fiz-document-item">
                     <div className="fiz-document-info">
-                        <LazyImage src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
+                        <img src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
                         <p>Копия нотариальной доверенности лица, уполномоченного на заключение договора</p>
                     </div>
                     <div className="fiz-document-actions">
@@ -208,7 +207,7 @@ const AboutUsFiz = () => {
                 </div>
                 <div className="fiz-document-item">
                     <div className="fiz-document-info">
-                        <LazyImage src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
+                        <img src={pdfFile} alt="PDF" className="fiz-pdf-icon"/>
                         <p>Копии разрешительной документации</p>
                     </div>
                     <div className="fiz-document-actions">

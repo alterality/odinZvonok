@@ -3,7 +3,7 @@ import advantagesimg from '../../assets/Frame 53.png';
 import './AdvantagesMain.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getHomeAdvantage, resetIsLoaded} from "../../store/apiSlice";
-import LazyImage from "../LazyImage/LazyImage";
+// import LazyImage from "../LazyImage/LazyImage";
 
 const AdvantagesMain = () => {
   const [descriptions,setDescriptions] = useState([])
@@ -40,7 +40,7 @@ const AdvantagesMain = () => {
           ))}
         </div>
         <div className="advantages-image">
-          <LazyImage src={advantagesimg} alt="Преимущество" />
+          <img src={advantagesimg} alt="Преимущество" />
         </div>
         <div className="advantages-right">
           {descriptions.slice(6).map((des, index) => (

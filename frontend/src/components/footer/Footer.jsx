@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../assets/logonew.png';
 import './Footer.css';
 import { FaInstagram, FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
-import LazyImage from "../LazyImage/LazyImage";
+// import LazyImage from "../LazyImage/LazyImage";
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Верхняя часть с логотипом и телефоном */}
         <div className="footer-header">
           <div className="footer-logo">
-            <LazyImage src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" />
           </div>
           <div className="footer-phone-icons">
             <p className="footer-phone">+996–777-888-666</p>
