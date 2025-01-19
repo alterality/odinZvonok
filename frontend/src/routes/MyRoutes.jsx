@@ -53,7 +53,7 @@ const pageTransition = {
     x: 0,
     transition: {
       duration: 0.5,
-      delay: 0.25, // Задержка в начале анимации
+      delay: 0.25,
     },
   },
   exit: {
@@ -61,78 +61,71 @@ const pageTransition = {
     x: -100,
     transition: {
       duration: 0.5,
-      delay: 0.25, // Задержка при выходе (если необходимо)
+      delay: 0.25,
     },
   },
 };
 
 const MyRoutes = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(false); // Для отслеживания загрузки медиа
-  const [showPreloader, setShowPreloader] = useState(false); // Управление видимостью прелоадера
-  const [dataLoaded, setDataLoaded] = useState(false); // Для отслеживания загрузки данных API
-  const [progress, setProgress] = useState(0);
+  const [loading, setLoading] = useState(true); // Статус загрузки медиа
+  const [showPreloader, setShowPreloader] = useState(true); // Видимость прелоадера
+  const [progress, setProgress] = useState(0); // Прогресс загрузки
   const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
-  // Функция для обработки загрузки медиа
+  // Функция для обработки загрузки изображений
   const handleMediaLoading = () => {
-    const mediaFiles = Array.from(document.querySelectorAll("img, video"));
-    if (mediaFiles.length === 0) {
+    const images = Array.from(document.querySelectorAll("img"));
+    if (images.length === 0) {
       setProgress(100);
       setLoading(false);
       return;
     }
 
-    let loadedCount = 0;
+    let loadedImages = 0;
 
     const updateProgress = () => {
-      loadedCount++;
-      const progressValue = ((loadedCount / mediaFiles.length) * 100).toFixed(1);
+      loadedImages++;
+      const progressValue = ((loadedImages / images.length) * 100).toFixed(1);
       setProgress(progressValue);
 
-      if (loadedCount === mediaFiles.length) {
+      if (loadedImages === images.length) {
         setLoading(false);
       }
     };
 
-    mediaFiles.forEach((file) => {
-      if (file.complete || file.readyState >= 4) {
+    images.forEach((image) => {
+      if (image.complete) {
         updateProgress();
       } else {
-        file.addEventListener("load", updateProgress);
-        file.addEventListener("error", updateProgress);
+        image.addEventListener("load", updateProgress);
+        image.addEventListener("error", updateProgress);
       }
     });
   };
 
-  // Обработка смены маршрута
+  // Обработка смены
   useEffect(() => {
-    setShowPreloader(true); // Показываем прелоадер при смене маршрута
-    setProgress(0)
-    handleMediaLoading(); // Запускаем проверку загрузки медиа
+    setLoading(true);
+    setShowPreloader(true);
+    setProgress(0);
+    handleMediaLoading();
   }, [location.pathname]);
 
-  // Обновление статуса данных API
+  // Обновление видимости прелоадера
   useEffect(() => {
-    setDataLoaded(isLoaded);
-  }, [isLoaded]);
-
-  // Управление видимостью прелоадера
-  useEffect(() => {
-    if (loading || !dataLoaded) {
-      setShowPreloader(true); // Прелоадер видим, пока идет загрузка
-    } else {
+    if (!loading && isLoaded) {
       const timer = setTimeout(() => {
-        setShowPreloader(false); // Скрываем прелоадер после завершения загрузки
-      }, 500); // Минимальная задержка (можно настроить)
+        setShowPreloader(false); // Скрываем прелоадер
+      }, 500); // Минимальная задержка
 
       return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
-  }, [loading, dataLoaded]);
+  }, [loading, isLoaded]);
 
   return (
       <>
-        <Preloader loading={showPreloader} progress={progress}/>
+        <Preloader loading={showPreloader} progress={progress} />
         <ScrollToTop />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -146,7 +139,6 @@ const MyRoutes = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.5 }}
                       >
                         {elem.element}
                       </motion.div>
