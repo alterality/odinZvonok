@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 // Компоненты страниц
 import NotFound from "../components/NotFound/NotFound";
@@ -16,7 +17,6 @@ import Overhaul from "../components/overhaul/Overhaul";
 
 // Прелоадер
 import Preloader from "../components/Preloader/Preloader";
-import { useSelector } from "react-redux";
 
 // Служебный компонент для прокрутки вверх
 const ScrollToTop = () => {
@@ -53,7 +53,7 @@ const pageTransition = {
     x: 0,
     transition: {
       duration: 0.5,
-      delay: 0.25, // Задержка в начале анимации
+      delay: 0.25,
     },
   },
   exit: {
@@ -61,20 +61,18 @@ const pageTransition = {
     x: -100,
     transition: {
       duration: 0.5,
-      delay: 0.25, // Задержка при выходе (если необходимо)
+      delay: 0.25,
     },
   },
 };
 
 const MyRoutes = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(false); // Для отслеживания загрузки медиа
-  const [showPreloader, setShowPreloader] = useState(false); // Управление видимостью прелоадера
-  const [dataLoaded, setDataLoaded] = useState(false); // Для отслеживания загрузки данных API
+  const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
-  // Функция для обработки загрузки медиа
+  // Функция для обработки загрузки медиафайлов
   const handleMediaLoading = () => {
     const mediaFiles = Array.from(document.querySelectorAll("img, video"));
     if (mediaFiles.length === 0) {
@@ -105,34 +103,27 @@ const MyRoutes = () => {
     });
   };
 
-  // Обработка смены маршрута
+  // Запуск проверки медиа при смене маршрута
   useEffect(() => {
-    setShowPreloader(true); // Показываем прелоадер при смене маршрута
-    setProgress(0)
-    handleMediaLoading(); // Запускаем проверку загрузки медиа
+    setLoading(true);
+    setProgress(0);
+    handleMediaLoading();
   }, [location.pathname]);
-
-  // Обновление статуса данных API
-  useEffect(() => {
-    setDataLoaded(isLoaded);
-  }, [isLoaded]);
 
   // Управление видимостью прелоадера
   useEffect(() => {
-    if (loading || !dataLoaded) {
-      setShowPreloader(true); // Прелоадер видим, пока идет загрузка
-    } else {
+    if (!loading && isLoaded) {
       const timer = setTimeout(() => {
-        setShowPreloader(false); // Скрываем прелоадер после завершения загрузки
-      }, 500); // Минимальная задержка (можно настроить)
+        setProgress(100);
+      }, 500); // Плавное исчезновение
 
-      return () => clearTimeout(timer); // Очистка таймера при размонтировании
+      return () => clearTimeout(timer);
     }
-  }, [loading, dataLoaded]);
+  }, [loading, isLoaded]);
 
   return (
       <>
-        <Preloader loading={showPreloader} progress={progress}/>
+        <Preloader loading={loading} progress={progress} />
         <ScrollToTop />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
