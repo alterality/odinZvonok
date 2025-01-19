@@ -2,9 +2,14 @@ import React, {useEffect} from 'react';
 import './Contacts.css';
 import {useDispatch} from "react-redux";
 import {getHomeAboutCompany, isLoadedTrue, resetIsLoaded} from "../../store/apiSlice";
+import {useNavigate} from "react-router-dom";
 
 const Contacts = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const goToBlock = (idBlock) =>{
+        navigate(`/services#${idBlock}`)
+    }
     useEffect(() => {
         dispatch(getHomeAboutCompany())
         return () => {
@@ -33,7 +38,7 @@ const Contacts = () => {
         <div>
             <div className="contacts-form">
                 <div className="contacts-form-text">Мы свяжемся с вами</div>
-                <button className="contacts-submit-button">Отправить заявку</button>
+                <button className="contacts-submit-button" onClick={() => goToBlock("application")}>Отправить заявку</button>
             </div>
             <div className="contacts-address-phone">
                 <div className="contacts-office-address">Бишкек,ул. Ч.Айтматова 47а, 2 эт. к. № 3</div>
