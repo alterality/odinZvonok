@@ -48,20 +48,20 @@ const Navbar = () => {
           <div className='menu-block'>
             <div className="links">
 
-              <Link to="/aboutcompany" onClick={clickOnMenuOption}>О нас</Link>
-              <Link to="/services" onClick={clickOnMenuOption}>Услуги и Тарифы</Link>
+              <Link to="/aboutcompany" onClick={clickOnMenuOption}><p>О нас</p></Link>
+              <Link to="/services" onClick={clickOnMenuOption}><p>Услуги и Тарифы</p></Link>
               <div className='clients-accordion'>
                 <button onClick={toggleClients} className="clients-accordion-button">
-                  Клиентам
+                  <p>Клиентам</p>
                 </button>
                 {isClientsOpen && <div className="clients-options">
-                  <Link to="/aboutusfiz" onClick={clickOnMenuOption}>Физ.Лицам</Link>
-                  <Link to="/aboutusur" onClick={clickOnMenuOption}>Юр.Лицам</Link>
+                  <Link to="/aboutusfiz" onClick={clickOnMenuOption}><p>Физ.Лицам</p></Link>
+                  <Link to="/aboutusur" onClick={clickOnMenuOption}><p>Юр.Лицам</p></Link>
                 </div>}
               </div>
-              <Link to="/capremont" onClick={clickOnMenuOption}>Капитальный ремонт</Link>
-              <Link to="/vacancies" onClick={clickOnMenuOption}>Вакансии</Link>
-              <Link to="/contacts" onClick={clickOnMenuOption}>Контакты</Link>
+              <Link to="/capremont" onClick={clickOnMenuOption}><p>Капитальный ремонт</p></Link>
+              <Link to="/vacancies" onClick={clickOnMenuOption}><p>Вакансии</p></Link>
+              <Link to="/contacts" onClick={clickOnMenuOption}><p>Контакты</p></Link>
             </div>
             <div>
               <div className="language-switcher">

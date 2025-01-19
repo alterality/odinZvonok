@@ -57,8 +57,8 @@
     transition: color 0.3s;
 }
 
-.links a:hover {
-    color: red;
+.links p:hover {
+    color: rgba(255, 75, 15, 1);
 }
 
 /* Переключатель языка */
