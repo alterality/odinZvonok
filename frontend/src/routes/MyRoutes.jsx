@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { useSelector } from "react-redux";
 
 // Компоненты страниц
 import NotFound from "../components/NotFound/NotFound";
@@ -10,12 +9,14 @@ import AboutUsFiz from "../components/about/AboutUsFiz";
 import Vakancies from "../components/vacancies/Vakancies";
 import Services from "../components/services/Services";
 import AboutUsUr from "../components/about/AboutUsUr";
-import AboutCompany from "../components/aboutcompany/AboutCompany";
+import AboutUsMain from "../components/about/AboutUsMain";
 import Contacts from "../components/contacts/Contacts";
+import AboutCompany from "../components/aboutcompany/AboutCompany";
 import Overhaul from "../components/overhaul/Overhaul";
 
 // Прелоадер
 import Preloader from "../components/Preloader/Preloader";
+import { useSelector } from "react-redux";
 
 // Служебный компонент для прокрутки вверх
 const ScrollToTop = () => {
@@ -31,73 +32,17 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Массив маршрутов с изображениями для предварительной загрузки
+// Массив маршрутов
 const PUBLIC_ROUTES = [
-  { id: 1, link: "*", element: <NotFound />, preloadImages: [] },
-  {
-    id: 2,
-    link: "/",
-    element: <MainPageSSS />,
-    preloadImages: [
-      "/assets/Component 8.png",
-      "/assets/AdobeStock_292230412 1.png",
-      "/assets/Frame 53.png",
-      "/assets/main img.png",
-    ],
-  },
-  {
-    id: 3,
-    link: "/aboutusfiz",
-    element: <AboutUsFiz />,
-    preloadImages: [
-      "/assets/section right top.png",
-      "/assets/plumbing.png",
-      "/assets/ремонт.png",
-    ],
-  },
-  {
-    id: 4,
-    link: "/vacancies",
-    element: <Vakancies />,
-    preloadImages: [
-      "/assets/location bishkek icon.png",
-      "/assets/location bishkek icon (1).png",
-      "/assets/draw an icon of professionalism on a vector.png",
-      "/assets/location bishkek icon (2).png",
-    ],
-  },
-  {
-    id: 5,
-    link: "/services",
-    element: <Services />,
-    preloadImages: [
-      "/assets/Designer (33) 1.png",
-      "/assets/частныедома.png",
-      "/assets/бизнес.png",
-      "/assets/допуслуги.png",
-    ],
-  },
-  {
-    id: 6,
-    link: "/aboutusur",
-    element: <AboutUsUr />,
-    preloadImages: [
-      "/assets/section right top (1).png",
-      "/assets/plumbing.png",
-      "/assets/ремонт.png",
-    ],
-  },
-  { id: 7, link: "/aboutcompany", element: <AboutCompany />, preloadImages: ["/assets/aboutcomp.png"] },
-  { id: 8, link: "/contacts", element: <Contacts />, preloadImages: [] },
-  {
-    id: 9,
-    link: "/capremont",
-    element: <Overhaul />,
-    preloadImages: [
-      "/assets/c7ad060e4599347affa1e8cef879597f.png",
-      "/assets/Group 5.png",
-    ],
-  },
+  { id: 1, link: "*", element: <NotFound /> },
+  { id: 2, link: "/", element: <MainPageSSS /> },
+  { id: 3, link: "/aboutusfiz", element: <AboutUsFiz /> },
+  { id: 4, link: "/vacancies", element: <Vakancies /> },
+  { id: 5, link: "/services", element: <Services /> },
+  { id: 6, link: "/aboutusur", element: <AboutUsUr /> },
+  { id: 7, link: "/aboutcompany", element: <AboutCompany /> },
+  { id: 8, link: "/contacts", element: <Contacts /> },
+  { id: 9, link: "/capremont", element: <Overhaul /> },
 ];
 
 // Параметры анимации для переходов
@@ -108,7 +53,7 @@ const pageTransition = {
     x: 0,
     transition: {
       duration: 0.5,
-      delay: 0.25,
+      delay: 0.25, // Задержка в начале анимации
     },
   },
   exit: {
@@ -116,60 +61,78 @@ const pageTransition = {
     x: -100,
     transition: {
       duration: 0.5,
-      delay: 0.25,
+      delay: 0.25, // Задержка при выходе (если необходимо)
     },
   },
 };
 
 const MyRoutes = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Для отслеживания загрузки медиа
+  const [showPreloader, setShowPreloader] = useState(false); // Управление видимостью прелоадера
+  const [dataLoaded, setDataLoaded] = useState(false); // Для отслеживания загрузки данных API
   const [progress, setProgress] = useState(0);
   const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
-  const currentRoute = PUBLIC_ROUTES.find(
-      (route) => route.link === location.pathname
-  ) || { preloadImages: [] };
+  // Функция для обработки загрузки медиа
+  const handleMediaLoading = () => {
+    const mediaFiles = Array.from(document.querySelectorAll("img, video"));
+    if (mediaFiles.length === 0) {
+      setProgress(100);
+      setLoading(false);
+      return;
+    }
 
-  // Предварительная загрузка изображений
-  const preloadImages = (images) => {
-    const promises = images.map(
-        (src) =>
-            new Promise((resolve) => {
-              const img = new Image();
-              img.src = src;
-              img.onload = resolve;
-              img.onerror = resolve;
-            })
-    );
+    let loadedCount = 0;
 
-    return Promise.all(promises);
+    const updateProgress = () => {
+      loadedCount++;
+      const progressValue = ((loadedCount / mediaFiles.length) * 100).toFixed(1);
+      setProgress(progressValue);
+
+      if (loadedCount === mediaFiles.length) {
+        setLoading(false);
+      }
+    };
+
+    mediaFiles.forEach((file) => {
+      if (file.complete || file.readyState >= 4) {
+        updateProgress();
+      } else {
+        file.addEventListener("load", updateProgress);
+        file.addEventListener("error", updateProgress);
+      }
+    });
   };
 
-  // Загрузка изображений при смене маршрута
+  // Обработка смены маршрута
   useEffect(() => {
-    setLoading(true);
-    setProgress(0);
-
-    preloadImages(currentRoute.preloadImages).then(() => {
-      setLoading(false);
-    });
+    setShowPreloader(true); // Показываем прелоадер при смене маршрута
+    setProgress(0)
+    handleMediaLoading(); // Запускаем проверку загрузки медиа
   }, [location.pathname]);
 
-  // Управление прогрессом загрузки
+  // Обновление статуса данных API
   useEffect(() => {
-    if (!loading && isLoaded) {
-      const timer = setTimeout(() => {
-        setProgress(100);
-      }, 500); // Плавное исчезновение
+    setDataLoaded(isLoaded);
+  }, [isLoaded]);
 
-      return () => clearTimeout(timer);
+  // Управление видимостью прелоадера
+  useEffect(() => {
+    if (loading || !dataLoaded) {
+      setShowPreloader(true); // Прелоадер видим, пока идет загрузка
+    } else {
+      const timer = setTimeout(() => {
+        setShowPreloader(false); // Скрываем прелоадер после завершения загрузки
+      }, 500); // Минимальная задержка (можно настроить)
+
+      return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
-  }, [loading, isLoaded]);
+  }, [loading, dataLoaded]);
 
   return (
       <>
-        <Preloader loading={loading} progress={progress} />
+        <Preloader loading={showPreloader} progress={progress}/>
         <ScrollToTop />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
