@@ -96,8 +96,10 @@ const MyRoutes = () => {
 
     images.forEach((image) => {
       if (image.complete) {
+        console.log(image)
         updateProgress();
       } else {
+        console.log(image)
         image.addEventListener("load", updateProgress);
         image.addEventListener("error", updateProgress);
       }
@@ -106,11 +108,12 @@ const MyRoutes = () => {
 
   // Обработка смены
   useEffect(() => {
+    console.log(location.pathname)
     setLoading(true);
     setShowPreloader(true);
     setProgress(0);
     handleMediaLoading();
-  }, [location.pathname]);
+  }, [location]);
 
   // Обновление видимости прелоадера
   useEffect(() => {
