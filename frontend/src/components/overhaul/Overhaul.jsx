@@ -10,7 +10,7 @@ import {
     getTilingWorkCapServices,
     getWallWorkCapServices, resetIsLoaded
 } from "../../store/apiSlice";
-import LazyImage from "../LazyImage/LazyImage";
+// import LazyImage from "../LazyImage/LazyImage";
 
 const ExpandableBlock = ({ title,number, list }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -118,7 +118,7 @@ const Overhaul = () => {
             <p className="text">{capRepairsTitle?.text}</p>
           </div>
           <div className="overhaul-image-container">
-            <LazyImage src={Advantages} alt="Advantages" className="overhaul-image" />
+            <img src={Advantages} alt="Advantages" className="overhaul-image" />
           </div>
         </div>
       </div>

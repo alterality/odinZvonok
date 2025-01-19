@@ -7,7 +7,7 @@ import vksimg4 from '../../assets/location bishkek icon (2).png';
 import './Vakancies.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getDetails, getPartnershipProgram, getVacancies, resetIsLoaded} from "../../store/apiSlice";
-import LazyImage from "../LazyImage/LazyImage";
+// import LazyImage from "../LazyImage/LazyImage";
 
 const Vakancies = () => {
   const [section1, setSection1] = useState([])
@@ -63,28 +63,28 @@ const Vakancies = () => {
               <div className="vakancies-rectangle">
                 <h6>Быстрый ремонт</h6>
                 <div className="rectangle-content">
-                  <LazyImage src={vksimg1} alt="" className="rectangle-icon"/>
+                  <img src={vksimg1} alt="" className="rectangle-icon"/>
                   <p>Обслуживание и ремонт техники в кратчайшие сроки.</p>
                 </div>
               </div>
               <div className="vakancies-rectangle">
                 <h6>Питание</h6>
                 <div className="rectangle-content">
-                  <LazyImage src={vksimg2} alt="" className="rectangle-icon"/>
+                  <img src={vksimg2} alt="" className="rectangle-icon"/>
                   <p>Комплексные обеды и питание для сотрудников.</p>
                 </div>
               </div>
               <div className="vakancies-rectangle">
                 <h6>Настройка оборудования</h6>
                 <div className="rectangle-content">
-                  <LazyImage src={vksimg3} alt="" className="rectangle-icon"/>
+                  <img src={vksimg3} alt="" className="rectangle-icon"/>
                   <p>Настройка и обслуживание оборудования любого типа.</p>
                 </div>
               </div>
               <div className="vakancies-rectangle">
                 <h6>Контроль качества</h6>
                 <div className="rectangle-content">
-                  <LazyImage src={vksimg4} alt="" className="rectangle-icon"/>
+                  <img src={vksimg4} alt="" className="rectangle-icon"/>
                   <p>Гарантия на все виды предоставляемых услуг.</p>
                 </div>
               </div>
@@ -116,28 +116,28 @@ const Vakancies = () => {
             <div className="vakancies-rectangle">
               <h6>Быстрый ремонт</h6>
               <div className="rectangle-content">
-                <LazyImage src={vksimg1} alt="" className="rectangle-icon"/>
+                <img src={vksimg1} alt="" className="rectangle-icon"/>
                 <p>Обслуживание и ремонт техники в кратчайшие сроки.</p>
               </div>
             </div>
             <div className="vakancies-rectangle">
               <h6>Питание</h6>
               <div className="rectangle-content">
-                <LazyImage src={vksimg2} alt="" className="rectangle-icon"/>
+                <img src={vksimg2} alt="" className="rectangle-icon"/>
                 <p>Комплексные обеды и питание для сотрудников.</p>
               </div>
             </div>
             <div className="vakancies-rectangle">
               <h6>Настройка оборудования</h6>
               <div className="rectangle-content">
-                <LazyImage src={vksimg3} alt="" className="rectangle-icon"/>
+                <img src={vksimg3} alt="" className="rectangle-icon"/>
                 <p>Настройка и обслуживание оборудования любого типа.</p>
               </div>
             </div>
             <div className="vakancies-rectangle">
               <h6>Контроль качества</h6>
               <div className="rectangle-content">
-                <LazyImage src={vksimg4} alt="" className="rectangle-icon"/>
+                <img src={vksimg4} alt="" className="rectangle-icon"/>
                 <p>Гарантия на все виды предоставляемых услуг.</p>
               </div>
             </div>

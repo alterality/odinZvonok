@@ -5,7 +5,6 @@ import './AboutUsMain.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getHomeAboutCompany, resetIsLoaded} from "../../store/apiSlice";
 import {Link} from "react-router-dom";
-import LazyImage from "../LazyImage/LazyImage";
 
 const AboutUsMain = () => {
     const dispatch = useDispatch();
@@ -22,8 +21,8 @@ const AboutUsMain = () => {
 
             <div className='about-us-main-infoBlock'>
                 <div className="left-image-container">
-                    <LazyImage src={aboutusmainpng} alt="About Us" className="main-image"/>
-                    <Link to='/aboutcompany'><LazyImage src={morepng} alt="More" className="more-icon"/></Link>
+                    <img src={aboutusmainpng} alt="About Us" className="main-image"/>
+                    <Link to='/aboutcompany'><img src={morepng} alt="More" className="more-icon"/></Link>
                 </div>
 
                 <div className="right-text-container">
