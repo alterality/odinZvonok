@@ -110,9 +110,9 @@ const MyRoutes = () => {
   useEffect(() => {
     console.log(location.pathname)
     setLoading(true);
-    setShowPreloader(true);
     setProgress(0);
     handleMediaLoading();
+    setShowPreloader(true);
   }, [location]);
 
   // Обновление видимости прелоадера

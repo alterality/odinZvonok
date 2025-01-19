@@ -8,7 +8,7 @@ import './AboutUsUr.css';
 import {useDispatch, useSelector} from "react-redux";
 import {
     getAdvantages,
-    getAssistances,
+    getAssistances, getIndividualAdvantages, getIndividualDocuments,
     getLegalDocuments,
     getLegalEntities,
     getServices,
@@ -37,7 +37,8 @@ const AboutUsUr = () => {
         advantages,
         assistances,
         workStages,
-        legalDocuments
+        legalDocuments,
+        individualDocuments
     } = useSelector(state => state.api)
     const toMassive = (someObject) => {
         return Object.keys(someObject)
@@ -57,6 +58,7 @@ const AboutUsUr = () => {
         dispatch(getAssistances())
         dispatch(getWorkStages())
         dispatch(getLegalDocuments())
+        dispatch(getIndividualDocuments())
         return () => {
             dispatch(resetIsLoaded());
         };
@@ -331,8 +333,18 @@ const AboutUsUr = () => {
                         <span>Копия свидетельства о регистрации ИП</span>
                     </div>
                     <div className="Ur-document-actions">
-                        <button className="Ur-btn Ur-download-btn">Скачать</button>
-                        <button className="Ur-btn Ur-open-btn">Открыть</button>
+                        <a
+                            href={individualDocuments.doc1}
+                            className="Ur-btn Ur-download-btn">
+                            Скачать
+                        </a>
+                        <a
+                            href={individualDocuments.doc1}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="Ur-btn Ur-open-btn">
+                            Открыть
+                        </a>
                     </div>
                 </div>
                 <div className="Ur-document-item">
@@ -341,8 +353,18 @@ const AboutUsUr = () => {
                         <span>Копия паспорта ИП</span>
                     </div>
                     <div className="Ur-document-actions">
-                        <button className="Ur-btn Ur-download-btn">Скачать</button>
-                        <button className="Ur-btn Ur-open-btn">Открыть</button>
+                        <a
+                            href={individualDocuments.doc2}
+                            className="Ur-btn Ur-download-btn">
+                            Скачать
+                        </a>
+                        <a
+                            href={individualDocuments.doc2}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="Ur-btn Ur-open-btn">
+                            Открыть
+                        </a>
                     </div>
                 </div>
                 <div className="Ur-document-item">
@@ -351,8 +373,18 @@ const AboutUsUr = () => {
                         <span>Копия свидетельства о постановке на налоговый учет </span>
                     </div>
                     <div className="Ur-document-actions">
-                        <button className="Ur-btn Ur-download-btn">Скачать</button>
-                        <button className="Ur-btn Ur-open-btn">Открыть</button>
+                        <a
+                            href={individualDocuments.doc3}
+                            className="Ur-btn Ur-download-btn">
+                            Скачать
+                        </a>
+                        <a
+                            href={individualDocuments.doc3}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="Ur-btn Ur-open-btn">
+                            Открыть
+                        </a>
                     </div>
                 </div>
                 <div className="Ur-document-item">
@@ -361,8 +393,18 @@ const AboutUsUr = () => {
                         <span>Копия нотариальной доверенности лица, уполномоченного на заключение договора </span>
                     </div>
                     <div className="Ur-document-actions">
-                        <button className="Ur-btn Ur-download-btn">Скачать</button>
-                        <button className="Ur-btn Ur-open-btn">Открыть</button>
+                        <a
+                            href={individualDocuments.doc4}
+                            className="Ur-btn Ur-download-btn">
+                            Скачать
+                        </a>
+                        <a
+                            href={individualDocuments.doc4}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="Ur-btn Ur-open-btn">
+                            Открыть
+                        </a>
                     </div>
                 </div>
                 <div className="Ur-document-item">
@@ -371,8 +413,18 @@ const AboutUsUr = () => {
                         <span>Копии разрешительной документации</span>
                     </div>
                     <div className="Ur-document-actions">
-                        <button className="Ur-btn Ur-download-btn">Скачать</button>
-                        <button className="Ur-btn Ur-open-btn">Открыть</button>
+                        <a
+                            href={individualDocuments.doc5}
+                            className="Ur-btn Ur-download-btn">
+                            Скачать
+                        </a>
+                        <a
+                            href={individualDocuments.doc5}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="Ur-btn Ur-open-btn">
+                            Открыть
+                        </a>
                     </div>
                 </div>
             </div>
