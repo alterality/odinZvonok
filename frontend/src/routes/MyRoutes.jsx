@@ -10,9 +10,8 @@ import AboutUsFiz from "../components/about/AboutUsFiz";
 import Vakancies from "../components/vacancies/Vakancies";
 import Services from "../components/services/Services";
 import AboutUsUr from "../components/about/AboutUsUr";
-import AboutUsMain from "../components/about/AboutUsMain";
-import Contacts from "../components/contacts/Contacts";
 import AboutCompany from "../components/aboutcompany/AboutCompany";
+import Contacts from "../components/contacts/Contacts";
 import Overhaul from "../components/overhaul/Overhaul";
 
 // Прелоадер
@@ -40,24 +39,31 @@ const PUBLIC_ROUTES = [
     link: "/",
     element: <MainPageSSS />,
     preloadImages: [
-      "../../assets/Component 8.png",
-      '../../assets/AdobeStock_292230412 1.png',
-      '../../assets/Frame 53.png',
-      '../../assets/main img.png'
+      "/assets/Component 8.png",
+      "/assets/AdobeStock_292230412 1.png",
+      "/assets/Frame 53.png",
+      "/assets/main img.png",
     ],
   },
   {
     id: 3,
     link: "/aboutusfiz",
     element: <AboutUsFiz />,
-    preloadImages: ['../../assets/section right top.png','../../assets/plumbing.png','../../assets/ремонт.png'],
+    preloadImages: [
+      "/assets/section right top.png",
+      "/assets/plumbing.png",
+      "/assets/ремонт.png",
+    ],
   },
   {
     id: 4,
     link: "/vacancies",
     element: <Vakancies />,
     preloadImages: [
-      '../../assets/location bishkek icon.png','../../assets/location bishkek icon (1).png','../../assets/draw an icon of professionalism on a vector.png','../../assets/location bishkek icon (2).png'
+      "/assets/location bishkek icon.png",
+      "/assets/location bishkek icon (1).png",
+      "/assets/draw an icon of professionalism on a vector.png",
+      "/assets/location bishkek icon (2).png",
     ],
   },
   {
@@ -65,17 +71,33 @@ const PUBLIC_ROUTES = [
     link: "/services",
     element: <Services />,
     preloadImages: [
-      '../../assets/Designer (33) 1.png','../../assets/частныедома.png','../../assets/бизнес.png','../../assets/допуслуги.png'
+      "/assets/Designer (33) 1.png",
+      "/assets/частныедома.png",
+      "/assets/бизнес.png",
+      "/assets/допуслуги.png",
     ],
   },
-  { id: 6, link: "/aboutusur", element: <AboutUsUr />, preloadImages: [
-      '../../assets/section right top (1).png','../../assets/plumbing.png','../../assets/ремонт.png'
-    ] },
-  { id: 7, link: "/aboutcompany", element: <AboutCompany />, preloadImages: ['../../assets/aboutcomp.png'] },
+  {
+    id: 6,
+    link: "/aboutusur",
+    element: <AboutUsUr />,
+    preloadImages: [
+      "/assets/section right top (1).png",
+      "/assets/plumbing.png",
+      "/assets/ремонт.png",
+    ],
+  },
+  { id: 7, link: "/aboutcompany", element: <AboutCompany />, preloadImages: ["/assets/aboutcomp.png"] },
   { id: 8, link: "/contacts", element: <Contacts />, preloadImages: [] },
-  { id: 9, link: "/capremont", element: <Overhaul />, preloadImages: [
-      '../../assets/c7ad060e4599347affa1e8cef879597f.png','../../assets/Group 5.png'
-    ] },
+  {
+    id: 9,
+    link: "/capremont",
+    element: <Overhaul />,
+    preloadImages: [
+      "/assets/c7ad060e4599347affa1e8cef879597f.png",
+      "/assets/Group 5.png",
+    ],
+  },
 ];
 
 // Параметры анимации для переходов
