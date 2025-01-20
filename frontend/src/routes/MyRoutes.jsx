@@ -96,16 +96,20 @@ const MyRoutes = () => {
 
     images.forEach((image) => {
       // Удаляем старые обработчики
-      image.onload = null;
-      image.onerror = null;
-
       if (image.complete) {
         updateProgress();
       } else {
         image.onload = updateProgress;
         image.onerror = updateProgress;
       }
+
     });
+    return () => {
+      images.forEach((image) => {
+        image.removeEventListener("load", updateProgress);
+        image.removeEventListener("error", updateProgress);
+      });
+    };
   };
 
   // Обработка смены
