@@ -117,8 +117,9 @@ const MyRoutes = () => {
     const timer = setTimeout(() => {
       handleMediaLoading();
     }, 500); // Задержка для завершения анимации (подбирается экспериментально)
-
+    setShowPreloader(true)
     return () => clearTimeout(timer); // Очистка таймера при размонтировании
+
   }, [location.pathname]);
 
   // Обновление видимости прелоадера
