@@ -9,6 +9,7 @@ import AboutUsFiz from "../components/about/AboutUsFiz";
 import Vakancies from "../components/vacancies/Vakancies";
 import Services from "../components/services/Services";
 import AboutUsUr from "../components/about/AboutUsUr";
+import AboutUsMain from "../components/about/AboutUsMain";
 import Contacts from "../components/contacts/Contacts";
 import AboutCompany from "../components/aboutcompany/AboutCompany";
 import Overhaul from "../components/overhaul/Overhaul";
@@ -117,8 +118,11 @@ const MyRoutes = () => {
     setProgress(0);
 
     // Дожидаемся завершения анимации выхода
+    const timer = setTimeout(() => {
+      handleMediaLoading();
+    }, 900); // Задержка для завершения анимации (подбирается экспериментально)
     setShowPreloader(true)
-
+    return () => clearTimeout(timer); // Очистка таймера при размонтировании
 
   }, [location.pathname]);
 
@@ -127,7 +131,7 @@ const MyRoutes = () => {
     if (!loading && isLoaded) {
       const timer = setTimeout(() => {
         setShowPreloader(false); // Скрываем прелоадер
-      }, 500); // Минимальная задержка
+      }, 700); // Минимальная задержка
 
       return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
@@ -137,9 +141,7 @@ const MyRoutes = () => {
       <>
         <Preloader loading={showPreloader} progress={progress} />
         <ScrollToTop />
-        <AnimatePresence mode="wait" onExitComplete={() => {
-          handleMediaLoading();
-        }}>
+        <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             {PUBLIC_ROUTES.map((elem) => (
                 <Route
