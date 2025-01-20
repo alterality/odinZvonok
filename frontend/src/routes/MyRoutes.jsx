@@ -82,27 +82,32 @@ const MyRoutes = () => {
       return;
     }
 
-    let loadedImages = 0;
+    const imageLoadPromises = images.map((image) => {
+      return new Promise((resolve) => {
+        if (image.complete) {
+          resolve();
+        } else {
+          image.addEventListener("load", resolve);
+          image.addEventListener("error", resolve);
+        }
+      });
+    });
 
+    Promise.all(imageLoadPromises).then(() => {
+      setLoading(false);
+    });
+
+    // Обновление прогресса
+    let loadedImages = 0;
     const updateProgress = () => {
       loadedImages++;
       const progressValue = ((loadedImages / images.length) * 100).toFixed(1);
       setProgress(progressValue);
-
-      if (loadedImages === images.length) {
-        setLoading(false);
-      }
     };
 
     images.forEach((image) => {
-      image.removeEventListener("load", updateProgress);
-      image.removeEventListener("error", updateProgress);
-      if (image.complete) {
-        updateProgress();
-      } else {
-        image.addEventListener("load", updateProgress);
-        image.addEventListener("error", updateProgress);
-      }
+      image.addEventListener("load", updateProgress);
+      image.addEventListener("error", updateProgress);
     });
   };
 
