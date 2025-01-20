@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { useSelector } from "react-redux";
 
 // Компоненты страниц
 import NotFound from "../components/NotFound/NotFound";
@@ -10,10 +9,13 @@ import AboutUsFiz from "../components/about/AboutUsFiz";
 import Vakancies from "../components/vacancies/Vakancies";
 import Services from "../components/services/Services";
 import AboutUsUr from "../components/about/AboutUsUr";
-import AboutCompany from "../components/aboutcompany/AboutCompany";
 import Contacts from "../components/contacts/Contacts";
+import AboutCompany from "../components/aboutcompany/AboutCompany";
 import Overhaul from "../components/overhaul/Overhaul";
+
+// Прелоадер
 import Preloader from "../components/Preloader/Preloader";
+import { useSelector } from "react-redux";
 
 // Служебный компонент для прокрутки вверх
 const ScrollToTop = () => {
@@ -48,26 +50,31 @@ const pageTransition = {
   animate: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.5 },
+    transition: {
+      duration: 0.5,
+      delay: 0.25,
+    },
   },
   exit: {
     opacity: 0,
     x: -100,
-    transition: { duration: 0.5 },
+    transition: {
+      duration: 0.5,
+      delay: 0.25,
+    },
   },
 };
 
 const MyRoutes = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(true);
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const { isLoaded } = useSelector((state) => state.api);
+  const [loading, setLoading] = useState(true); // Статус загрузки медиа
+  const [showPreloader, setShowPreloader] = useState(true); // Видимость прелоадера
+  const [progress, setProgress] = useState(0); // Прогресс загрузки
+  const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
-  // Функция для загрузки изображений
+  // Функция для обработки загрузки изображений
   const handleMediaLoading = () => {
     const images = Array.from(document.querySelectorAll("img"));
-
     if (images.length === 0) {
       setProgress(100);
       setLoading(false);
@@ -78,21 +85,24 @@ const MyRoutes = () => {
 
     const updateProgress = () => {
       loadedImages++;
-      setProgress(((loadedImages / images.length) * 100).toFixed(1));
+      const progressValue = ((loadedImages / images.length) * 100).toFixed(1);
+      setProgress(progressValue);
+
       if (loadedImages === images.length) {
         setLoading(false);
       }
     };
 
     images.forEach((image) => {
+      // Удаляем старые обработчики
       if (image.complete) {
         updateProgress();
       } else {
         image.addEventListener("load", updateProgress);
         image.addEventListener("error", updateProgress);
       }
-    });
 
+    });
     return () => {
       images.forEach((image) => {
         image.removeEventListener("load", updateProgress);
@@ -101,26 +111,25 @@ const MyRoutes = () => {
     };
   };
 
-  // Обработка смены страницы
+  // Обработка смены
   useEffect(() => {
     setLoading(true);
     setProgress(0);
-    setShowPreloader(true);
-  }, [location.pathname]);
 
-  // Ожидание завершения анимации выхода
-  const onExitComplete = () => {
-    handleMediaLoading();
-  };
+    // Дожидаемся завершения анимации выхода
+    setShowPreloader(true)
+
+
+  }, [location.pathname]);
 
   // Обновление видимости прелоадера
   useEffect(() => {
     if (!loading && isLoaded) {
       const timer = setTimeout(() => {
-        setShowPreloader(false);
-      }, 500);
+        setShowPreloader(false); // Скрываем прелоадер
+      }, 500); // Минимальная задержка
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
   }, [loading, isLoaded]);
 
@@ -128,7 +137,9 @@ const MyRoutes = () => {
       <>
         <Preloader loading={showPreloader} progress={progress} />
         <ScrollToTop />
-        <AnimatePresence mode="wait" onExitComplete={onExitComplete}>
+        <AnimatePresence mode="wait" onExitComplete={() => {
+          handleMediaLoading();
+        }}>
           <Routes location={location} key={location.pathname}>
             {PUBLIC_ROUTES.map((elem) => (
                 <Route
