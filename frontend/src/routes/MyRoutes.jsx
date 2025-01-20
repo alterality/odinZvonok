@@ -82,32 +82,29 @@ const MyRoutes = () => {
       return;
     }
 
-    const imageLoadPromises = images.map((image) => {
-      return new Promise((resolve) => {
-        if (image.complete) {
-          resolve();
-        } else {
-          image.addEventListener("load", resolve);
-          image.addEventListener("error", resolve);
-        }
-      });
-    });
-
-    Promise.all(imageLoadPromises).then(() => {
-      setLoading(false);
-    });
-
-    // Обновление прогресса
     let loadedImages = 0;
+
     const updateProgress = () => {
       loadedImages++;
       const progressValue = ((loadedImages / images.length) * 100).toFixed(1);
       setProgress(progressValue);
+
+      if (loadedImages === images.length) {
+        setLoading(false);
+      }
     };
 
     images.forEach((image) => {
-      image.addEventListener("load", updateProgress);
-      image.addEventListener("error", updateProgress);
+      // Удаляем старые обработчики
+      image.onload = null;
+      image.onerror = null;
+
+      if (image.complete) {
+        updateProgress();
+      } else {
+        image.onload = updateProgress;
+        image.onerror = updateProgress;
+      }
     });
   };
 
@@ -115,9 +112,14 @@ const MyRoutes = () => {
   useEffect(() => {
     setLoading(true);
     setProgress(0);
-    handleMediaLoading();
-    setShowPreloader(true);
-  }, [location]);
+
+    // Дожидаемся завершения анимации выхода
+    const timer = setTimeout(() => {
+      handleMediaLoading();
+    }, 500); // Задержка для завершения анимации (подбирается экспериментально)
+
+    return () => clearTimeout(timer); // Очистка таймера при размонтировании
+  }, [location.pathname]);
 
   // Обновление видимости прелоадера
   useEffect(() => {
