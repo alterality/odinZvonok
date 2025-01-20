@@ -96,16 +96,20 @@ const MyRoutes = () => {
 
     images.forEach((image) => {
       // Удаляем старые обработчики
-      image.onload = null;
-      image.onerror = null;
-
       if (image.complete) {
         updateProgress();
       } else {
         image.onload = updateProgress;
         image.onerror = updateProgress;
       }
+
     });
+    return () => {
+      images.forEach((image) => {
+        image.removeEventListener("load", updateProgress);
+        image.removeEventListener("error", updateProgress);
+      });
+    };
   };
 
   // Обработка смены
@@ -117,8 +121,9 @@ const MyRoutes = () => {
     const timer = setTimeout(() => {
       handleMediaLoading();
     }, 500); // Задержка для завершения анимации (подбирается экспериментально)
-
+    setShowPreloader(true)
     return () => clearTimeout(timer); // Очистка таймера при размонтировании
+
   }, [location.pathname]);
 
   // Обновление видимости прелоадера
