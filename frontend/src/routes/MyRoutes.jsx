@@ -76,6 +76,7 @@ const MyRoutes = () => {
   // Функция для обработки загрузки изображений
   const handleMediaLoading = () => {
     const images = Array.from(document.querySelectorAll("img"));
+
     if (images.length === 0) {
       setProgress(100);
       setLoading(false);
@@ -86,24 +87,22 @@ const MyRoutes = () => {
 
     const updateProgress = () => {
       loadedImages++;
-      const progressValue = ((loadedImages / images.length) * 100).toFixed(1);
-      setProgress(progressValue);
-
+      setProgress(((loadedImages / images.length) * 100).toFixed(1));
       if (loadedImages === images.length) {
         setLoading(false);
       }
     };
 
     images.forEach((image) => {
-      // Удаляем старые обработчики
       if (image.complete) {
         updateProgress();
       } else {
-        image.onload = updateProgress;
-        image.onerror = updateProgress;
+        image.addEventListener("load", updateProgress);
+        image.addEventListener("error", updateProgress);
       }
-
     });
+
+    // Очистка обработчиков при размонтировании
     return () => {
       images.forEach((image) => {
         image.removeEventListener("load", updateProgress);
@@ -112,18 +111,17 @@ const MyRoutes = () => {
     };
   };
 
-  // Обработка смены
+  // Обработка смены страницы
   useEffect(() => {
     setLoading(true);
     setProgress(0);
+    setShowPreloader(true);
 
-    // Дожидаемся завершения анимации выхода
-    const timer = setTimeout(() => {
-      handleMediaLoading();
-    }, 500); // Задержка для завершения анимации (подбирается экспериментально)
-    setShowPreloader(true)
-    return () => clearTimeout(timer); // Очистка таймера при размонтировании
+    const cleanup = handleMediaLoading();
 
+    return () => {
+      if (cleanup) cleanup(); // Очистка обработчиков
+    };
   }, [location.pathname]);
 
   // Обновление видимости прелоадера
@@ -131,7 +129,7 @@ const MyRoutes = () => {
     if (!loading && isLoaded) {
       const timer = setTimeout(() => {
         setShowPreloader(false); // Скрываем прелоадер
-      }, 500); // Минимальная задержка
+      }, 500);
 
       return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
