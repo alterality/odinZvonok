@@ -430,7 +430,7 @@ const AboutUsUr = () => {
             </div>
 
 
-            <div className="AboutUsFiz-form-container-ur">
+            <div className="AboutUsFiz-form-container-ur" id='application_form'>
                 <h3 className="AboutUsFiz-form-heading-ur header-font">Форма заявки</h3>
                 <div className="AboutUsFiz-form-content-ur">
                     {/* Левый контейнер с текстом */}

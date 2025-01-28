@@ -687,7 +687,7 @@ const Services = () => {
 
 
             {/*//! форма зявки */}
-            <form className="serviceform-formcomt" onSubmit={handleSubmit} id='application'>
+            <form className="serviceform-formcomt" onSubmit={handleSubmit} id='application_form'>
                 <div className="serviceform-wrapper">
                     <h2 className='header-font'>Оставить заявку</h2>
 

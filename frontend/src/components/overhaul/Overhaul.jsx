@@ -166,7 +166,7 @@ const Overhaul = () => {
                 </div>
             </div>
 
-            <form className="overhaul-form-formcomt" onSubmit={handleSubmit}>
+            <form className="overhaul-form-formcomt" onSubmit={handleSubmit} id="application_form">
                 <div className="overhaul-form-wrapper">
                     <h2>Остались вопросы? Напишите нам</h2>
 

@@ -7,12 +7,14 @@ import vksimg4 from '../../assets/location bishkek icon (2).png';
 import './Vakancies.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getDetails, getPartnershipProgram, getVacancies, postApplication, resetIsLoaded} from "../../store/apiSlice";
+import {useLocation} from "react-router-dom";
 // import LazyImage from "../LazyImage/LazyImage";
 
 const Vakancies = () => {
     const [section1, setSection1] = useState([])
     const [section2, setSection2] = useState([])
     const selectedLanguage = 'ru'
+    const location = useLocation()
     const [visibleJobs, setVisibleJobs] = useState(6);
     const toMassive = (someObject, sectionNumber) => {
         return Object.keys(someObject)
@@ -184,7 +186,7 @@ const Vakancies = () => {
             </div>
 
 
-            <div className="partnership-main">
+            <div className="partnership-main" id="application_form">
                 <h2 className="partnership-header header-font">
                     ПАРТНЕРСКАЯ ПРОГРАММА ПО УСЛУГАМ <br/> САНТЕХНИКИ, ЭЛЕКТРИКИ И РЕМОНТА <br/> БЫТОВОЙ ТЕХНИКИ
                 </h2>

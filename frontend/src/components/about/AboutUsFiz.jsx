@@ -248,7 +248,7 @@ const AboutUsFiz = () => {
             {/* пдф файлы */}
 
 
-            <form className="AboutUsFiz-form-container" onSubmit={handleSubmit}>
+            <form className="AboutUsFiz-form-container" onSubmit={handleSubmit} id='application_form'>
                 <h3 className="AboutUsFiz-form-heading header-font">Форма заявки</h3>
                 <div className="AboutUsFiz-form-content">
                     {/* Левый контейнер с текстом */}

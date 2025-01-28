@@ -55,7 +55,7 @@ const MainPage = () => {
                   {/*Комплексное обслуживание и решение мелких технических проблем для предприятий (швейные цеха, кафе, рестораны и другие организации).*/}
               </div>
 
-              <form className="center-square" onSubmit={handleSubmit}>
+              <form className="center-square" onSubmit={handleSubmit} id="application_form">
                   <h2 className='form-container-h2'>Оставить заявку</h2>
 
                   <div className="form-container" >
