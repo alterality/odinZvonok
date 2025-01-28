@@ -136,7 +136,14 @@ const MyRoutes = () => {
       return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
   }, [loading, isLoaded]);
-
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
   return (
       <>
         <Preloader loading={showPreloader} progress={progress} />

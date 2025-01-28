@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import logopng from '../../assets/logonew.png';
 import './Navbar.css';
-import { useNavigate, Link } from 'react-router-dom';
+import {useNavigate, Link, useLocation} from 'react-router-dom';
 import closeIcon from '../../assets/closeIcon.png'
 
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isAccordionOpen, setAccordionOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isClientsOpen,setIsClientsOpen] = useState(false)
-
+  const location = useLocation()
   const toggleLanguage = () => {
     setAccordionOpen(!isAccordionOpen);
   };
@@ -29,8 +29,12 @@ const Navbar = () => {
     setMenuOpen(false)
     setIsClientsOpen(false);
   }
-
   const navigate = useNavigate();
+  const navigateToAppclication = (locationPath) => {
+    navigate(`${locationPath}#application_form`)
+  }
+
+
 
   return (
       <nav className="navbar">
@@ -81,7 +85,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-right">
-          <button className="contact-button">Связаться</button>
+          <button className="contact-button" onClick={() => navigateToAppclication(location.pathname)}>Связаться</button>
           <button className="burger-menu" onClick={toggleMenu}>
             ☰
           </button>

@@ -23,7 +23,7 @@ const ServicesMain = () => {
         <img src={servis4} alt="Service 4" className="service-itemMain" onClick={() => goToBlock("add-services")}/>
       </div>
       
-      <button className="request-button" onClick={() => goToBlock("application")}>Оставить заявку</button>
+      <button className="request-button" onClick={() => goToBlock("application_form")}>Оставить заявку</button>
     </div>
   );
 }

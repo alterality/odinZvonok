@@ -93,7 +93,7 @@ const AboutCompany = () => {
             </div>
 
 
-            <form className="aboutcomp-formcomt" onSubmit={handleSubmit}>
+            <form className="aboutcomp-formcomt" onSubmit={handleSubmit} id="application_form">
                 <div className="aboutcomp-wrapper">
                     <h2 className="header-font">Оставить заявку</h2>
 
