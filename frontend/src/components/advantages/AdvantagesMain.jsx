@@ -3,6 +3,7 @@ import advantagesimg from '../../assets/Frame 53.png';
 import './AdvantagesMain.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getHomeAdvantage, resetIsLoaded} from "../../store/apiSlice";
+// import LazyImage from "../LazyImage/LazyImage";
 
 const AdvantagesMain = () => {
   const [descriptions,setDescriptions] = useState([])

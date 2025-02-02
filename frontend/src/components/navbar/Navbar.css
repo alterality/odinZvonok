@@ -49,16 +49,13 @@
     gap: 15px;
 }
 
-.links a {
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 400;
+.links p {
     color: #ffffff;
     transition: color 0.3s;
 }
 
-.links a:hover {
-    color: red;
+.links p:hover {
+    color: rgba(255, 75, 15, 1);
 }
 
 /* Переключатель языка */
@@ -87,6 +84,13 @@
     border-radius: 4px;
     overflow: hidden;
     z-index: 10;
+    opacity: 0; /* Скрыто */
+    transform: translateY(-10px); /* Начальное смещение */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Плавная анимация */
+}
+.language-options.open {
+    opacity: 1; /* Видимость */
+    transform: translateY(0); /* Нормальная позиция */
 }
 .clients-options{
     display: flex;
@@ -99,6 +103,9 @@
     padding: 5px;
     overflow: hidden;
     z-index: 10;
+    opacity: 1; /* Начальная скрытость */
+    transform: translateY(-10px); /* Смещение вверх */
+    transition: opacity 0.3s ease, transform 1.3s ease;
 }
 .clients-accordion-button{
     background: none;
@@ -193,7 +200,6 @@
         height: 25px;
     }
     .menu {
-        display: none;
         flex-direction: column;
         align-items: flex-start;
         background: rgba(0, 0, 0, 0.9);
@@ -204,12 +210,22 @@
         height: 100%;
         padding: 40px;
         z-index: 9999;
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(-100%);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        opacity: 0; /* Скрыто */
+        pointer-events: none; /* Отключаем взаимодействие */
     }
+
     .menu.open {
-        display: flex;
-        transform: translateX(0);
+        transform: translateY(0); /* Плавно появляется */
+        opacity: 1; /* Полностью видно */
+        pointer-events: auto; /* Включаем взаимодействие */
+    }
+
+    .menu.close {
+        transform: translateY(-100%); /* Плавно уходит вверх */
+        opacity: 0; /* Скрываем */
+        pointer-events: none; /* Отключаем взаимодействие */
     }
     .links {
         display: none;
@@ -255,5 +271,10 @@
         border-radius: 4px;
         overflow: hidden;
         z-index: 10;
+    }
+}
+@media (max-width: 768px) {
+    .links p {
+        font-size: 20px;
     }
 }

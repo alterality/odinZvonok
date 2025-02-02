@@ -11,7 +11,7 @@ import {
     getIndividualAdvantages, getIndividualDocuments,
     getIndividualEntities, getIndividualWorkStages,
     getOurServices,
-    getWorkStages, resetIsLoaded
+    getWorkStages, postApplication, resetIsLoaded
 } from "../../store/apiSlice";
 
 const AboutUsFiz = () => {
@@ -22,6 +22,27 @@ const AboutUsFiz = () => {
     const [servicesOur, setServicesOur] = useState([])
     const dispatch = useDispatch();
     const [docs, setDocs] = useState([])
+    const [application,setApplication] = useState({
+        name: '',
+        email: '',
+        phone_number: '',
+        content: '',
+    })
+    const handleChange = (e) =>{
+        const { name, value } = e.target;
+        setApplication({ ...application, [name]: value });
+    }
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        await dispatch(postApplication(application))
+        setApplication({
+            name: '',
+            email: '',
+            phone_number: '',
+            content: '',
+        })
+    }
+
     const toMassive = (someObject) => {
         return Object.keys(someObject)
             .filter(
@@ -227,7 +248,7 @@ const AboutUsFiz = () => {
             {/* пдф файлы */}
 
 
-            <div className="AboutUsFiz-form-container">
+            <form className="AboutUsFiz-form-container" onSubmit={handleSubmit} id='application_form'>
                 <h3 className="AboutUsFiz-form-heading header-font">Форма заявки</h3>
                 <div className="AboutUsFiz-form-content">
                     {/* Левый контейнер с текстом */}
@@ -247,28 +268,28 @@ const AboutUsFiz = () => {
                         </h4>
                         <div className="AboutUsFiz-form-inputs">
                             <div className="AboutUsFiz-form-input">
-                                <input type="text" placeholder="Имя*" className="AboutUsFiz-input-field"/>
+                                <input type="text" placeholder="Имя*" className="AboutUsFiz-input-field" name="name" value={application.name} onChange={handleChange} required/>
                             </div>
                             <div className="AboutUsFiz-form-input">
-                                <input type="text" placeholder="Укажите адрес или название района*"
-                                       className="AboutUsFiz-input-field"/>
+                                <input type="tel" placeholder="Номер телефона*" className="AboutUsFiz-input-field" name="phone_number" value={application.phone_number} onChange={handleChange} required/>
                             </div>
                             <div className="AboutUsFiz-form-input">
-                                <input type="tel" placeholder="Номер телефона*" className="AboutUsFiz-input-field"/>
-                            </div>
-                            <div className="AboutUsFiz-form-input">
-                                <input type="email" placeholder="Электронная почта* (если есть)"
-                                       className="AboutUsFiz-input-field"/>
+                                <input type="email" placeholder="Электронная почта"
+                                       className="AboutUsFiz-input-field"
+                                        name="email"
+                                       value={application.email}
+                                       onChange={handleChange}
+                                />
                             </div>
                             <div className="AboutUsFiz-form-input">
                                 <textarea placeholder="Опишите проблему или добавьте пожелания*"
-                                          className="AboutUsFiz-textarea-field"></textarea>
+                                          className="AboutUsFiz-textarea-field" name="content" value={application.content} onChange={handleChange} required></textarea>
                             </div>
                             <button type="submit" className="AboutUsFiz-form-submit-button">Отправить заявку</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
 
         </div>

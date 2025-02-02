@@ -137,3 +137,9 @@
     height: 100%;
   }
 }
+@media (min-width: 1441px){
+  .advantages-image img {
+    max-width: 75%;
+    border-radius: 8px;
+  }
+}

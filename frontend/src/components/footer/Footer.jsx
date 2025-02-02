@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../assets/logonew.png';
 import './Footer.css';
 import { FaInstagram, FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
+// import LazyImage from "../LazyImage/LazyImage";
 
 const Footer = () => {
   return (

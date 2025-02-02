@@ -53,7 +53,7 @@ const pageTransition = {
     x: 0,
     transition: {
       duration: 0.5,
-      delay: 0.25, // Задержка в начале анимации
+      delay: 0.25,
     },
   },
   exit: {
@@ -61,72 +61,92 @@ const pageTransition = {
     x: -100,
     transition: {
       duration: 0.5,
-      delay: 0.25, // Задержка при выходе (если необходимо)
+      delay: 0.25,
     },
   },
 };
 
 const MyRoutes = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
-  const [showPreloader, setShowPreloader] = useState(false);
+  const [loading, setLoading] = useState(true); // Статус загрузки медиа
+  const [showPreloader, setShowPreloader] = useState(true); // Видимость прелоадера
+  const [progress, setProgress] = useState(0); // Прогресс загрузки
+  const { isLoaded } = useSelector((state) => state.api); // Данные из Redux
 
-  // Функция для обработки загрузки медиа
+  // Функция для обработки загрузки изображений
   const handleMediaLoading = () => {
-    const mediaFiles = [...document.querySelectorAll("img, video")];
-    setLoading(true);
-
-    const promises = mediaFiles.map(
-        (file) =>
-            new Promise((resolve) => {
-              if (file.complete || file.readyState >= 4) {
-                resolve();
-              } else {
-                const onLoad = () => {
-                  file.removeEventListener("load", onLoad);
-                  file.removeEventListener("loadeddata", onLoad);
-                  resolve();
-                };
-                file.addEventListener("load", onLoad);
-                file.addEventListener("loadeddata", onLoad);
-              }
-            })
-    );
-
-    Promise.all(promises).then(() => {
+    const images = Array.from(document.querySelectorAll("img"));
+    if (images.length === 0) {
+      setProgress(100);
       setLoading(false);
+      return;
+    }
+
+    let loadedImages = 0;
+
+    const updateProgress = () => {
+      loadedImages++;
+      const progressValue = ((loadedImages / images.length) * 100).toFixed(1);
+      setProgress(progressValue);
+
+      if (loadedImages === images.length) {
+        setLoading(false);
+      }
+    };
+
+    images.forEach((image) => {
+      // Удаляем старые обработчики
+      if (image.complete) {
+        updateProgress();
+      } else {
+        image.addEventListener("load", updateProgress);
+        image.addEventListener("error", updateProgress);
+      }
+
     });
+    return () => {
+      images.forEach((image) => {
+        image.removeEventListener("load", updateProgress);
+        image.removeEventListener("error", updateProgress);
+      });
+    };
   };
 
-  // Запуск загрузки медиа при смене маршрута
+  // Обработка смены
   useEffect(() => {
-    setShowPreloader(true); // Включаем прелоадер сразу при смене маршрута
-    handleMediaLoading();
+    setLoading(true);
+    setProgress(0);
+
+    // Дожидаемся завершения анимации выхода
+    const timer = setTimeout(() => {
+      handleMediaLoading();
+    }, 900); // Задержка для завершения анимации (подбирается экспериментально)
+    setShowPreloader(true)
+    return () => clearTimeout(timer); // Очистка таймера при размонтировании
+
   }, [location.pathname]);
 
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const { isLoaded } = useSelector((state) => state.api);
-
+  // Обновление видимости прелоадера
   useEffect(() => {
-    setDataLoaded(isLoaded);
-  }, [isLoaded]);
-
-  // Управление задержкой для прелоадера
-  useEffect(() => {
-    if (loading || !dataLoaded) {
-      setShowPreloader(true);
-    } else {
+    if (!loading && isLoaded) {
       const timer = setTimeout(() => {
-        setShowPreloader(false); // Скрытие прелоадера после задержки
-      }, 1); // 1500ms — это дополнительная задержка для прелоадера
+        setShowPreloader(false); // Скрываем прелоадер
+      }, 700); // Минимальная задержка
 
-      return () => clearTimeout(timer); // Очистка таймера, если компонента размонтируется
+      return () => clearTimeout(timer); // Очистка таймера при размонтировании
     }
-  }, [loading, dataLoaded]);
-
+  }, [loading, isLoaded]);
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
   return (
       <>
-        <Preloader loading={showPreloader} />
+        <Preloader loading={showPreloader} progress={progress} />
         <ScrollToTop />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -140,7 +160,6 @@ const MyRoutes = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.5 }}
                       >
                         {elem.element}
                       </motion.div>
