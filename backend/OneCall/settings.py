@@ -178,6 +178,10 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://localhost:3000",
+    "http://1-zvonok.com",
+    "https://1-zvonok.com",
+    "http://www.1-zvonok.com",
+    "https://www.1-zvonok.com"
 ]
 
 CORS_ALLOW_METHODS = ['GET', 'OPTIONS']
