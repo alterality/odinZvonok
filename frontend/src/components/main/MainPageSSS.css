@@ -1,3 +1,4 @@
+@import url("../../assets/variables.css");
 .center-square-mobile{
     display: none;
 }
@@ -65,7 +66,7 @@
     }
 
     .policy-link-mobile {
-        color: rgba(255, 75, 15, 1);
+        color: var(--primary-color);
         margin-left: 0.3rem;
     }
 }

@@ -1,3 +1,4 @@
+@import url("../../assets/variables.css");
 .about-company {
   background-color: rgba(29, 29, 27, 1);
   color: white;
@@ -209,7 +210,7 @@
 
 /* Ссылка на политику */
 .aboutcomp-policy-link {
-  color: rgba(255, 75, 15, 1);
+  color: var(--primary-color);
   margin-left: 0.3rem;
   text-decoration: none;
 }

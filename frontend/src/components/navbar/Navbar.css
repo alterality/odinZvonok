@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("../../assets/variables.css");
 .navbar {
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@
 }
 
 .logo-image {
-    width: auto;
+    width: 80px;
     height: auto;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .links p:hover {
-    color: rgba(255, 75, 15, 1);
+    color: var(--primary-color);
 }
 
 /* Переключатель языка */

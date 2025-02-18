@@ -79,39 +79,7 @@ const Vakancies = () => {
                 <div className="vakancies-horizontal-line line3"></div>
 
 
-                <div className="vakancies-bottom-section">
-                    <h6 className="guarantee-title">ГАРАНТИРУЕМ</h6>
-                    <div className="vakancies-rectangles">
-                        <div className="vakancies-rectangle">
-                            <h6>Быстрый ремонт</h6>
-                            <div className="rectangle-content">
-                                <img src={vksimg1} alt="" className="rectangle-icon"/>
-                                <p>Обслуживание и ремонт техники в кратчайшие сроки.</p>
-                            </div>
-                        </div>
-                        <div className="vakancies-rectangle">
-                            <h6>Питание</h6>
-                            <div className="rectangle-content">
-                                <img src={vksimg2} alt="" className="rectangle-icon"/>
-                                <p>Комплексные обеды и питание для сотрудников.</p>
-                            </div>
-                        </div>
-                        <div className="vakancies-rectangle">
-                            <h6>Настройка оборудования</h6>
-                            <div className="rectangle-content">
-                                <img src={vksimg3} alt="" className="rectangle-icon"/>
-                                <p>Настройка и обслуживание оборудования любого типа.</p>
-                            </div>
-                        </div>
-                        <div className="vakancies-rectangle">
-                            <h6>Контроль качества</h6>
-                            <div className="rectangle-content">
-                                <img src={vksimg4} alt="" className="rectangle-icon"/>
-                                <p>Гарантия на все виды предоставляемых услуг.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div className="vakancies-center-square">
                     <div className="invite-rectangle">
@@ -132,39 +100,7 @@ const Vakancies = () => {
                 </div>
             </div>
 
-            <div className="vakancies-garant-section">
-                <h6 className="guarantee-title">ГАРАНТИРУЕМ</h6>
-                <div className="vakancies-rectangles">
-                    <div className="vakancies-rectangle">
-                        <h6>Быстрый ремонт</h6>
-                        <div className="rectangle-content">
-                            <img src={vksimg1} alt="" className="rectangle-icon"/>
-                            <p>Обслуживание и ремонт техники в кратчайшие сроки.</p>
-                        </div>
-                    </div>
-                    <div className="vakancies-rectangle">
-                        <h6>Питание</h6>
-                        <div className="rectangle-content">
-                            <img src={vksimg2} alt="" className="rectangle-icon"/>
-                            <p>Комплексные обеды и питание для сотрудников.</p>
-                        </div>
-                    </div>
-                    <div className="vakancies-rectangle">
-                        <h6>Настройка оборудования</h6>
-                        <div className="rectangle-content">
-                            <img src={vksimg3} alt="" className="rectangle-icon"/>
-                            <p>Настройка и обслуживание оборудования любого типа.</p>
-                        </div>
-                    </div>
-                    <div className="vakancies-rectangle">
-                        <h6>Контроль качества</h6>
-                        <div className="rectangle-content">
-                            <img src={vksimg4} alt="" className="rectangle-icon"/>
-                            <p>Гарантия на все виды предоставляемых услуг.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div className="vakancies-open-jobs">
                 <h2 className="vakancies-section-title header-font">ОТКРЫТЫЕ ВАКАНСИИ В НАШЕЙ КОМПАНИИ</h2>
                 <div className="vakancies-job-list">

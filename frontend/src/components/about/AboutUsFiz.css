@@ -1,3 +1,4 @@
+@import url("../../assets/variables.css");
 .advantages-container {
   background-color: rgba(29, 29, 27, 1); 
   display: flex;
@@ -242,7 +243,7 @@
 .helpblack-text-item-number {
   font-weight: bold;
   font-size: 1.2rem;
-  color: rgba(255, 75, 15, 1); 
+  color: var(--primary-color);
   position: absolute;
   right: 0;
   top: 0;
