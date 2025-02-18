@@ -183,7 +183,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://1-zvonok.com",
     "https://1-zvonok.com",
     "http://www.1-zvonok.com",
-    "https://www.1-zvonok.com"
+    "https://www.1-zvonok.com",
+    "https://34.58.232.121:443",
+    "http://34.58.232.121:80"
 ]
 
 CORS_ALLOW_METHODS = ['GET', 'OPTIONS']
@@ -203,3 +205,12 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_ALLOW_ALL = False
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://1-zvonok.com',
+    'https://www.1-zvonok.com'
+]
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
