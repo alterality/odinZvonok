@@ -46,7 +46,7 @@ def send_application(application_id):
     subject = 'Уведомление о новой заявке'
     message = f'{name} оставил заявку на услуги\n\nТекст заявки: "{content}"\n\nЕго email: "{email}"\n\nЕго номер телефона: "{phone_number}"'
     from_email = sanitize_email('rordufe@gmail.com')
-    recipient_list = [sanitize_email('rordufe@gmail.com'), sanitize_email('bagishan01@gmail.com')]
+    recipient_list = [sanitize_email('bagishan01@gmail.com'), sanitize_email('odinzvonok845@gmail.com')]
 
     email_message = EmailMessage(subject, message, from_email, recipient_list)
 
@@ -66,7 +66,7 @@ def send_bsiness_application(application_id):
     subject = 'Уведомление о новой заявке'
     message = f'{company_name} оставил заявку на услуги\n\nТип компании: "{company_type}"\n\nТекст заявки: "{content}"\n\nКонтактное лицо: "{contact_person}"\n\nКонтактные данные: "{phone_number}"\n\nИх сайт: "{site}"'
     from_email = sanitize_email('rordufe@gmail.com')
-    recipient_list = [sanitize_email('rordufe@gmail.com'), sanitize_email('bagishan01@gmail.com')]
+    recipient_list = [sanitize_email('bagishan01@gmail.com'), sanitize_email('odinzvonok845@gmail.com')]
 
     email_message = EmailMessage(subject, message, from_email, recipient_list)
 
