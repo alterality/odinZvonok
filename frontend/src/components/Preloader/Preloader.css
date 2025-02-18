@@ -1,3 +1,4 @@
+@import url("../../assets/variables.css");
 .preloader {
     position: fixed;
     top: 0;
@@ -40,7 +41,7 @@
     height: 32px;
     position: relative;
     border-radius: 50%;
-    color: #FF3D00;
+    color: var(--primary-color);
     animation: fill 1s ease-in infinite alternate;
 }
 

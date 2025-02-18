@@ -1,3 +1,4 @@
+@import url("../../assets/variables.css");
 .ServicesCont{
   padding-top: 100px;
 }
@@ -36,7 +37,7 @@
 
 }
 .capital-works-btn:hover{
-  background-color: #FF4B0F;
+  background-color: var(--primary-color);
 }
 .service-item-content{
   display: flex;
@@ -493,7 +494,7 @@
 }
 
 .icon:hover {
-  color: rgba(255, 75, 15, 1);
+  color: var(--primary-color);
 }
 
 
@@ -578,7 +579,7 @@
 
 /* Ссылка на политику */
 .serviceform-policy-link {
-  color: rgba(255, 75, 15, 1);
+  color: var(--primary-color);
   margin-left: 0.3rem;
   text-decoration: none;
 }

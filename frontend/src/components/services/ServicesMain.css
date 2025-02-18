@@ -1,3 +1,4 @@
+@import url("../../assets/variables.css");
 .services-container {
     padding: 2rem;
     text-align: center;
@@ -23,10 +24,25 @@
   }
   
   .service-itemMain {
-    width: 24%; /* Увеличили ширину изображений */
-    height: auto;
+    width: 100%; /* Увеличили ширину изображений */
   }
-  
+  .service-item-main{
+    position: relative;
+  }
+  .goToMore{
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .goToMore p{
+    padding: 12px;
+    font-size: 18px;
+  }
   .request-button {
     width: 100%;
     padding: 0.75rem;
@@ -40,7 +56,7 @@
     transition: background-color 0.3s ease;
   }
   .request-button:hover{
-    background-color: rgba(255, 75, 15, 1);
+    background-color: var(--primary-color);
   }
 @media (max-width: 768px) {
   .services-images-row {
@@ -68,7 +84,7 @@
 }
 @media (max-width: 1024px){
   .service-itemMain {
-    width: 24%;
+    width: 100%;
     height: auto;
   }
 }

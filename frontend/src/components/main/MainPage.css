@@ -1,6 +1,6 @@
 /* Основной стиль */
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("../../assets/variables.css");
 .main-page {
   position: relative;
   width: 100%;
@@ -155,7 +155,7 @@
 }
 
 .policy-link {
-  color: rgba(255, 75, 15, 1);
+  color: var(--primary-color);
   margin-left: 0.3rem;
 }
 
@@ -218,7 +218,7 @@
     border-radius: 0;
   }
   .bottom-text{
-    background-color: rgba(255, 75, 15, 0.98);
+    background-color: var(--primary-color);
     left: 0;
     border-radius: 0;
     padding: 50px;
@@ -311,7 +311,7 @@
   }
 
   .policy-link-mobile {
-    color: rgba(255, 75, 15, 1);
+    color: var(--primary-color);
     margin-left: 0.3rem;
   }
   .agreement-mobile label{

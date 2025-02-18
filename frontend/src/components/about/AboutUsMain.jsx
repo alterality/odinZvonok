@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import aboutusmainpng from '../../assets/AdobeStock_292230412 1.png';
-import morepng from '../../assets/Component 8.png';
+import morepng from '../../assets/more.svg';
 import './AboutUsMain.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getHomeAboutCompany, resetIsLoaded} from "../../store/apiSlice";

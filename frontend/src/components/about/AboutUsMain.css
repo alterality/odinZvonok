@@ -1,5 +1,5 @@
 @import "../../assets/fonts/fonts.css";
-
+@import url("../../assets/variables.css");
 .about-us-main {
     display: flex;
     align-items: flex-start;
@@ -37,8 +37,8 @@
     position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
-    width: 10rem;
-    height: 4rem;
+    width: 2rem;
+    height: auto;
 }
 
 .right-text-container {
@@ -76,7 +76,7 @@
 
 .orange-text {
     color: white;
-    background-color: rgba(255, 75, 15, 1);
+    background-color: var(--primary-color);
     margin-top: 0;
 }
 
