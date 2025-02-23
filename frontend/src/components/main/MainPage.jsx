@@ -45,13 +45,13 @@ const MainPage = () => {
               <div className="horizontal-line line2"></div>
               <div className="horizontal-line line3"></div>
 
-              <div className="center-text top-text">
+              <div className="top-text">
                   {/*Один Звонок – и ваши проблемы решены!*/}
-                  {homePage.title}
+                  <p className='center-text'>{homePage.title}</p>
               </div>
 
-              <div className="center-text bottom-text">
-                  {homePage.description}
+              <div className="bottom-text">
+                  <p className='center-text'>{homePage.description}</p>
                   {/*Комплексное обслуживание и решение мелких технических проблем для предприятий (швейные цеха, кафе, рестораны и другие организации).*/}
               </div>
 

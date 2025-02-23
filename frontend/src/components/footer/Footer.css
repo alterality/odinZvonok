@@ -43,10 +43,14 @@
 }
 
 
+
 .footer-column p {
     margin: 0;
     color: #ccc;
     font-size: 1rem;
+}
+.footer-bottom a:-webkit-any-link {
+    text-decoration: none;
 }
 
 .footer-phone-icons {
@@ -85,7 +89,6 @@
 .footer-copy {
     margin: 0;
 }
-
 @media (max-width: 1025px){
     .footer-phone {
         color: var(--primary-color) !important;

@@ -21,13 +21,13 @@ const Footer = () => {
         {/* Основное содержимое */}
         <div className="footer-content">
           <div className="footer-column 1">
-              <Link to='/'><p>Главная</p></Link>
-              <Link to='/aboutcompany'><p>О нас</p></Link>
-              <Link to='/services'><p style={{whiteSpace: 'nowrap'}}>Услуги и Тарифы</p></Link>
-              <Link to='/aboutusfiz'><p>Физ.лицам</p></Link>
-              <Link to='/aboutusur'><p>Юр.лицам</p></Link>
-              <Link to='/capremont'><p>Кап.ремонт</p></Link>
-              <Link to='/vacancies'><p>Вакансии</p></Link>
+              <Link to='/' style={{ textDecoration: 'none' }}><p>Главная</p></Link>
+              <Link to='/aboutcompany' style={{ textDecoration: 'none' }}><p>О нас</p></Link>
+              <Link to='/services' style={{ textDecoration: 'none' }}><p style={{whiteSpace: 'nowrap'}}>Услуги и Тарифы</p></Link>
+              <Link to='/aboutusfiz' style={{ textDecoration: 'none' }}><p>Физ.лицам</p></Link>
+              <Link to='/aboutusur' style={{ textDecoration: 'none' }}><p>Юр.лицам</p></Link>
+              <Link to='/capremont' style={{ textDecoration: 'none' }}><p>Кап.ремонт</p></Link>
+              <Link to='/vacancies' style={{ textDecoration: 'none' }}><p>Вакансии</p></Link>
           </div>
 
           <div className="footer-column 2">
