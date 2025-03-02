@@ -413,8 +413,7 @@
 
 .service-image {
   width: 370px;
-  height: 370px;
-  object-fit: cover;
+  height: auto;
   margin-right: 100px;
 }
 .blackText p{
@@ -628,7 +627,7 @@
   .service-image{
     margin: 0;
     width: 270px;
-    height: 270px;
+    height: auto;
   }
   .services-container{
     padding: 25px !important;
