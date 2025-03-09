@@ -7,7 +7,7 @@ import './AboutUsFiz.css';
 import pdfFile from '../../assets/pdf.png'
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getAdvantages, getAssistance,
+    getAdvantages, getAssistance, getDocuments,
     getIndividualAdvantages, getIndividualDocuments,
     getIndividualEntities, getIndividualWorkStages,
     getOurServices,
@@ -69,7 +69,7 @@ const AboutUsFiz = () => {
         advantagesIvidual,
         assistance,
         workStagesIndividual,
-        individualDocuments
+        documents
     } = useSelector(state => state.api);
     useEffect(() => {
         dispatch(getIndividualEntities())
@@ -77,7 +77,7 @@ const AboutUsFiz = () => {
         dispatch(getOurServices())
         dispatch(getIndividualAdvantages())
         dispatch(getAssistance())
-        dispatch(getIndividualDocuments())
+        dispatch(getDocuments())
         return () => {
             dispatch(resetIsLoaded());
         };
@@ -181,12 +181,12 @@ const AboutUsFiz = () => {
                         <p>Копия паспорта</p>
                     </div>
                     <div className="fiz-document-actions">
-                        <a href={individualDocuments.doc1}
+                        <a href={documents.doc1}
                            className="fiz-btn fiz-download-btn">
                             Скачать
                         </a>
                         <a
-                            href={individualDocuments.doc1}
+                            href={documents.doc1}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="fiz-btn fiz-open-btn">Открыть</a>
@@ -198,12 +198,12 @@ const AboutUsFiz = () => {
                         <p>Справка с места жительства</p>
                     </div>
                     <div className="fiz-document-actions">
-                        <a href={individualDocuments.doc2}
+                        <a href={documents.doc2}
                            className="fiz-btn fiz-download-btn">
                             Скачать
                         </a>
                         <a
-                            href={individualDocuments.doc2}
+                            href={documents.doc2}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="fiz-btn fiz-open-btn">Открыть</a>
@@ -215,12 +215,12 @@ const AboutUsFiz = () => {
                         <p>Копия нотариальной доверенности лица, уполномоченного на заключение договора</p>
                     </div>
                     <div className="fiz-document-actions">
-                        <a href={individualDocuments.doc3}
+                        <a href={documents.doc3}
                            className="fiz-btn fiz-download-btn">
                             Скачать
                         </a>
                         <a
-                            href={individualDocuments.doc3}
+                            href={documents.doc3}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="fiz-btn fiz-open-btn">Открыть</a>
@@ -232,12 +232,12 @@ const AboutUsFiz = () => {
                         <p>Копии разрешительной документации</p>
                     </div>
                     <div className="fiz-document-actions">
-                        <a href={individualDocuments.doc4}
+                        <a href={documents.doc4}
                            className="fiz-btn fiz-download-btn">
                             Скачать
                         </a>
                         <a
-                            href={individualDocuments.doc4}
+                            href={documents.doc4}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="fiz-btn fiz-open-btn">Открыть</a>

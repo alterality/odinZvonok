@@ -140,7 +140,7 @@ export const getHomeAdvantage = createAsyncThunk(
     "api/getHomeAdvantage",
     async function (_, { rejectWithValue }) {
         try {
-            const response = await instance.get(`/home-advantage/4`);
+            const response = await instance.get(`/home-advantage/1`);
             return response.data;
         } catch (error) {
             console.log(error);
